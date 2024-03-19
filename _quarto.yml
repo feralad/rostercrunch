@@ -11,6 +11,8 @@ book:
     - intro.qmd
     - summary.qmd
     - references.qmd
+  sidebar: 
+    logo: rostercrunch_logo.png
 
 bibliography: references.bib
 
