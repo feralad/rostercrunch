@@ -10,7 +10,7 @@ book:
   author: "Adam Feralio"
   date: "3/18/2024"
   chapters:
-    - 01_hello.qmd
+    - index.qmd
     - 02_tldr.qmd
     - 03_storytime.qmd
     - 04_woba_grades_graphs.qmd
