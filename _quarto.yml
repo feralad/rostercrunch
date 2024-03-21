@@ -1,16 +1,27 @@
 project:
   type: book
   output-dir: docs
+  
+execute:
+  echo: false
 
 book:
   title: "Roster Crunch"
   author: "Adam Feralio"
   date: "3/18/2024"
   chapters:
-    - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - 01_hello.qmd
+    - 02_tldr.qmd
+    - 03_storytime.qmd
+    - 04_woba_grades_graphs.qmd
+    - 05_woba_grades_tables.qmd
+    - 06_woba_changes.qmd
+    - 07_career_woba.qmd
+    - 08_regression.qmd
+    - 09_summary.qmd
+    - 10_dynasty_thoughts.qmd
+    - 11_project_overview.qmd
+    - 12_reflections.qmd
   sidebar: 
     logo: rostercrunch_logo.png
 
@@ -22,5 +33,5 @@ format:
   pdf:
     documentclass: scrreprt
 
-editor: visual
+editor: source
 
