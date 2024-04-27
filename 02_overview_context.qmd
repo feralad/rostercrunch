@@ -1,0 +1,107 @@
+# Overview and Context
+
+```{r}
+#| output: false
+
+library(knitr)
+library(dplyr)
+```
+
+```{r}
+#| output: false
+
+load("prospect_debut_rates.RData")
+```
+
+## Project Focus
+
+As I pondered the possible futures for the Rockies, I couldn't help but wonder what a player's rookie season tells us about that player---kind of like what an initial interaction might tell us about the possibilities of friendship or a relationship with someone we meet. In more technical terms, does a player's rookie season performance correlate with/predict their career performance, and if so, to what extent?
+
+This is a question I have been asking even more so as an avid dynasty fantasy baseball player. Before we go any further, I want to acknowledge that yes, fantasy baseball is built upon a ridiculous premise and by all accounts is a goofy hobby. But you can imagine that as a Rockies fan, the solace "fantasy" baseball provides has been prescribed by my doctor :)
+
+For the uninitiated, dynasty fantasy baseball is just like regular fantasy baseball, only you also have players who have yet to reach the major leagues on your team---referred to as prospects---and you typically keep all your players as long as you like year after year. The goal is to build a "dynasty" that will win your league at least one year and ideally multiple times over.
+
+Particularly because I play in a shallow dynasty league (only 12 teams) but roster a lot of prospects (20) with players losing prospect eligibility at 200 at-bats and 66 innings pitched, I am constantly faced with the predicament of whether to cut/trade or hold a prospect during their rookie season. I simply don't have room to keep them all on my major league roster. Some players make this decision easy (Corbin Carroll last year) and others make it hard (Brandon Pfaadt last year).
+
+Up until this point, I have always felt like my decisions about discarding or holding a prospect, especially less renowned prospects, were based more on feelings rather than data, too influenced by highlights and small sample sizes, and generally lacking. Perhaps you feel the same?
+
+In light of this and my intrigue into Jones' and Tovar's futures (I also have Tovar on my fantasy team, no surprise!), I set out to analyze rookie and career performances for players who debuted over the span of 20+ years (1990 to 2010) to gain a better understanding of what this relationship has looked like historically.
+
+While this project is descriptive analysis and not predictive, I like what [Ariel Cohen](https://twitter.com/ATCNY){target="_blank"}, an expert fantasy baseball player/analyst and actuary by day, I believe, [writes](https://www.rotoballer.com/2023-fantasy-takeaways/1258560?utm_source=dlvr.it&utm_medium=twitter){target="_blank"}...
+
+> "From an actuary’s perspective, the key motto for statistical models is that the past is predictive of the future. In my field, we base quantitative predictions on the tenet that given the same long-term conditions, past numerical outcomes and distributions (if properly parameterized) will continue for the foreseeable future."
+
+While we won't get to the point of building models, the core principle to reiterate is that the past will generally have something valuable to tell us about the present and future.
+
+Ideally, what we learn will help us as fantasy baseball managers make more informed decisions when the "roster crunch" inevitably and repeatedly arrives. Maybe you just need a small edge to bring home a trophy that your loved ones will undoubtedly be so impressed by!
+
+## Big Picture
+
+As dynasty managers, I submit that there are generally two inflection points at which we are forced to make a decision about one of our prospects. The first is when they reach the maximum at-bats or innings pitched at which they are no longer considered prospects, and thus must be moved to your major league roster, traded, or cut. I recognize this point varies depending on different league settings. The second is more arbitrary, but I think it is common for managers to hold their prospects for at least a full season. As fans too, we generally say things like, "He's still only a rookie."
+
+With that said, I've focused on comparing both:
+
+* A batter's first 150 Plate Appearances (PA) (roughly equal to 130 At-Bats) and pitcher's first 215 Batters Faced (BF) (roughly equal to 50 Innings Pitched) with their remaining career statistics, as this is when players [officially](https://www.mlb.com/glossary/rules/rookie-eligibility){target="_blank"} lose rookie eligibility
+* A batter's first 600 Plate Appearances and pitcher's first 860 Batters Faced (roughly equal to 200 Innings Pitched) with their remaining career statistics, as this is fairly equivalent to a full season
+  + I realize 200 innings pitched is a bit high, but I wanted to keep the proportionality consistent between batters and pitchers (150 PA * 4 = 600 PA and 215 BF * 4 = 860 BF). Also, pitchers threw more innings in the past than they do now.
+  
+Bottom line: we need to isolate a player's statistics up to these specific points and then compare it with their statistics after that point to determine the relationship between them.
+
+## Play-by-Play Data
+
+If it's not clear already, we'll need play-by-play data in order to make this work. Aggregated stats for rookie seasons won't suffice due to the differing number of plate appearances and batters faced among players.
+
+I mentioned earlier that we will focus on players who debuted from 1990 through 2010 as our sample. The stats span from 1990 through 2020. You might find this sample selection a bit random, and to a certain extent you are right.
+
+The primary reason I selected this sample was due to an available [dataset](https://upenn.app.box.com/v/retrosheet-pa-1990-2000){target="_blank"} that mostly met all the criteria I had:
+
+* Play-by-play data
+* Large enough sample size
+* In the modern era
+* Pre-constructed, easily accessible, mostly ready to go for analysis
+  + If you skip ahead to my Project Process and Project Reflections, you'll see that much of what I'm doing here is a first for me.
+* High quality from a trusted researcher and institution
+
+The underlying data comes from [Retrosheet](https://www.retrosheet.org){target="_blank"}. The dataset owner, [Ryan Brill](https://twitter.com/RyanBrill_){target="_blank"}, enhanced the Retrosheet data to be more useful for his research purposes like adding wOBA values for each play/event, which proved to be the linchpin for my analysis. I commend both of them to you for the fantastic work they do and acknowledge that my project exists in large part because of their labor.
+
+## Prospect Rankings
+
+Because dynasty managers are so often making decisions based on a player's prospect pedigree---perhaps to an even greater degree than based on a player's initial statistics over a small sample size---I thought it necessary to also include these rankings.
+
+I made use of [Baseball America's](https://www.baseballamerica.com){target="_blank"} Top 100 Prospects preseason lists for the years of focus. Rankings like these are invaluable, reflecting a tremendous amount of work and skill that goes into scouting players and evaluating talent. I would be remiss if I did not plug subscribing to Baseball America and supporting their work if you have the means to do so.
+
+We will examine player outcomes by prospect rank for prospects who made it to the major leagues. As we know, some prospects never make it to the major leagues. For reference, here are the rates of top prospects from Baseball America's Top 100 lists (1990 - 2010) who made it to the majors.
+
+```{r}
+#| tbl-cap: ["**Percentage and Number of Top 100 Prospects Who Reached Major Leagues**"]
+#| tbl-subcap: ["**Batting Prospects**", "**Pitching Prospects**"]
+#| layout-ncol: 2
+
+## Batting Prospects
+batting_prospect_mlb_debut_rate %>% 
+  kable(col.names = c("Prospect Rank", "Yes", "No", "Total"), 
+        align = "llll", 
+        caption = "**Batting Prospects Who Made MLB Debut**")
+
+## Pitching Prospects
+pitching_prospect_mlb_debut_rate %>% 
+  kable(col.names = c("Prospect Rank", "Yes", "No", "Total"), 
+        align = "llll", 
+        caption = "**Pitching Prospects Who Made MLB Debut**")
+```
+
+## Final Datasets
+
+Lastly, I made use of Retrosheet's [biofile dataset](https://www.retrosheet.org/biofile.htm){target="_blank"} primarily for pulling in player debut and last game dates, as well as some additional [FanGraphs](https://www.fangraphs.com){target="_blank"} articles and datasets for both core and miscellaneous purposes. I highly recommend supporting FanGraphs by becoming a member if you can.
+
+## Limitations
+
+All research projects have limitations, so let's get my dirty laundry out in the open!
+
+The biggest limitation is that some active players who had yet to finish their career are included in the dataset of players. Note that the stats in the dataset only go through the 2020 season, and we are including all players who debuted from 1990-2010. I made the trade-off to include those players who debuted closer to the end of that period and were still active after 2020 because I reasoned that a bigger sample size of players would enhance the analysis more than abiding by a strict rule that all players must have finished their career by then. Assuming a player debuted as late as 2010, I felt that 2011 through 2020 was a large enough amount of time for them to compile meaningful career statistics.
+
+The number of batters included in this analysis is 1,891 with 52 of them still active after the 2020 season. The number of pitchers is 717 with 30 of them still active after 2020.
+
+The second limitation is that we are using a single statistic, wOBA (wOBA against or wOBA allowed for pitchers), for all our evaluation. We'll talk more about why this is a limitation, but I will note here that Baseball America's Top 100 Prospect rankings are intended to measure a player's complete value (not solely offensive, etc.). A much better assessment of their rankings would be performed with WAR, which many outlets have done. Nowadays, there are fantasy-specific prospect rankings, which I would have used had they existed for this time period.
+
+I will address other limitations throughout the analysis.

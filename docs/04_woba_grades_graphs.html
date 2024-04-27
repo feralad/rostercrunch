@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_woba_grades_tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Granular wOBA Grades</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">wOBA Grades</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -171,8 +171,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12_reflections.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reflections</span></span></a>
+  <a href="./12_project_reflections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Project Reflections</span></span></a>
   </div>
 </li>
     </ul>
@@ -181,7 +181,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#weighted-on-base-average-woba" id="toc-weighted-on-base-average-woba" class="nav-link active" data-scroll-target="#weighted-on-base-average-woba"><span class="header-section-number">3.1</span> Weighted On-Base Average (wOBA)</a></li>
+  <li><a href="#data-context" id="toc-data-context" class="nav-link" data-scroll-target="#data-context"><span class="header-section-number">3.2</span> Data Context</a></li>
+  <li><a href="#batters" id="toc-batters" class="nav-link" data-scroll-target="#batters"><span class="header-section-number">3.3</span> Batters</a></li>
+  <li><a href="#initial-observations" id="toc-initial-observations" class="nav-link" data-scroll-target="#initial-observations"><span class="header-section-number">3.4</span> Initial Observations</a></li>
+  <li><a href="#batters-by-prospect-rank" id="toc-batters-by-prospect-rank" class="nav-link" data-scroll-target="#batters-by-prospect-rank"><span class="header-section-number">3.5</span> Batters by Prospect Rank</a></li>
+  <li><a href="#observations" id="toc-observations" class="nav-link" data-scroll-target="#observations"><span class="header-section-number">3.6</span> Observations</a></li>
+  <li><a href="#pitchers" id="toc-pitchers" class="nav-link" data-scroll-target="#pitchers"><span class="header-section-number">3.7</span> Pitchers</a></li>
+  <li><a href="#pitchers-by-prospect-ranks" id="toc-pitchers-by-prospect-ranks" class="nav-link" data-scroll-target="#pitchers-by-prospect-ranks"><span class="header-section-number">3.8</span> Pitchers by Prospect Ranks</a></li>
+  <li><a href="#main-takeaway" id="toc-main-takeaway" class="nav-link" data-scroll-target="#main-takeaway"><span class="header-section-number">3.9</span> Main Takeaway</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -203,8 +217,164 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="weighted-on-base-average-woba" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="weighted-on-base-average-woba"><span class="header-section-number">3.1</span> Weighted On-Base Average (wOBA)</h2>
+<p>Before we get any further, we have to talk about Weighted On-Base Average (wOBA).</p>
+<p>The sabermetric savants at <a href="https://library.fangraphs.com/offense/woba/" target="_blank">FanGraphs explain wOBA</a>, a creation of the master savant—Tom Tango—far more accurately and eloquently than I can. My key takeaways are that wOBA is a comprehensive offensive statistic which more accurately quantifies a batter’s performance than other more traditional statistics. Batting Average (BA), On-Base Percentage (OBP), Slugging Percentage (SLG), On-Base + Slugging Percentage (OPS), can’t capture the nuance of a batter’s value like wOBA does. This is because wOBA measures the precise effect (value) a walk, single, double, triple, home run, even hit-by-pitches (HBP) have on whether teams score a run or not and bakes that into the statistic.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="Images/FanGraphs_wOBA_grades.png" class="img-fluid figure-img" width="515"></p>
+<figcaption class="figure-caption"><em>Source: FanGraphs</em></figcaption>
+</figure>
+</div>
+<p>For our purposes, wOBA will serve as our catch-all statistic to measure player performance.</p>
+<p>The main limitation for us is that wOBA is not directly equivalent with fantasy baseball value. The biggest reason is Stolen Bases are excluded, which count for a portion of a player’s value (or lack of value) in fantasy baseball leagues. The second reason is that wOBA does not explicitly include Runs or RBIs, two additional fantasy categories, even though we know players who are on base more will generally score more runs and have more RBIs than players who make more outs. We could likely find more limitations, but those are the biggest.</p>
+<p>Having said that, a glance at the leaderboards most seasons, and elite hitters almost always have high wOBAs. Second, our analysis is primarily focused on correlation between initial and career performance in the big leagues, not necessarily the intrinsic values of either. wOBA will certainly suffice for our analysis!</p>
+<p>Because wOBA is an offensive statistic, it should be used with some caution for pitchers. There are interesting discussions <a href="https://sam-walsh.github.io/posts/fixing-xwoba/">here</a> and <a href="https://www.reddit.com/r/baseball/comments/15veyzp/baseballs_unseen_bias_how_woba_xwoba_xera_and_wrc/#">here</a> that lend insight into why that is, which also are relevant to batters. For our purposes, wOBA-against or wOBA-allowed is also sufficient despite its shortcomings for the two aforementioned reasons. If I had more time, I may have calculated and used K-BB% (Stikeouts minus Walks Percentage) as the catch-all pitching statistic, but wOBA-against will do.</p>
+</section>
+<section id="data-context" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="data-context"><span class="header-section-number">3.2</span> Data Context</h2>
+<p>Some important context to keep in mind as you navigate through the different visualizations:</p>
+<ul>
+<li>All batters and starting pitchers who debuted from 1990 through 2010 are included
+<ul>
+<li>Non-starting pitchers are not included</li>
+</ul></li>
+<li>Stats are from the 1990 season through 2020</li>
+<li>Intentional walks and sacrifice bunts are by default excluded from wOBA, so Plate Appearances (PAs) and Batters Faced (BF) are only those that ended in a wOBA-producing event</li>
+<li>An initial wOBA grade of “DNQ” stands for Did Not Qualify, meaning a player did not reach the stated Plate Appearances or Batters Faced thresholds
+<ul>
+<li>For example, a batter who only had 120 career plate appearances did not qualify for either the 150 or 600 PA thresholds</li>
+</ul></li>
+<li>There is also a DNQ threshold set for the post wOBA grade
+<ul>
+<li>Corresponding to the initial grade for 150 PAs, the post grade threshold is 600 PAs</li>
+<li>For 600 PAs, 1800 PAs</li>
+<li>For 215 BFs, 860 BFs</li>
+<li>For 860 BFs, 2580 BFs</li>
+</ul></li>
+<li>Post wOBA grades of DNQ are counted as “Bad” post grades in the plots below</li>
+<li>The Batters Faced threshold was chosen to equal roughly 50 Innings Pitched (215 BFs) and 200 Innings Pitched (860 BFs)</li>
+<li>Prospect ranks are from Baseball America preseason Top 100 lists
+<ul>
+<li>If a prospect was on a top 100 list but fell off the list prior to their debut, they were not considered a top 100 prospect</li>
+<li>If a prospect was not on a top 100 list when they debuted but were added before they lost prospect eligibility, they are included (confirm this)</li>
+</ul></li>
+</ul>
+</section>
+<section id="batters" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="batters"><span class="header-section-number">3.3</span> Batters</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">150 PA</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">600 PA</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="initial-observations" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="initial-observations"><span class="header-section-number">3.4</span> Initial Observations</h2>
+<ul>
+<li>Nearly a third of batters did not even reach 150 PA and nearly half did not reach 600 PA.</li>
+<li>A batter who hit for a <em>Good</em> wOBA over their first 150 PA was more likely to have a <em>Bad</em> wOBA grade for the rest of their career than <em>Good</em>.
+<ul>
+<li>Remember that a grade of “Did Not Qualify,” meaning in this case that they didn’t reach 600 PA, falls under a “Bad” grade. Both regression and attrition are contributing to this.</li>
+</ul></li>
+</ul>
+<p>While this is interesting at a macro-level, watch what happens when we look at groups of batters based on their prospect rank.</p>
+</section>
+<section id="batters-by-prospect-rank" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="batters-by-prospect-rank"><span class="header-section-number">3.5</span> Batters by Prospect Rank</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">150 PA</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">600 PA</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="observations" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="observations"><span class="header-section-number">3.6</span> Observations</h2>
+<p>The observations we made when looking at all batters remain true only when looking at certain groups of prospects, particularly unranked prospects. * For instance, a large percentage of the batters who did not qualify were unranked prospects.</p>
+<p>You probably already sensed this, but a majority of batters are unranked prospects. They weight heavily in the graph with all batters, making it hard to see the effect of top ranked prospects.</p>
+<p>Can you any spot differences between the 150 PA and 600 PA graphs?</p>
+<p>Purely based on looking at them, especially for prospects ranked 1 through 75, the 600 PA graphs appear more orderly. Additionally, it looks like more batters are falling into the “Average” wOBA grade bucket. This speaks to larger sample sizes helping to reduce noise and volatility.</p>
+</section>
+<section id="pitchers" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="pitchers"><span class="header-section-number">3.7</span> Pitchers</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">215 BF</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">860 BF</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pitchers-by-prospect-ranks" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="pitchers-by-prospect-ranks"><span class="header-section-number">3.8</span> Pitchers by Prospect Ranks</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">215 BF</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">860 BF</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04_woba_grades_graphs_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="main-takeaway" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="main-takeaway"><span class="header-section-number">3.9</span> Main Takeaway</h2>
+<p>The pitcher graphs don’t appear to have any glaring distinctions with the batter graphs.</p>
+<p>With that said, the main takeaway I want emphasize is to look at players by their prospect rank.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -449,7 +619,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05_woba_grades_tables.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Granular wOBA Grades</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">wOBA Grades</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

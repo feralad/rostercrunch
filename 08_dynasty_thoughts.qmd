@@ -1,0 +1,106 @@
+# Dynasty Thoughts
+
+## Strategy Retrospective
+
+If you somehow attain the ability or means to time travel, please use it for a better purpose. But indulge me in a hypothetical...
+
+Assume we could go back to February 1990. Our imaginary friend, Ralph, is joining a group of friends for an inaugural dynasty fantasy baseball league. We have the ability to tell him five things.
+
+Of course, we could tell Ralph to scoop up players like Frank Thomas, Pedro Martinez, Albert Pujols, etc., over the coming years, but this would only net him five superstars, which may not even be enough to ever win his league.
+
+Far better to teach a man to fish...
+
+If we could only share five important findings from this project, what would we tell him?
+
+## Trust the Prospect Pedigree
+
+From a probability standpoint, the higher ranked a prospect, the higher their chances of becoming good major league players as measured by wOBA or wOBA Against. wOBA and wOBA Against do not fully reflect player fantasy value, but for one statistic, it captures a lot.
+
+### Batters
+
+Top 50 batting prospects are the best investment with a noticeable drop-off after that point.
+
+Of batting prospects who make it to the major leagues, about 46% of top 25 batting prospects hit for a good to elite wOBA during their career. This percentage drops to 33% of prospects ranked 26 to 50, 22% for prospects ranked 51 to 75, and 16% for prospects ranked 76 to 100.
+
+### Pitchers
+
+When referring to pitching prospects and pitchers, we are only referring to starting pitchers.
+
+Top 25 pitching prospects are the best investment with a similar drop-off after.
+
+About 41% of top 25 prospects put up a good to elite wOBA Against for their career. This percentage drops to 20% for prospects ranked 26 to 50, 18% for prospects ranked 51 to 75, and 24% for prospects ranked 76 to 100.
+
+Additionally, the higher ranked a prospect, the more likely they will make it to the major leagues and remain in the league for a longer period of time.
+
+## Limit Exposure to Unranked Prospects
+
+This piece of advice is likely to be controversial and requires some qualifiers.
+
+The first is that this is highly dependent on league settings. Ralph tells us that he is playing in a shallow 12 team league, so this is much more applicable. In deeper leagues, unranked prospects should be valued more given that many more players are rostered.
+
+The second is that there is a distinction between prospects who are just outside the top 100 rankings and prospects who miraculously make it to the major leagues. To lop them all together is not wise. Related, good batting prospects may be ranked lower based on defensive limitations.
+
+The data for our years of focus show that the odds are not in unranked prospects favor. The percentage of unranked prospects who become above average major league players in wOBA/wOBA Against is about 5%. 59% of unranked batting prospects who debuted do not even reach 600 career plate appearances. 67% of unranked pitching prospects who debuted do not reach 860 career batters faced, equivalent to roughly 200 innings pitched.
+
+Furthermore, the number of unranked prospects that become major league players who get picked in the first few rounds of fantasy drafts on a regular basis is almost zero.
+
+In light of this, routinely using up minor league spots for players who will rarely be above average contributors at best is probably not a great strategy. Typically, managers are more prone to do this with unranked prospects who are close to debuting or recently debuted.
+
+An alternative strategy is to pursue younger prospects with the potential to become top 100 prospects, although this comes with its own diminished success rates. I do not have any analysis to prove that this is a better strategy.
+
+All in all, it's best to limit exposure to unranked prospects when possible. They are the worst investment.
+
+## Pay Little Attention to First Impressions
+
+If we look at players who played for at least roughly three full seasons, their initial rookie performance **as measured by wOBA or wOBA Against** tells us very little about the types of players they will become.
+
+When players lose rookie eligibility---130 at-bats for batters and 50 innings pitched for pitchers---a weak positive correlation exists between their current and remaining career wOBA/wOBA Against. As they accumulate more plate appearances and innings pitched over their first full season in the major leagues, this relationship strengthens but does not become strong, especially not for pitchers.
+
+At 600 plate appearances for batters, Pearson's correlation coefficient (R) is .5 and R^2^ is .25. At best, a full rookie season only moderately correlates with and predicts future career wOBA for batters.
+
+At 860 batters faced---about 200 innings pitched---Pearson's correlation coefficient is .25 and R^2^ is .06. At best, a full rookie season weakly correlates with and predicts almost nothing about future career wOBA Against for pitchers.
+
+## Anticipate Improvement for Top Prospects
+
+Top batting prospects grouped by rank (1 to 25, 26 to 50, 51 to 75, 76 to 100) gain an average of 9 to 15 points in wOBA after their first 150 plate appearances. They gain 5 to 10 points after their first 600 plate appearances. This may seem like very small movement, but consider that this is for each group as a whole. Obviously, some batters (and pitchers) regress as well.
+
+Unranked batting prospects as a whole lose two points in wOBA after their first 150 plate appearances. They neither gain nor lose points in wOBA after their first 600 plate appearances.
+
+Top pitching prospects grouped by rank shed 3 to 7 points in wOBA Against after their first 215 batters faced. They shed 1 to 5 points after their first 860 batters faced. Negative numbers are better since a lower wOBA Against is better for pitchers.
+
+Unranked pitching pitching prospects as a whole gain 6 poins in wOBA Against after their first 215 batters faced and 4 points after their first 860 batters faced.
+
+In addition to not improving as a group, unranked prospects fall out of the league at a much higher rate than ranked prospects, as noted earlier.
+
+![Frank Thomas, Credit: Getty Images](Images/Frank_Thomas_Getty_Images.jpg)
+
+## Respect Greatness
+
+Batters who post a career wOBA of .370 or higher and pitchers who post a career wOBA Against of .309 or lower are extremely rare. On average, about two batters and two pitchers with these career wOBA/wOBA Against marks emerge each year.
+
+These marks are not perfect in capturing "great" players in real life and even less so for fantasy. They also include a small number of active players whose final career wOBA/wOBA Against is subject to fluctuate, but these marks provide a relative idea of the rarity of "great" players.
+
+In dynasty leagues, managers are apt to rebuild and retool for the future when they feel that their team in its current state is not good enough to compete for a championship. Trading away talented major league players to contending teams for top prospects or very young major league players is often the strategy that goes along with this.
+
+To trade a great player away in an effort to rebuild, especially when that great player is still in their prime, is an action that should be rarely and gravely taken.
+
+Of prospects who debut, the percentage that put up a "great" career wOBA or wOBA Against are:
+
+* A little less than 15% of top 50 batting prospects
+* About 1 to 2% of batting prospects ranked 51 to 100
+* About 25% of top 25 pitching prospects
+* A little less than 10% of pitching prospects ranked 26 to 100
+
+If you are simply trying to net a future "great" player in return, your chances are not high, especially if you are not getting many prospects back in the deal. This is why so many dynasty fantasy analysts advocate getting some young established major league talent in deals like this as opposed to only prospects.
+
+Clearly, this is an oversimplification. The calculus for determining trade value is complex and player/league-dependent. However, this general concept emphasizes how serious a matter it is to trade away a great player.
+
+On the other hand, trying to obtain a great player through a trade for top prospects may be worth pursuing. You're likely to get burned some, for even great players are subject to aging curves and becoming shells of their former glory. Yet the adage resounds: "Prospects get churned, heroes get remembered, but legends never die."
+
+## In Summary
+
+I summarized the project in this way because I wanted it to be framed as actionable. Yet as I noted previously, this project was a descriptive analysis---not predictive. To assume that these findings apply now and will continue into the future is not entirely accurate, but I will reference Ariel Cohen's quote one last time.
+
+> "From an actuary’s perspective, the key motto for statistical models is that the past is predictive of the future. In my field, we base quantitative predictions on the tenet that given the same long-term conditions, past numerical outcomes and distributions (if properly parameterized) will continue for the foreseeable future."
+
+We do not have a statistical model, but looking into the past in this descriptive way is a helpful starting point.

@@ -1,0 +1,376 @@
+# Project Process
+
+If you're curious about how this project came together, I wrote a general overview for you!
+
+The short explanation is that everything you see here from the visualizations to the analysis to the writing was done in [RStudio](https://posit.co/download/rstudio-desktop/){target="_blank"} using the [R programming language](https://www.r-project.org/about.html){target="_blank"}.
+
+I chose R for this project because it offered the ability to work more efficiently with a large dataset compared to more familiar software like Excel. I did consider SQL but felt like the comprehensiveness of R and its usability as an end-to-end solution would give me the nimbleness to do pretty much anything I needed to do. Oh, did I mention that R and RStudio are free and open source?! 
+
+The Google Data Analytics Certificate program I participated in back in 2023---which I'll talk about in a bit---gives an overview of R, so I had some preliminary comfort from the courses. However, this was the first time I had ever done any coding in my entire life, hence why the project took me a year to complete.
+
+For each of the project stages, I think it would be most helpful to speak about it tangibly by including packages that I used as well as some of my code. This is not meant to be exhaustive or to serve as any kind of example---I would warn you against that!---but simply to show how I went about completing the project. Many of these packages are part of the [tidyverse](https://www.tidyverse.org/){target="_blank"}.
+
+## Data Importing
+
+### readr package
+
+All of the datasets I used were csv files. Within RStudio, there is an "Import Dataset" button that makes importing files easy. One of the default options for importing text files is to use the [readr package](https://readr.tidyverse.org/){target="_blank"}. The code below is the simplest version of doing this, but you can also manipulate the dataset in tons of different ways while importing depending on what is needed.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+game_data <- read_csv("~/Downloads/retro_final_PA_1990-2020d.csv")
+```
+
+If I get around to another baseball project, I want to utilize the [baseballr package](https://billpetti.github.io/baseballr/){target="_blank"}. I initially started with this package but found it a bit beyond me at the beginning of this project.
+
+## Data Exploration
+
+### skimr package
+
+Because the primary dataset I used was so large (1.2 GB, over 6 million rows, and over 50 columns), I needed a way to get an overview of it. The [skimr package](https://docs.ropensci.org/skimr/){target="_blank"} is designed exactly for this. With a simple function like the one in my code below, I got back a summary of the dataset that told me things like what classes the different variables were (character, numeric, date, etc.), how many and what percentage of NA values there were in each column, the min and max values of each column, etc. This was particularly helpful as a starting point for data cleaning.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+skim_without_charts(game_data)
+```
+
+## Data Cleaning
+
+### stringr & lubridate packages
+
+The main dataset I had to clean was the dataset of Top 100 Baseball America prospects by year. This dataset was separate from the primary dataset that included all player statistics and game data, so I had to figure out a way to join them together in order to link player statistics and player prospect ranks. 
+
+Because the prospect dataset did not include unique player IDs, I was forced to join them together based on player names. Given that multiple players have the same names---for instance, did you know that a second [Pedro Martinez](https://www.baseball-reference.com/players/m/martipe03.shtml){target="_blank"} debuted one year after the [Pedro Martinez](https://www.baseball-reference.com/players/m/martipe02.shtml){target="_blank"} you are sure to know?---and that variations existed in spelling (AJ Burnett vs. A.J. Burnett as an example), this process was not as easy as it may sound.
+
+At the time I was working on this, I had yet to discover the [fuzzyjoin package](https://cran.r-project.org/web/packages/fuzzyjoin/fuzzyjoin.pdf){target="_blank"} or put two and two together that I could join these datasets together based on inexact matching. This wouldn't have made the process a breeze, but it would have significantly simplified it.
+
+At least on the bright side, I got the opportunity to work with the [stringr package](https://stringr.tidyverse.org/){target="_blank"} doing character string manipulation like fixing spelling, punctuation, and capitalization differences in player names. I also used some functions from the [lubridate package](https://lubridate.tidyverse.org/){target="_blank"} to make sure dates were formatted uniformly. One example of many passes of manipulations is shown below.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# changing two misspellings (fun players!): Carlos Gonzales(z), Miguel Teje(a)da
+# changing all caps TEAM to Team
+# changing YEAR (numeric class) to year with date (date class)
+top_prospect_rankings <- top_prospect_rankings %>%
+  mutate("PLAYER_NAME" = str_replace(PLAYER_NAME, "Carlos Gonzales", 
+                                    "Carlos Gonzalez"),
+         "PLAYER_NAME" = str_replace(PLAYER_NAME, "Miguel Tejeda",
+                                     "Miguel Tejada"),
+         "TEAM" = str_to_title(top_prospect_rankings$TEAM),
+         "YEAR" = lubridate::ymd(YEAR, truncated = 2))
+```
+
+## Data Transformation & Analysis
+
+Now for the exciting packages!
+
+### dplyr package
+
+By far and away, my favorite and most used package was [dplyr](https://dplyr.tidyverse.org/){target="_blank"}, an extremely popular package in the world of data analysis. The name is meant to mean "d" for data and the "plyr" for plier, as in manipulating data with a tool like a plier. Even in the code above, mutate is a function from the dplyr package.
+
+In a large sense, I took data out of the play-by-play dataset and moved it into a flat summary table with one row containing statistics and other relevant data for each player. dplyr made this possible. 
+
+One of my most crucial steps was to convert the wOBA value for every plate appearance for every batter and pitcher into a "rolling wOBA" or "rolling wOBA Against" data column. This took the cumulative wOBA or wOBA Against for a player up to that specific plate appearance (or batter faced) in their career. It enabled me to determine what a batter's wOBA was at 150 plate appearances or a pitcher's wOBA Against at 860 batters faced as an example. The code below uses dplyr functions that I used over and over---group_by, filter, mutate, relocate, ungroup---and also some base R functions---cumsum and seq_along. ungroup is still a bit confusing to me!
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# calculate rolling wOBA for batters
+bat_wOBA_log_debut_1990_on <- career_wOBA_log_w_biodates %>%
+  group_by(BAT_ID) %>%
+  filter(BAT_DEBUT > "1990-04-08") %>%
+  mutate(ROLLING_WOBA_BAT = cumsum(EVENT_WOBA) / seq_along(EVENT_WOBA)) %>%
+  relocate(ROLLING_WOBA_BAT, .after = CAREER_PA_WOBA_NUM) %>%
+  ungroup()
+```
+
+My understanding is that dplyr is very similar to SQL (structured query language). It enables you to do SQL-like queries like this one which combed through the 71,080 baseball games in the dataset to find which ones ended in back-to-back home runs. This was probably the most fun code I wrote!
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# find the number of games ending in back-to-back home runs
+back_to_back_home_run_game_endings <- game_data %>% 
+  select(row_idx, GAME_ID, PARK, DATE, HOME_TEAM_ID, AWAY_TEAM_ID, INNING, # <1>
+         BAT_NAME, PIT_NAME, EVENT_TX, HIT_VAL, EVENT_RUNS, PA_IND) %>% # <2>
+  arrange(ymd(DATE), row_idx) %>% # <3>
+  filter(PA_IND = TRUE) %>% # <4>
+  group_by(GAME_ID) %>%
+  slice_tail(n = 2) %>% # <5> 
+  filter(HIT_VAL == 4) %>% # <6>
+  group_by(GAME_ID) %>% 
+  add_count(GAME_ID) %>% # <7>
+  filter(n != 1) %>% # <8>
+  arrange(ymd(DATE), row_idx)
+```
+
+1. Pick only these columns from the dataset.
+2. %>% is called the forward pipe operator, which essentially says, "Do this %>% then do this."
+3. Arrange sequentially by date and order of events within each game.
+4. Filter out non-plate appearance events like stolen bases.
+5. Select only the last two plate appearances of each game.
+6. Filter for only home runs (HR).
+7. Count how many times the game ID appeared (once (one HR) or twice (bingo!)).
+8. Filter for games with more than one HR in last two plate appearances.
+
+### janitor package
+
+As amazing as dplyr is, it's not the best tool for every single task. This is something I learned the hard way when trying to create cross-tabulations to find the value for the combination of two variables (think pivot tables if you're more familiar with Excel) using a combination of dplyr functions. I stumbled across the [janitor package](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html){target="_blank"}, which has a function that in one line of code will create a crosstab for you---taybl. janitor also has a number of data cleaning functions, hence the name.
+
+The package also has the ability to enhance crosstabs by calculating totals and percentages within rows or columns. If you look back at my tables, this code becomes very evident. The two commas in the adorn_percentages function below might make no sense to you. They still don't make much sense to me and trigger a warning ⚠️ triangle in RStudio. It is telling janitor to skip unused arguments in the function. The Elite:DNQ is indicating to only calculate percentages for the Elite column through the DNQ column, not a "Total" column at the end, which I wanted to preserve with the numeric count.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# create crosstabs for batters in a list, 150 PA, by prospect rank
+batter_woba_grade_crosstabs_150_list <- all_batter_career_data_by_ID %>% 
+  filter(BAT_DEBUT < "2011-01-01") %>% 
+  tabyl(FIRST_150_WOBA_GRADE, POST_150_WOBA_GRADE, PROSPECT_RANK_GROUP) %>% 
+  adorn_totals(c("row", "col")) %>% 
+  adorn_percentages("row",,Elite:DNQ)
+```
+
+## Data Visualization
+
+### gt package
+
+I utilized the [knitr package](https://yihui.org/knitr/){target="_blank"} to create some basic tables (referred to as kables), but the main tables you saw with different colors were created using the [gt package](https://gt.rstudio.com/){target="_blank"}. The gt package allows for table customization down to the minutest level, and the tables can be as beautiful as you would like to make them.
+
+This code also includes the first function I wrote, essentially creating a theme I could use for other similar gt tables. R for the Rest of Us, which I talk about more below, has a [short video](https://www.youtube.com/watch?v=YzmLB2z9whw){target="_blank"} on how to do this. 
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# create gt table of batter wOBA grade percentages, 150 PA, prospects 1 - 25
+batter_woba_grade_crosstabs_150_list$`1 - 25` %>% 
+  gt(
+    rowname_col = "FIRST_150_WOBA_GRADE", 
+    groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(
+    title = md("**Percentage of Batters by wOBA Grades**"), 
+    subtitle = "Prospect Rank: 1 to 25 | First & Post 150 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+
+gt_crosstab_theme_fn_data_color <- function(gt_tbl) {
+  gt_tbl %>% 
+    tab_footnote(
+      footnote = "*Percentages are rounded...") %>% 
+    tab_stubhead(
+      label = "Initial wOBA") %>% 
+    tab_spanner(
+      label = "Remaining Career wOBA", columns = 2:9) %>% 
+    tab_style(
+      style = cell_text(weight = "bold"), 
+      locations = cells_stub(rows = 9)) %>% 
+    tab_style(
+      style = cell_text(style = "italic"), 
+      locations = list(cells_body(columns = Total), 
+                       cells_column_labels(columns = Total))) %>% 
+    cols_label(
+      `Below Average` = "Below", 
+      Average = "Avg.") %>%
+    cols_align(
+      align = "left",
+      columns = 1) %>% 
+    cols_align(
+      align = "center",
+      columns = 2:10) %>% 
+    cols_width(
+      1 ~ px(130),
+      c(2:10) ~ px(50)) %>% 
+    sub_missing(
+      missing_text = "---") %>%
+    data_color(
+      rows = everything(), 
+      direction = "row", 
+      columns = 2:9,
+      method = "numeric", 
+      palette = "plasma") %>% 
+    fmt_percent(
+      columns = 2:9,
+      rows = everything(), 
+      drop_trailing_zeros = TRUE) %>% 
+    fmt_percent(
+      columns = c(!starts_with("Total") & where(~ is.numeric(.))),
+      decimals = 0)
+}
+```
+
+### ggplot2 + ggpmisc + hrbrthemes packages
+
+Data analysis without data visualization is nearly impossible to convey or do. Good visualizations help simplify thousands or millions of data points into something understandable within 5 to 10 seconds. This is why packages for making different types of plots, graphs, charts, etc., like the [ggplot2 package](https://ggplot2.tidyverse.org/){target="_blank"} are so popular. All of my plots were done with the ggplot2 package.
+
+As an extension of ggplot2, the [ggpmisc package](https://cran.rstudio.com/web/packages/ggpmisc/ggpmisc.pdf){target="_blank"} includes helpful functions like stat_correlation, which calculates the correlation values and annotates the plot with those values.
+
+Additionally, I used the ipsum theme from the hrbrthemes package for all plots, which in my opinion is a major upgrade to the standard themes ggplot2 provides. The ipsum theme is as simple as loading the package and adding one line of code! Some of the additional themes through the [package](https://github.com/hrbrmstr/hrbrthemes){target="_blank"} may require downloading specific fonts.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# plot first 300 & post 300 PA for batters, add correlation, linear model
+all_batter_career_data_by_ID %>%
+  filter(BAT_DEBUT <  "2011-01-01" & CAREER_TOTAL_PA >= 1800) %>%
+  ggplot(aes(x = POST_300_WOBA, y = FIRST_300_WOBA)) + # <1>
+  geom_point(aes(color = PROSPECT_RANK_GROUP)) + # <2> 
+  geom_smooth(method = "lm") + # <3>
+  stat_correlation(use_label(c("R", "R2", "P"))) + # <4>
+  scale_x_continuous(labels = signs::signs_format(accuracy = .001, 
+                                                  trim_leading_zeros = TRUE)) + 
+  scale_y_continuous(labels = signs::signs_format(accuracy = .001, 
+                                                  trim_leading_zeros = TRUE)) + 
+  scale_color_manual(values = c("#1192e8", 
+                                "#fa4d56", 
+                                "#002d9c", 
+                                "#009d9a", 
+                                "#a56eff")) +
+  labs(title = "Linear Correlation in wOBA for First & Post 300 PAs", 
+       subtitle = "Includes All Batters...") + 
+  xlab(label = "Post 300 PA wOBA") + 
+  ylab(label = "First 300 PA wOBA") + 
+  guides(
+    color = 
+      guide_legend(
+        title = "Prospect Rank Group")) + 
+  theme_ipsum() +
+  theme(legend.position = "bottom")
+```
+
+1. Define x and y values.
+2. Define desired plot type (point for scatterplot).
+3. Optional: Add another plot to the existing plot (linear model).
+4. Annotate the plot with these specific statistics.
+
+## Sharing
+
+### Quarto
+
+To get my project "out there" for all of you to read, I chose Quarto, a publishing system which is built into RStudio as well as other "integrated development environments." It's also programming-language agnostic, so Python, etc., work inside it too.
+
+While my project is not really a book, technically you are reading a Quarto Book. My favorite thing about Quarto is that hardly any customization is needed for it to look aesthetic. The three things that required me to do a bit more digging were:
+
+#### Loading Packages & Data
+
+I assumed since I had already loaded the packages and data I was using in RStudio that I did not need to load them in my different Quarto files (.qmd files), which together comprise the Quarto Book. After some head-scratching and Googling, I learned that I **did** need to load them again. Each page of this website (Quarto book) is its own qmd file, so I repeated similar code below in each. I didn't find a way to specify this globally so that it wouldn't have to be repeated in each file, but I'm sure there is a way.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# load necessary packages
+library(tidyverse)
+library(gt)
+library(scales)
+library(hrbrthemes)
+```
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+# load necessary data
+load("crosstabs.RData")
+load("summary_tables.RData")
+```
+
+#### Execution Options
+
+Since this project was more data journalism than scientific publishing, it wasn't necessary for me to bog it down with chunk after chunk of code. This execution option specified in the .yml (master) file of the Quarto project essentially tells Quarto to run the code but not to include the code itself in the output. This can be overridden manually for specific code chunks with `echo: true`, which is how you are seeing code on this page.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+execute:
+  echo: false
+```
+
+#### Panel Tabsets
+
+If my project wasn't already unreadable on its own merits, it would have been far more so without the functionality of panel tabsets. I used these to give you as the reader the ability to toggle between visualizations, for example between charts focused on 150 plate appearances versus 600 plate appearances. These are extremely easy to add with the following code. The `::: panel-tabset` and `:::` enclose the panel, and the `##` serve as the different headers for each tab.
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+
+::: panel-tabset
+
+## 150 PA
+
+code...
+
+## 600 PA
+
+code...
+
+:::
+```
+
+### GitHub
+
+I chose GitHub Pages to "host" my Quarto Book. If you look at the URL, this is apparent. For full transparency, I probably could not repeat this without re-referencing a tutorial. I believe [this](https://www.youtube.com/watch?v=QLFc9gw_Hfs){target="_blank"} was the most helpful resource I found or the one that made the most sense to me.
+
+## Resources
+
+### Google Analytics Certificate Program
+
+This project served as my capstone project for the Google Data Analytics Certificate Program. They have some default projects you can pick, but I definitely wanted to do something of greater interest to me to help stay motivated.
+
+I found the program to be a solid overview of data analytics and key tools. From there, I felt more confident to branch out into more specific areas and tools that I had yet to work with. Since I love the big picture, I found [their breakdown](https://www.youtube.com/watch?v=Jye81eSts2c){target="_blank"} of the data analysis process extremely helpful. This was my north star throughout my project.
+
+* Ask
+* Prepare
+* Process
+* Analyze
+* Share
+* Act
+
+### Stack Overflow
+
+When I first started my project, the only code examples I had were from the certificate program. As I plodded along, there were hundreds of times where I knew what end result I wanted (for example, a new column of data) but didn't know what code to write to get there. Stack Overflow was enormously helpful in getting closer to the specific code I needed as long as I could formulate a question that was in the ballpark of what I was looking for. Of the hundreds of questions I had, I only wound up having to ask a [minor one](https://stackoverflow.com/questions/77520767/factor-levels-out-of-order-in-tibble){target="_blank"} where I couldn't find an existing answer. That's quite a testament to the amount of information available and incredible credit to the individuals who provide answers. Where do you they find the time?!
+
+I recognize that AI tools may have reached the point of being a more efficient tool than combing through sites like Stack Overflow. When I first started my project, I don't think Chat-GPT or other similar tools had quite caught on like they have today. It may have been a poor decision, but I decided that I wasn't going to use AI tools for this project. This was primarily because I felt like having to struggle a bit, figure things out more manually, etc., would help me acquire a deeper understanding of the concepts than having code more auto-generated. I also felt like I wouldn't be able to properly validate if the AI-generated solutions had errors or not.
+
+### Function Reference for Packages
+
+For all the packages I used, the function reference/reference manual was enormously helpful to get my code to work and accomplish the goals of my project. [Here](https://dplyr.tidyverse.org/reference/index.html){target="_blank"} is the manual for dplyr as an example.
+
+If you click on a specific function, it tells you what exactly must and can be included (referred to as arguments). They also provide examples, which I found even more helpful. 
+
+If I could go back, I would probably read beforehand through the different functions in dplyr and the other core packages I used, as I had times where I stumbled upon a function too late---add_count() is one example. It's hard to know all the functions you need beforehand, but especially for dplyr, this would have made my life easier.
+
+From the package website, there is typically a link to GitHub, which has an "Issues" tab that can be helpful if you feel like something isn't working exactly as expected---[gt package example](https://github.com/rstudio/gt/issues){target="_blank"}. 
+
+### Package Cheatsheets
+
+I believe the ggplot2 package is one of the most downloaded packages from R's package repository. With that, I suspect it is also one of the most popular [cheatsheets](https://ggplot2.tidyverse.org/#cheatsheet){target="_blank"}. While the function reference gets to a more helpful level of detail, these cheatsheets provide a bird's eye everything a package can do. The ggplot2 cheatsheet is great because it gives you a sense of all the data visualizations that are possible and the different components of plots. Not every package has a cheatsheet, but it's a must-use when available. 
+
+### R for the Rest of Us
+
+I'm not sure where I first heard about [R for the Rest of Us](https://rfortherestofus.com/){target="_blank"}, but I highly recommend them if you are new to coding and interested in R. I've yet to take any of their full courses and didn't do their R in 3 Months despite strongly considering it, but even signing up for their emails, listening to their podcast, and watching their shorter YouTube videos has been a huge help. From learning of new packages to making visualizations look prettier to improving workflows, they have a lot to offer. The best part about it is that they gear themselves towards folks with a non-coding background.
+
+### YouTube
+
+Some channels I found helpful included [Riffomonas Project](https://www.youtube.com/@Riffomonas){target="_blank"}, [Equitable Equations](https://www.youtube.com/@EquitableEquations){target="_blank"}, and [Posit PBC](https://www.youtube.com/@PositPBC){target="_blank"}---particularly [Quarto-specific videos](https://www.youtube.com/watch?v=i2mdxfvm_VY&list=PL9HYL-VRX0oQI8fVioFxMTBrViFnRX_Df){target="_blank"}. On the statistics side of things, I joined the [StatQuest](https://www.youtube.com/@statquest){target="_blank"} throng to refresh and check my understanding of statistical concepts.

@@ -1,0 +1,298 @@
+# Career wOBA
+
+```{r}
+#| output: false
+
+library(tidyverse)
+library(scales)
+library(hrbrthemes)
+library(knitr)
+```
+
+```{r}
+#| output: false
+
+load("summary_tables.RData")
+```
+
+## Percentages vs. Numbers
+
+As helpful as it is to know the percentage of players with different wOBA grades by prospect rank and initial performance, we miss something important if we do not look at the total number of players. 
+
+Much of this is because there are so many more unranked prospects than ranked. Even a smaller percentage of unranked prospects with good career outcomes could indicate a number that is close to the corresponding number of a higher percentage of ranked prospects.
+
+Since as dynasty managers we are interested in getting the best young players on our teams, it's helpful to know how big the respective pools of players are from which we can draw.
+
+## Number of Batters
+
+The demographers among us are to thank for population pyramids, which we can employ for our purposes to compare the number of ranked and unranked prospects with different wOBA grades.
+
+```{r}
+#| warning: false
+
+all_batter_career_data_by_ID %>% 
+  mutate(CAREER_WOBA_GRADE = case_when(
+    CAREER_TOTAL_PA < 1800 ~ "DNQ",
+    CAREER_TOTAL_PA >= 1800 & CAREER_WOBA_BAT >= .400 ~ "Elite",
+    CAREER_TOTAL_PA >= 1800 & between(CAREER_WOBA_BAT, .370, .399) ~ "Great",
+    CAREER_TOTAL_PA >= 1800 & between(CAREER_WOBA_BAT, .340, .369) ~ "Good",
+    CAREER_TOTAL_PA >= 1800 & between(CAREER_WOBA_BAT, .320, .339) ~ "Average",
+    CAREER_TOTAL_PA >= 1800 & between(CAREER_WOBA_BAT, .310, .319) ~ "Below Average",
+    CAREER_TOTAL_PA >= 1800 & between(CAREER_WOBA_BAT, .291, .309) ~ "Poor",
+    CAREER_TOTAL_PA >= 1800 & CAREER_WOBA_BAT <= .290 ~ "Awful"),
+    CAREER_WOBA_GRADE = factor(CAREER_WOBA_GRADE, levels = 
+                                    c("Elite", "Great", "Good", "Average", 
+                                      "Below Average", "Poor", "Awful", "DNQ"))) %>%
+  mutate(TOP_100_PROSPECT = case_when(TOP_100_PROSPECT == "Y" ~ "YES", 
+                                      TOP_100_PROSPECT == "N" ~ "NO")) %>%
+  filter(BAT_DEBUT <  "2011-01-01" & CAREER_TOTAL_PA >= 150) %>% 
+  group_by(CAREER_WOBA_GRADE, TOP_100_PROSPECT) %>% 
+  summarise(count = n()) %>% 
+  ggplot(aes(x = ifelse(TOP_100_PROSPECT == "YES", -count, count), 
+             y = fct_rev(CAREER_WOBA_GRADE), 
+             fill = TOP_100_PROSPECT)) +
+  geom_col() + 
+  scale_x_continuous(labels = abs, 
+                     limits = c(-250, 650)) +
+  scale_fill_manual(name = "TOP_100_PROSPECT",
+                    values = c("#fa4d56", "#1192e8")) +
+  geom_text(aes(
+    label = if_else(ifelse(TOP_100_PROSPECT == "YES", -count, count) < -0, 
+                    ifelse(TOP_100_PROSPECT == "YES", -count, count) * -1, 
+                    ifelse(TOP_100_PROSPECT == "YES", -count, count)), 
+    hjust = if_else(TOP_100_PROSPECT == "YES", 1.25, -.25)),
+    position = position_dodge()) + 
+  labs(title = "Number of Batters per Career wOBA Grade", 
+       subtitle = "Includes All Batters with At Least 150 Career Plate Appearances",
+       caption = "Batters who failed to reach 600 PA are listed as DNQ") + 
+  xlab(label = "Number of Batters") + 
+  ylab(label = "Career wOBA Grade") + 
+  guides(
+    fill = 
+      guide_legend(
+        title = "Top 100 Prospect",
+        reverse = TRUE)) + 
+  theme_ipsum() + 
+  update_geom_font_defaults(family = "Arial Narrow", face = "plain",
+                            size = 3.5, color = "#2b2b2b") +
+  theme(legend.position = "bottom")
+```
+
+To break this down: if you were playing in a dynasty league from 1990 to 2010, there were a little less than 200 batters who debuted over that time period with a *Good* career wOBA or better. This is about ten batters each year on average. Seven of those ten were batters who were top 100 prospects. Three of them were unranked prospects.
+
+## Top 100 Batters
+
+Since we've all rightly fallen in love with top 100 prospect lists, I thought it would be valuable to compare the top 100 ranked prospects and the top 100 unranked prospects from this period based on career wOBA.
+
+If you were trying to hit the lottery as a dynasty managers with unranked prospects, who would you have wound up with? What would the best case scenario have been for you?
+
+Important notes for these lists:
+
+* These prospects ranks are from [Baseball America](https://www.baseballamerica.com){target="_blank"}.
+* Career wOBA is as of the end of the 2020 season. Some players were still active.
+* Some unranked prospects were ranked at one point (Josh Hamilton is probably the most famous example), but they fell off the top 100 list prior to when they debuted.
+
+```{r}
+#| warning: false
+#| tbl-cap: ["**Top 100 Batters by Career wOBA**"]
+#| tbl-subcap: ["**Ranked Prospects**", "**Unranked Prospects**"]
+#| layout-ncol: 2
+
+# ranked prospects
+all_batter_career_data_by_ID %>% 
+  filter(BAT_DEBUT < "2011-01-01" & 
+           CAREER_TOTAL_PA >= 1800 & 
+           TOP_100_PROSPECT == "Y") %>% 
+  select(BAT_NAME, CAREER_WOBA_BAT, PROSPECT_RANK) %>% 
+  arrange(desc(CAREER_WOBA_BAT)) %>% 
+  head(n = 100) %>%
+  kable(col.names = c("Name", "Career wOBA", "Prospect Rank"), 
+        align = "lccc")
+
+# unranked prospects
+all_batter_career_data_by_ID %>% 
+  filter(BAT_DEBUT < "2011-01-01" & 
+           CAREER_TOTAL_PA >= 1800 & 
+           TOP_100_PROSPECT == "N") %>% 
+  select(BAT_NAME, CAREER_WOBA_BAT, PROSPECT_RANK) %>% 
+  arrange(desc(CAREER_WOBA_BAT)) %>% 
+  head(n = 100) %>% 
+  select(BAT_NAME, CAREER_WOBA_BAT, PROSPECT_RANK) %>%
+  kable(col.names = c("Name", "Career wOBA", "Prospect Rank"), 
+        align = "lccc")    
+```
+
+What do you think?! I suspect there could be some healthy debate in comparing and contrasting these lists. After looking at these lists, the limitations I mentioned at the beginning become more apparent. Namely, wOBA does not fully capture a player's value, especially in the context of fantasy.
+
+Having said that, the contrast between top ranked prospects and top unranked prospects seems stark in my eyes. The best you could have hoped for from the unranked prospect pool was probably Robinson Cano, Jeff Kent, Jason Giambi, Matt Holliday, Jim Edmonds, Brian Giles...
+
+Notable fantasy impact players are far more plentiful among ranked prospects. This is no surprise, but the degree of contrast may be surprising.
+
+You may be interested in the median and mean prospect rank for the batting prospects on the ranked list (an even set of numbers): median of 21.5, mean of 31.
+
+## Career wOBA by Prospect Rank
+
+At this point, I think I've sufficiently conveyed the difference in career outcomes between ranked and unranked batting prospects. One more density plot is worth adding though.
+
+```{r}
+#| warning: false
+
+all_batter_career_data_by_ID %>% 
+  filter(BAT_DEBUT <  "2011-01-01" & CAREER_TOTAL_PA >= 150) %>% 
+  ggplot(aes(CAREER_WOBA_BAT, color = PROSPECT_RANK_GROUP)) +
+  geom_line(stat = "density", position = "identity", size = .75) + 
+  scale_x_continuous(labels = signs::signs_format(accuracy = .001, 
+                                                  trim_leading_zeros = TRUE)) +
+  scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) +
+  labs(
+    title = "Batter Career wOBA Distribution", 
+    x = "Career wOBA", 
+    y = "Density", 
+    caption = "Minimum Career Plate Appearances = 150 | Number of Batters = 1,316") + 
+  guides(
+    color = 
+      guide_legend(
+        title = "Prospect Rank")) +
+  theme_ipsum() + 
+  theme(legend.position = "bottom")
+```
+
+## Number of Pitchers
+
+```{r}
+#| warning: false
+
+all_pitcher_career_data_by_ID %>% 
+  filter(PITCHER_TYPE == "STARTER") %>% 
+  mutate(CAREER_WOBA_GRADE = case_when(
+    CAREER_TOTAL_BF < 2580 ~ "DNQ",
+    CAREER_TOTAL_BF >= 2580 & CAREER_WOBA_PIT <= .290 ~ "Elite",
+    CAREER_TOTAL_BF >= 2580 & between(CAREER_WOBA_PIT, .291, .309) ~ "Great",
+    CAREER_TOTAL_BF >= 2580 & between(CAREER_WOBA_PIT, .310, .319) ~ "Good",
+    CAREER_TOTAL_BF >= 2580 & between(CAREER_WOBA_PIT, .320, .339) ~ "Average",
+    CAREER_TOTAL_BF >= 2580 & between(CAREER_WOBA_PIT, .340, .369) ~ "Below Average",
+    CAREER_TOTAL_BF >= 2580 & between(CAREER_WOBA_PIT, .370, .399) ~ "Poor",
+    CAREER_TOTAL_BF >= 2580 & CAREER_WOBA_PIT >= .400 ~ "Awful"),
+    CAREER_WOBA_GRADE = factor(CAREER_WOBA_GRADE, levels = 
+                                 c("Elite", "Great", "Good", "Average", 
+                                   "Below Average", "Poor", "Awful", "DNQ"))) %>%
+  mutate(TOP_100_PROSPECT = case_when(TOP_100_PROSPECT == "Y" ~ "YES", 
+                                      TOP_100_PROSPECT == "N" ~ "NO")) %>%
+  filter(PIT_DEBUT <  "2011-01-01" & CAREER_TOTAL_BF >= 215) %>% 
+  group_by(CAREER_WOBA_GRADE, TOP_100_PROSPECT) %>% 
+  summarise(count = n()) %>% 
+  ggplot(aes(x = ifelse(TOP_100_PROSPECT == "YES", -count, count), 
+             y = fct_rev(CAREER_WOBA_GRADE), 
+             fill = TOP_100_PROSPECT)) +
+  geom_col() + 
+  scale_x_continuous(labels = abs, 
+                     limits = c(-150, 300)) +
+  scale_fill_manual(name = "TOP_100_PROSPECT",
+                    values = c("#fa4d56", "#1192e8")) +
+  geom_text(aes(
+    label = if_else(ifelse(TOP_100_PROSPECT == "YES", -count, count) < -0, 
+                    ifelse(TOP_100_PROSPECT == "YES", -count, count) * -1, 
+                    ifelse(TOP_100_PROSPECT == "YES", -count, count)), 
+    hjust = if_else(TOP_100_PROSPECT == "YES", 1.25, -.25)),
+    position = position_dodge()) + 
+  labs(title = "Number of Pitchers per Career wOBA Against Grade", 
+       subtitle = "Includes All Starting Pitchers with At Least 215 Career Batters Faced",
+       caption = "Pitchers who failed to reach 860 BF are listed as DNQ") + 
+  xlab(label = "Number of Pitchers") + 
+  ylab(label = "Career wOBA Against Grade") + 
+  guides(
+    fill = 
+      guide_legend(
+        title = "Top 100 Prospect",
+        reverse = TRUE)) + 
+  theme_ipsum() + 
+  update_geom_font_defaults(family = "Arial Narrow", face = "plain",
+                            size = 3.5, color = "#2b2b2b") +
+  theme(legend.position = "bottom")
+```
+
+The distribution of pitchers is very similar to the distribution of batters. A notable difference is that no pitchers fell into the *Awful* wOBA Against grade and only one was *Poor*. Since position players can contribute in other ways beyond batting, they are able to perform poorly as a batter and remain in the league. Pitchers who are bad at pitching are bad at everything since pitching is all they do.
+
+Let's do a little more napkin math! 84 pitchers had a career wOBA Against grade of *Good* or better, which translates to about four entering the player pool each year over the time period of focus. Two thirds of those pitchers were ranked prospects, one third unranked. So every three years, about twelve good pitchers would emerge---eight were ranked prospects, four were unranked.
+
+## Top 50 Pitchers
+
+Who were the best pitchers? And how much success would you have had trying to hit the lottery with unranked pitching prospects?
+
+Since there are less pitchers than batters, we'll look at the top 50 starting pitchers.
+
+Again, these ranks are from Baseball America. Please reference the notes above for batters.
+
+```{r}
+#| warning: false
+#| tbl-cap: ["**Top 50 Starting Pitchers by Career wOBA Against**"]
+#| tbl-subcap: ["**Ranked Prospects**", "**Unranked Prospects**"]
+#| layout-ncol: 2
+
+# ranked prospects
+all_pitcher_career_data_by_ID %>% 
+  filter(PIT_DEBUT < "2011-01-01" & 
+           CAREER_TOTAL_BF >= 2580 & 
+           TOP_100_PROSPECT == "Y" & 
+           PITCHER_TYPE == "STARTER") %>% 
+  select(PIT_NAME, CAREER_WOBA_PIT, PROSPECT_RANK) %>% 
+  arrange(CAREER_WOBA_PIT) %>% 
+  head(n = 50) %>% 
+  select(PIT_NAME, CAREER_WOBA_PIT, PROSPECT_RANK) %>%
+  kable(col.names = c("Name", "Career wOBA Against", "Prospect Rank"), 
+        align = "lccc")
+
+# unranked prospects
+all_pitcher_career_data_by_ID %>% 
+  filter(PIT_DEBUT < "2011-01-01" & 
+           CAREER_TOTAL_BF >= 2580 & 
+           TOP_100_PROSPECT == "N" & 
+           PITCHER_TYPE == "STARTER") %>% 
+  select(PIT_NAME, CAREER_WOBA_PIT, PROSPECT_RANK) %>% 
+  arrange(CAREER_WOBA_PIT) %>% 
+  head(n = 50) %>% 
+  select(PIT_NAME, CAREER_WOBA_PIT, PROSPECT_RANK) %>%
+  kable(col.names = c("Name", "Career wOBA Against", "Prospect Rank"), 
+        align = "lccc")
+```
+
+There are some gems on the unranked list, Johan Santana most of all. Santana was the pitcher with the most improvement from his first roughly 50 innings pitched to the remainder of his career. His wOBA Against was .417 after 215 batters faced and decreased all the way to .287.
+
+Beyond Santana, Webb, Hudson, Wainwright, and Buehrle stick out to me. Rich Hill being so high is a surprise and also touches on another previously mentioned limitation that some active players are still included. His wOBA Against has certainly jumped since 2020.
+
+What becomes more apparent in comparing and contrasting these lists is that longevity is not explicitly included here. For instance, I'd never heard of Francisco Cordova. He only pitched five seasons---four full ones---for the Pirates in the late 90s/2000.
+
+If we do some very rough math, ranked pitching prospects faced 404,128 batters while unranked prospects faced 335,758 in total. Sticking with our estimated ratio of 50 innings pitched per every 215 batters faced, those numbers translate to roughly 94,000 innings for ranked pitching prospects and 78,100 innings for unranked pitching prospects---a 16,000 inning difference, 320 more innings for each ranked pitching prospect on average compared to unranked.
+
+While the ratio of unranked pitching prospects compared to ranked pitching prospects with *Good* career wOBA Against grades or better is higher than the corresponding ratio for batters, the top 50 unranked pitchers are not making me believe that unranked pitching prospects are a better investment than unranked batting prospects. Like I said before, this is certainly a bit subjective and could be a good debate, but that's my assessment.
+
+The median and mean prospect rank for pitching prospects on the ranked list: median of 21.5, mean of 34.4.
+
+## Career wOBA Against by Prospect Rank
+
+```{r}
+#| warning: false
+
+all_pitcher_career_data_by_ID %>% 
+  filter(PIT_DEBUT <  "2011-01-01" 
+         & CAREER_TOTAL_BF >= 215 
+         & PITCHER_TYPE == "STARTER") %>% 
+  ggplot(aes(CAREER_WOBA_PIT, color = PROSPECT_RANK_GROUP)) +
+  geom_line(stat = "density", position = "identity", size = .75) + 
+  scale_x_reverse(labels = signs::signs_format(accuracy = .001, 
+                                                  trim_leading_zeros = TRUE)) +
+  scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) +
+  labs(
+    title = "Pitcher Career wOBA Against Distribution", 
+    x = "Career wOBA Against", 
+    y = "Density", 
+    caption = "Minimum Career Batters Faced = 215 | Number of Pitchers = 621") + 
+  guides(
+    color = 
+      guide_legend(
+        title = "Prospect Rank")) +
+  theme_ipsum() + 
+  theme(legend.position = "bottom")
+```
+
+This density plot helps capture what we mentioned earlier. Top 25 pitching prospects are in a league of their own. Pitching prospects ranked 26 - 100 are more in a glob together, but pitching prospects ranked 26 - 50 are more likely to be average or below average than poor or awful compared to pitching prospects ranked 51 - 100. Unranked prospects are clearly the last horse in this race.

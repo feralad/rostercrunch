@@ -1,9 +1,23 @@
 # Hello! {.unnumbered}
 
-This is a Quarto book.
+Welcome, and thanks so much for reading! I'm Adam!
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+![](Images/Adam_Headshot.jpg){fig-align="left" width="377"}
 
-```{r}
-1 + 1
-```
+I made this website for a few reasons:
+
+-   As a piece for my data analytics portfolio
+-   As an ode to baseball
+-   To help fantasy baseball managers, if even a little!
+
+It's the final product of a yearlong endeavor to learn R and grow my skills in analytics.
+
+I hope you enjoy it and find something valuable here.
+
+I'd be happy to connect with you on [LinkedIn](https://www.linkedin.com/in/adamferalio/){target="_blank"}, [GitHub](https://github.com/feralad){target="_blank"}, and/or [Twitter/X](https://twitter.com/RosterCrunch){target="_blank"} (specific to my baseball fandom). I'm still not exactly sure how to use those platforms, but I'm there. I set up an email as well: roster  crunch  @  gmail  .  com. 
+
+For a bit of personal bio, my wife and I currently live in Chicago and love spending days at the lakefront, exploring new places, thrifting CDs, drinking Sputnik coffee, etc... Outside of baseball, I love reading and playing chess when I can find the time.
+
+Professionally, I work for a federal government agency---AmeriCorps---as an Associate Portfolio Manager. My background is primarily in the social and public sectors with a focus on capacity building (data analysis, research, project/volunteer/grants management, outreach) for organizations who support communities in fighting poverty. My current position is a term-appointment, such that I am actively looking for my next role. If you know of any opportunities or you're looking for someone to join your team, feel free to reach out to me.
+
+Thanks again!

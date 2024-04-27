@@ -1,0 +1,432 @@
+# wOBA Against Grades
+
+```{r}
+#| output: false
+
+library(tidyverse)
+library(gt)
+library(scales)
+library(hrbrthemes)
+```
+
+```{r}
+#| output: false
+
+load("crosstabs.RData")
+load("summary_tables.RData")
+```
+
+## Pitcher Scale
+
+As noted, our scale for pitchers is inverted since a lower wOBA Against is better.
+
+* Elite: .290 or below
+* Great: .291 to .309
+* Good: .310 to .319
+* Average: .320 to .339
+* Below Average: .340 to .369
+* Poor: .370 to .399
+* Awful: .400 or above
+
+## Kids' Table (Pitchers)
+
+Since pitchers are kind of weird in real life (in a good way) and because we had more fun at the kids' table anyway, we'll go ahead and start there this time!
+
+::: panel-tabset
+
+## 215 BF
+
+```{r}
+#| warning: false
+
+woba_summary_table_pit_215_final %>% 
+gt(rowname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Mean wOBA Against for Pitchers by Prospect Rank**"), 
+             subtitle = "First & Post 215 Batters Faced") %>%
+  tab_footnote(
+    footnote = "*Minimum Career Batters Faced = 860") %>% 
+  tab_stubhead(
+    label = "Prospect Rank") %>% 
+  cols_align(
+    align = "center",
+    columns = 2:4) %>% 
+  cols_label(
+    FIRST_215_WOBA_MEAN = "First 215 wOBA", 
+    POST_215_WOBA_MEAN = "Post 215 wOBA", 
+    WOBA_DIFFERENCE_215 = "Difference") %>% 
+  cols_width(
+    1 ~ px(150),
+    c(2:4) ~ px(150)) %>%
+  data_color(
+    rows = everything(), 
+    direction = "column", 
+    columns = 2:4,
+    method = "numeric", 
+    reverse = TRUE,
+    palette = c(
+      "#2700D1FF", 
+      "#6B58EFFF", 
+      "#8888FFFF", 
+      "#C7C1FFFF",
+      "#D5D5FFFF", 
+      "#FFC0E5FF", 
+      "#FF8989FF", 
+      "#FF7080FF", 
+      "#FF5A5AFF", 
+      "#EF4040FF"))
+```
+
+## 860 BF
+
+```{r}
+#| warning: false
+
+woba_summary_table_pit_860_final %>% 
+gt(rowname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Mean wOBA Against for Pitchers by Prospect Rank**"), 
+             subtitle = "First & Post 860 Batters Faced") %>%
+  tab_footnote(
+    footnote = "*Minimum Career Batters Faced = 2,580") %>% 
+  tab_stubhead(
+    label = "Prospect Rank") %>% 
+  cols_align(
+    align = "center",
+    columns = 2:4) %>% 
+  cols_label(
+    FIRST_860_WOBA_MEAN = "First 860 wOBA", 
+    POST_860_WOBA_MEAN = "Post 860 wOBA", 
+    WOBA_DIFFERENCE_860 = "Difference") %>% 
+  cols_width(
+    1 ~ px(150),
+    c(2:4) ~ px(150)) %>%
+  data_color(
+    rows = everything(), 
+    direction = "column", 
+    columns = 2:4,
+    method = "numeric", 
+    reverse = TRUE,
+    palette = c(
+      "#2700D1FF", 
+      "#6B58EFFF", 
+      "#8888FFFF", 
+      "#C7C1FFFF",
+      "#D5D5FFFF", 
+      "#FFC0E5FF", 
+      "#FF8989FF", 
+      "#FF7080FF", 
+      "#FF5A5AFF", 
+      "#EF4040FF"))
+```
+
+## Count
+
+```{r}
+#| warning: false
+
+woba_summary_table_pit_count_final %>% 
+gt(rowname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Total Pitchers by Prospect Rank**"), 
+             subtitle = "Number & Percentage of Pitchers with 860 & 2,580 Batters Faced") %>%
+  tab_stubhead(
+    label = "Prospect Rank") %>% 
+  tab_footnote(
+    footnote = "*Pitchers with less than 860 career Batters Faced are not included.") %>% 
+  cols_align(
+    align = "center",
+    columns = 2:4) %>% 
+  cols_label(
+    NUMBER_OF_PITCHERS_860_BF = ">= 860 BF",
+    NUMBER_OF_PITCHERS_2580_BF = ">= 2,580 BF",
+    PERCENT_PITCHERS_REMAINING = "% of Pitchers") %>% 
+  cols_width(
+    1 ~ px(150),
+    c(2:4) ~ px(150)) %>%
+  data_color(
+    rows = everything(), 
+    direction = "column", 
+    columns = 4,
+    method = "numeric", 
+    reverse = FALSE,
+    palette = c(
+      "#2700D1FF", 
+      "#6B58EFFF", 
+      "#8888FFFF", 
+      "#C7C1FFFF",
+      "#D5D5FFFF", 
+      "#FFC0E5FF", 
+      "#FF8989FF", 
+      "#FF7080FF", 
+      "#FF5A5AFF", 
+      "#EF4040FF")) %>% 
+  fmt_percent(
+      columns = 4,
+      rows = everything(),
+      scale_values = FALSE, 
+      decimals = 0)
+```
+:::
+
+The first thing that immediately jumps out when comparing pitchers to batters is that pitching prospects ranked 1 - 25 are in a league of their own in terms of performance. With batters, top 25 prospects were fairly similar in wOBA to prospects ranked 26 to 50. For pitchers, prospects ranked 26 through 100 make up a big glob with little separation.
+
+Again we see that ranked prospects on average 1) perform better generally and 2) improve upon their rookie performance compared to unranked prospects who as a group do not. The mean margin of improvement is smaller with pitchers compared to batters---about half.
+
+## Change in wOBA Against
+
+The density plots reinforce that top 100 prospects are improving more so than unranked prospects, although the distinction is not as great as it is with batters. Some of this can probably be explained by the fact that top 25 pitching prospects, the best group of pitchers, were pretty good from the get-go.
+
+Note that the x-axis is reversed to demonstrate that pitchers decreasing their wOBA Against is better.
+
+::: panel-tabset
+
+## 215 BF
+
+```{r}
+#| warning: false
+
+all_pitcher_career_data_by_ID %>% 
+  mutate(TOP_100_PROSPECT = case_when(TOP_100_PROSPECT == "Y" ~ "YES", 
+                                      TOP_100_PROSPECT == "N" ~ "NO")) %>%
+  filter(PIT_DEBUT <  "2011-01-01" & 
+           PITCHER_TYPE == "STARTER" & 
+           !is.na(POST_215_WOBA) & 
+           CAREER_TOTAL_BF >= 860) %>% 
+  ggplot(aes(FIRST_POST_215_WOBA_DIFF, fill = TOP_100_PROSPECT)) +
+  geom_density(alpha = .5) + 
+  scale_fill_manual(values = c("#1AFF1A", "#4B0092")) + 
+  scale_y_continuous(limits = c(0, 17.5)) + 
+  scale_x_reverse(limits = c(.15, -.15)) +
+  labs(
+    title = "Pitcher wOBA Against Difference First & Post 215 BFs", 
+    x = "wOBA Against Difference", 
+    y = "Density", 
+    caption = "Minimum Career Batters Faced = 860") + 
+  guides(
+    fill = 
+      guide_legend(
+        title = "Top 100 Prospect",
+        reverse = TRUE)) +
+  geom_vline(xintercept = 0, color = "black") +
+  geom_vline(xintercept = .1, color = "red") +
+  geom_vline(xintercept = -.1, color = "blue") +
+  theme_ipsum() +
+  theme(legend.position = "bottom")
+```
+
+## 860 BF
+
+```{r}
+#| warning: false
+
+all_pitcher_career_data_by_ID %>% 
+  mutate(TOP_100_PROSPECT = case_when(TOP_100_PROSPECT == "Y" ~ "YES", 
+                                      TOP_100_PROSPECT == "N" ~ "NO")) %>%
+  filter(PIT_DEBUT <  "2011-01-01" & 
+           PITCHER_TYPE == "STARTER" & 
+           !is.na(POST_860_WOBA) & 
+           CAREER_TOTAL_BF >= 2580) %>% 
+  ggplot(aes(FIRST_POST_860_WOBA_DIFF, fill = TOP_100_PROSPECT)) +
+  geom_density(alpha = .5) + 
+  scale_fill_manual(values = c("#1AFF1A", "#4B0092")) + 
+  scale_y_continuous(limits = c(0, 17.5)) + 
+  scale_x_reverse(limits = c(.15, -.15)) +
+  labs(
+    title = "Pitcher wOBA Against Difference First & Post 860 BFs", 
+    x = "wOBA Against Difference", 
+    y = "Density", 
+    caption = "Minimum Career Batters Faced = 2580") + 
+  guides(
+    fill = 
+      guide_legend(
+        title = "Top 100 Prospect",
+        reverse = TRUE)) +
+  geom_vline(xintercept = 0, color = "black") +
+  geom_vline(xintercept = .1, color = "red") +
+  geom_vline(xintercept = -.1, color = "blue") +
+  theme_ipsum() +
+  theme(legend.position = "bottom")
+```
+:::
+
+## wOBA Against Grades - 860 BF
+
+One piece that becomes evident quite quickly when looking at the percentage tables is that the number of pitchers represented is significantly less than the number of batters. Since we are focused only on starting pitchers, this cuts the number of pitchers down even further. With that said, you will see some grades that are entirely blank, meaning that no players had that initial wOBA Against grade. 
+
+The smaller "population" size also makes these tables less helpful. Many rows only include a few players, which doesn't tell us much of anything.
+
+::: panel-tabset
+
+## 1 - 25
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_860_list$`1 - 25` %>% 
+  gt(rowname_col = "FIRST_860_WOBA_GRADE_SP", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 1 to 25 | First & Post 860 Batters Faced") %>% 
+  data_color(
+    columns = 2:9,
+    rows = c(1:6, 8:9), 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+
+## 26 - 50
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_860_list$`26 - 50` %>% 
+  gt(rowname_col = "FIRST_860_WOBA_GRADE_SP", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 26 to 50 | First & Post 860 Batters Faced") %>% 
+  data_color(
+    columns = 2:9,
+    rows = 2:9, 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+
+## 51 - 75
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_860_list$`51 - 75` %>% 
+  gt(rowname_col = "FIRST_860_WOBA_GRADE_SP", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 51 to 75 | First & Post 860 Batters Faced") %>% 
+  data_color(
+    columns = 2:9,
+    rows = c(1:6, 8:9), 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+
+## 76 - 100
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_860_list$`76 - 100` %>% 
+  gt(rowname_col = "FIRST_860_WOBA_GRADE_SP", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 76 to 100 | First & Post 860 Batters Faced") %>% 
+  data_color(
+    columns = 2:9,
+    rows = c(1:6, 8:9), 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+
+## Unranked
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_860_list$`Unranked` %>% 
+  gt(rowname_col = "FIRST_860_WOBA_GRADE_SP", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: Unranked | First & Post 860 Batters Faced") %>% 
+  data_color(
+    columns = 2:9,
+    rows = c(1:6, 8:9), 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+:::
+
+When looking at the tables, there are a large number of pitchers comparatively who had a *Below Average* wOBA Against grade after 860 batters faced, roughly 200 innings pitched. The trajectory of their career after those marks helps illustrate the distinction between prospect ranks. Of those pitchers:
+
+* 1 - 25 ranked prospects: 73% improved to *Average* or better pitchers
+* 26 - 50 ranked prospects: 44% improved to *Average* or better pitchers
+* 51 - 75 ranked prospects: 43% improved to *Average* or better pitchers
+* 76 - 100 ranked prospects: 40% improved to *Average* or better pitchers
+* Unranked prospects: 31% improved to *Average* or better pitchers
+
+## wOBA Against Grades - 215 BF
+
+::: panel-tabset
+
+## 1 - 25
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_215_list$`1 - 25` %>% 
+  gt(rowname_col = "FIRST_215_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 1 to 25 | First & Post 215 Batters Faced") %>% 
+  data_color(
+    columns = 2:9,
+    rows = c(1:7, 9), 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+
+## 26 - 50
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_215_list$`26 - 50` %>% 
+  gt(rowname_col = "FIRST_215_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 26 to 50 | First & Post 215 Batters Faced") %>% 
+gt_crosstab_theme_fn_data_color()
+```
+
+## 51 - 75
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_215_list$`51 - 75` %>% 
+  gt(rowname_col = "FIRST_215_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 51 to 75 | First & Post 215 Batters Faced") %>% 
+gt_crosstab_theme_fn_data_color()
+```
+
+## 76 - 100
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_215_list$`76 - 100` %>% 
+  gt(rowname_col = "FIRST_215_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: 76 to 100 | First & Post 215 Batters Faced") %>% 
+gt_crosstab_theme_fn_data_color()
+```
+
+## Unranked
+
+```{r}
+#| warning: false
+
+pitcher_woba_grade_crosstabs_215_list$`Unranked` %>% 
+  gt(rowname_col = "FIRST_215_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Pitchers by wOBA Against Grades**"), 
+             subtitle = "Prospect Rank: Unranked | First & Post 215 Batters Faced") %>% 
+gt_crosstab_theme_fn_data_color()
+```
+:::
+
+## Takeaways
+
+The primary takeaway for pitchers is simply a reinforcement of what we already learned about batters. The better a prospect, the better their chances at more success in the major leagues and improving upon their initial performance.
+
+In particular for pitchers, top 25 prospects reign supreme. Top 25 pitching prospects were the most likely of any prospect group for both batters and pitchers to have an *Elite* or *Great* wOBA/wOBA Against grade after their first 150 plate appearances or 215 batters faced (26% compared to the next closest group at 14%---top 25 hitting prospects). So essentially one in four top 25 pitching prospects become aces as measured by wOBA Against.

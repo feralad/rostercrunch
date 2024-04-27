@@ -1,0 +1,444 @@
+# wOBA Grades
+
+```{r}
+#| output: false
+
+library(tidyverse)
+library(gt)
+library(scales)
+library(hrbrthemes)
+```
+
+```{r}
+#| output: false
+
+load("crosstabs.RData")
+load("summary_tables.RData")
+```
+
+## Revisiting Jones and Tovar
+
+Just recently, Nolan Jones reached 600 career plate appearances with a .358 wOBA at that point. His career wOBA had already declined from .377 to .358 since the beginning of the 2024 season.
+
+Ezequiel Tovar reached 600 career plate appearances last September with a .302 wOBA.
+
+Jones was technically not a top 100 prospect, although he did rank as high as 45 on Baseball America's (BA) 2021 preseason top 100 list. It's probably fair to say he was a borderline top 100 prospect when he made his debut, but based on our criteria, he falls into the *Unranked* prospect group.
+
+Tovar ranked 17 on BA's 2023 preseason list. His defensive skills contributed in a big way to that ranking, but he would not have been that high had his bat been a serious liability.
+
+You can see where Jones and Tovar rank based on our wOBA scale from Fangraphs.
+
+* Elite: .400 or above
+* Great: .370 to .399
+* Good: .340 to .369
+* Average: .320 to .339
+* Below Average: .310 to .319
+* Poor: .291 to .309
+* Awful: .290 or below
+
+## A Rockie Riddle and a Kernel
+
+So how did batters who were similar to Jones and Tovar based on prospect rankings and initial performances over their first 600 career plate appearances do for the rest of their career? 
+
+You can flip through the tables below to find out.
+
+As a guide for what you are looking at, take the first row (Elite) of the first table (1 - 25 ranked prospects) as an example. Only one batter as indicated in the *Total* column is represented here, so the 100% in the *Avg.* (Average) column means that this batter had an initial wOBA grade of *Elite* for their first 600 plate appearances and after that an *Average* wOBA grade for the remainder of their career.
+
+The batter? Austin Kearns! We were hoping for so much more, Austin.
+
+## wOBA Grades - 600 PA
+
+::: panel-tabset
+
+## 1 - 25
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_600_list$`1 - 25` %>% 
+  gt(rowname_col = "FIRST_600_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 1 to 25 | First & Post 600 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+
+## 26 - 50
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_600_list$`26 - 50` %>% 
+  gt(rowname_col = "FIRST_600_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 26 to 50 | First & Post 600 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+
+## 51 - 75
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_600_list$`51 - 75` %>% 
+  gt(rowname_col = "FIRST_600_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 51 to 75 | First & Post 600 Plate Appearances") %>% 
+  data_color(
+    columns = 2:9,
+    rows = 2:9, 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+
+## 76 - 100
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_600_list$`76 - 100` %>% 
+  gt(rowname_col = "FIRST_600_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 76 to 100 | First & Post 600 Plate Appearances") %>% 
+  data_color(
+    columns = 2:9,
+    rows = 2:9, 
+    direction = "row", 
+    method = "numeric", 
+    palette = "plasma") %>% 
+  gt_crosstab_theme_fn_no_color()
+```
+
+## Unranked
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_600_list$`Unranked` %>% 
+  gt(rowname_col = "FIRST_600_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: Unranked | First & Post 600 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+:::
+
+## Answering the Riddle
+
+I hope the tables are clear enough for you to answer the riddle! For the riddle purists out there who are screaming that this was a question, I am asking you to allow me some alliteration.
+
+With regard to Jones, there were 105 batters who were *Unranked* prospects with a wOBA grade of *Good* for their first 600 plate appearances. Only 2% improved their wOBA grade to *Great*, 17% remained *Good*, 30% declined to *Average*, 20% *Below Average* or *Poor*, and 30% *Did Not Qualify*, meaning that they did not last more than two more full seasons in the major leagues (approximately 1200 more plate appearances)---1800 total career plate appearances.
+
+Since Jones was a borderline top 100 prospect, it might make sense to also reference the table for batters who had a prospect rank of 76 - 100. Even if we look at those prospects who began their career with a *Good* wOBA, a higher percentage of them had a worse wOBA grade for the remainder of their career (58%).
+
+For Tovar, eleven top 25 prospects began their career with a *Poor* wOBA over their first 600 plate appearances. Five of them (45%) improved to have a *Good* wOBA for the remainder of their career, four (36%) to an *Average* wOBA, and two (18%) remained *Poor*.
+
+## wOBA Grades - 150 PA
+
+Let's take a look at the same type of table for wOBA grades based on the much smaller initial 150 plate appearances mark.
+
+These tables allow us to make similar comparisons to the ones we made with the simple wOBA grades charts.
+
+For instance, a top 25 prospect with an *Awful* wOBA grade over their first 150 PA was more likely (35%) to have a *Good* or better wOBA grade over the remainder of their career than an unranked prospect with an *Elite* wOBA grade over their first 150 PA (32%)! Read that again if it didn't sink in!
+
+::: panel-tabset
+
+## 1 - 25
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_150_list$`1 - 25` %>% 
+  gt(rowname_col = "FIRST_150_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 1 to 25 | First & Post 150 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+
+## 26 - 50
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_150_list$`26 - 50` %>% 
+  gt(rowname_col = "FIRST_150_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 26 to 50 | First & Post 150 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+
+## 51 - 75
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_150_list$`51 - 75` %>% 
+  gt(rowname_col = "FIRST_150_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 51 to 75 | First & Post 150 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+
+## 76 - 100
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_150_list$`76 - 100` %>% 
+  gt(rowname_col = "FIRST_150_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: 76 to 100 | First & Post 150 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+
+## Unranked
+
+```{r}
+#| warning: false
+
+batter_woba_grade_crosstabs_150_list$`Unranked` %>% 
+  gt(rowname_col = "FIRST_150_WOBA_GRADE", groupname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Percentage of Batters by wOBA Grades**"), 
+             subtitle = "Prospect Rank: Unranked | First & Post 150 Plate Appearances") %>% 
+  gt_crosstab_theme_fn_data_color()
+```
+:::
+
+## Gathering Round the Table
+
+While these tables are helpful as a reference especially when you have a player in mind, the sheer amount of information makes drawing out any meaningful findings difficult.
+
+To help with this, we'll make our way over to the smaller kids' table (which is always more fun anyway) and an additional density plot (to make things less dense).
+
+## The Kids' Table
+
+::: panel-tabset
+
+## 150 PA
+
+```{r}
+#| warning: false
+
+woba_summary_table_bat_150_final %>% 
+gt(rowname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Mean wOBA for Batters by Prospect Rank**"), 
+             subtitle = "First & Post 150 Plate Appearances") %>%
+  tab_footnote(
+    footnote = "*Minimum Career Plate Appearances = 600") %>% 
+  tab_stubhead(
+    label = "Prospect Rank") %>% 
+  cols_align(
+    align = "center",
+    columns = 2:4) %>% 
+  cols_label(
+    FIRST_150_WOBA_MEAN = "First 150 wOBA", 
+    POST_150_WOBA_MEAN = "Post 150 wOBA", 
+    WOBA_DIFFERENCE_150 = "Difference") %>% 
+  cols_width(
+    1 ~ px(150),
+    c(2:4) ~ px(150)) %>%
+  data_color(
+    rows = everything(), 
+    direction = "column", 
+    columns = 2:4,
+    method = "numeric", 
+    reverse = FALSE,
+    palette = c(
+      "#2700D1FF", 
+      "#6B58EFFF", 
+      "#8888FFFF", 
+      "#C7C1FFFF",
+      "#D5D5FFFF", 
+      "#FFC0E5FF", 
+      "#FF8989FF", 
+      "#FF7080FF", 
+      "#FF5A5AFF", 
+      "#EF4040FF"))
+```
+
+## 600 PA
+
+```{r}
+#| warning: false
+
+woba_summary_table_bat_600_final %>% 
+gt(rowname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Mean wOBA for Batters by Prospect Rank**"), 
+             subtitle = "First & Post 600 Plate Appearances") %>%
+  tab_footnote(
+    footnote = "*Minimum Career Plate Appearances = 1,800") %>% 
+  tab_stubhead(
+    label = "Prospect Rank") %>% 
+  cols_align(
+    align = "center",
+    columns = 2:4) %>% 
+  cols_label(
+    FIRST_600_WOBA_MEAN = "First 600 wOBA", 
+    POST_600_WOBA_MEAN = "Post 600 wOBA", 
+    WOBA_DIFFERENCE_600 = "Difference") %>% 
+  cols_width(
+    1 ~ px(150),
+    c(2:4) ~ px(150)) %>%
+  data_color(
+    rows = everything(), 
+    direction = "column", 
+    columns = 2:4,
+    method = "numeric", 
+    reverse = FALSE,
+    palette = c(
+      "#2700D1FF", 
+      "#6B58EFFF", 
+      "#8888FFFF", 
+      "#C7C1FFFF",
+      "#D5D5FFFF", 
+      "#FFC0E5FF", 
+      "#FF8989FF", 
+      "#FF7080FF", 
+      "#FF5A5AFF", 
+      "#EF4040FF"))
+```
+
+## Count
+
+```{r}
+#| warning: false
+
+woba_summary_table_bat_count_final %>% 
+gt(rowname_col = "PROSPECT_RANK_GROUP") %>% 
+  tab_header(title = md("**Total Batters by Prospect Rank**"), 
+             subtitle = "Number & Percentage of Batters with 600 & 1,800 Plate Appearances") %>%
+  tab_stubhead(
+    label = "Prospect Rank") %>% 
+  tab_footnote(
+    footnote = "*Batters with less than 600 career Plate Appearances are not included.") %>% 
+  cols_align(
+    align = "center",
+    columns = 2:4) %>% 
+  cols_label(
+    NUMBER_OF_BATTERS_600_PA = ">= 600 PA",
+    NUMBER_OF_BATTERS_1800_PA = ">= 1,800 PA",
+    PERCENT_BATTERS_REMAINING = "% of Batters") %>% 
+  cols_width(
+    1 ~ px(150),
+    c(2:4) ~ px(150)) %>%
+  data_color(
+    rows = everything(), 
+    direction = "column", 
+    columns = 4,
+    method = "numeric", 
+    reverse = FALSE,
+    palette = c(
+      "#2700D1FF", 
+      "#6B58EFFF", 
+      "#8888FFFF", 
+      "#C7C1FFFF",
+      "#D5D5FFFF", 
+      "#FFC0E5FF", 
+      "#FF8989FF", 
+      "#FF7080FF", 
+      "#FF5A5AFF", 
+      "#EF4040FF")) %>% 
+  fmt_percent(
+      columns = 4,
+      rows = everything(),
+      scale_values = FALSE, 
+      decimals = 0)
+```
+:::
+
+Red represents better totals, blue worse, a la [Baseball Savant](https://baseballsavant.mlb.com){target="_blank"}.
+
+We can gather that ranked prospects as a group not only have better starts to their careers (technically only top 50 prospects), they also improve more after their first 150 or 600 plate appearances (all ranked prospects). Unranked prospects as a group essentially show no improvement.
+
+Additionally, a much higher percentage of ranked prospects stay in the majors for at least 1,800 plate appearances compared to unranked prospects (94% at the high end to 55% for unranked prospects).
+
+As for comparisons between ranked prospects, prospects ranked 1 - 25 and 26 - 50 are quite similar while there is a noticeable difference between them and prospects ranked 51 - 100.
+
+As a whole, prospects ranked 1 - 50 just make the leap from an *Average* wOBA grade to *Good* wOBA grade based on their first/post 600 plate appearances. Prospects ranked 51 - 100 make the leap from a *Poor* or *Below Average* wOBA grade to *Average* based on their first/post 150 plate appearances.
+
+## Change in wOBA
+
+If all of that is still too much information to take in, the density plots below should simplify what is happening. It shows the distribution of batters based on the numeric difference in their wOBA between first/post 150 plate appearances and first/post 600 plate appearances.
+
+Extreme differences like -0.1 and 1 (as an example, a batter going from a .350 to .250 wOBA or .250 to .350 wOBA) are marked on the plot. You can see that extreme differences become far less likely after a batter has already accumulated 600 plate appearances.
+
+::: panel-tabset
+
+## 150 PA
+
+```{r}
+#| warning: false
+
+all_batter_career_data_by_ID %>% 
+  mutate(TOP_100_PROSPECT = case_when(TOP_100_PROSPECT == "Y" ~ "YES", 
+                                      TOP_100_PROSPECT == "N" ~ "NO")) %>%
+  filter(BAT_DEBUT <  "2011-01-01" & 
+           !is.na(POST_150_WOBA) &
+           CAREER_TOTAL_PA >= 600) %>% 
+  ggplot(aes(FIRST_POST_150_WOBA_DIFF, fill = TOP_100_PROSPECT)) +
+  geom_density(alpha = .5) + 
+  scale_fill_manual(values = c("#1AFF1A", "#4B0092")) + 
+  scale_y_continuous(limits = c(0, 17.5)) + 
+  scale_x_continuous(limits = c(-.15, .15)) +
+  labs(
+    title = "Batter wOBA Difference First & Post 150 PAs", 
+    x = "wOBA Difference", 
+    y = "Density", 
+    caption = "Minimum Career Plate Appearances = 600") + 
+  guides(
+    fill = 
+      guide_legend(
+        title = "Top 100 Prospect",
+        reverse = TRUE)) +
+  geom_vline(xintercept = 0, color = "black") +
+  geom_vline(xintercept = .1, color = "blue") +
+  geom_vline(xintercept = -.1, color = "red") +
+  theme_ipsum() +
+  theme(legend.position = "bottom")
+```
+
+## 600 PA
+
+```{r}
+#| warning: false
+
+all_batter_career_data_by_ID %>% 
+  mutate(TOP_100_PROSPECT = case_when(TOP_100_PROSPECT == "Y" ~ "YES", 
+                                      TOP_100_PROSPECT == "N" ~ "NO")) %>%
+  filter(BAT_DEBUT <  "2011-01-01" & 
+           !is.na(POST_600_WOBA) & 
+           CAREER_TOTAL_PA >= 1800) %>% 
+  ggplot(aes(FIRST_POST_600_WOBA_DIFF, fill = TOP_100_PROSPECT)) +
+  geom_density(alpha = .5) + 
+  scale_fill_manual(values = c("#1AFF1A", "#4B0092")) + 
+  scale_y_continuous(limits = c(0, 17.5)) + 
+  scale_x_continuous(limits = c(-.15, .15)) +
+  labs(
+    title = "Batter wOBA Difference First & Post 600 PAs", 
+    x = "wOBA Difference", 
+    y = "Density", 
+    caption = "Minimum Career Plate Appearances = 1,800") + 
+  guides(
+    fill = 
+      guide_legend(
+        title = "Top 100 Prospect",
+        reverse = TRUE)) +
+  geom_vline(xintercept = 0, color = "black") +
+  geom_vline(xintercept = .1, color = "blue") +
+  geom_vline(xintercept = -.1, color = "red") +
+  theme_ipsum() +
+  theme(legend.position = "bottom")
+```
+:::
+
+## Takeaways
+
+So what should we take away from all of this?
+
+One observation is that contrasting outcomes for batters similar to Jones and Tovar should give us enough pause when making conclusions early on in a player's career, either good or bad, and drive home the importance of factoring in prospect pedigree to any evaluation.
+
+It's unsurprising that higher ranked prospects perform better than lower ranked prospects both initially (top 50 prospects) and over their career (all ranked prospects), but it's valuable that we confirmed this.
+
+Ranked prospects in the aggregate improve on their rookie performance while unranked prospects do not.
+
+However, even ranked prospects are susceptible to regression. The density plots show a fair number of top 100 prospects below 0.0, and if you cut the percentage tables in half diagonally from top left to bottom right, you'll see the percentage of batters above the line whose wOBA grade decreased.
