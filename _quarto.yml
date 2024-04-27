@@ -22,7 +22,7 @@ book:
     - 09_project_process.qmd
     - 10_project_reflections.qmd
   sidebar: 
-    logo: rostercrunch_logo.png
+    logo: pic_RosterCrunch_Logo.png
 
 bibliography: references.bib
 

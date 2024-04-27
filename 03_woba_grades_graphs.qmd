@@ -22,7 +22,7 @@ I won't rehash too many details, but my key takeaway is that wOBA is a comprehen
 
 FanGraphs includes some general guidelines to evaluating what a good or bad wOBA is for batters, included below. It's essentially equivalent to a good or bad OBP since wOBA is always scaled to league average OBP. These rating groups and their corresponding values may fluctuate in small ways over long periods of time, but we will use these ratings---or grades as I refer to them---throughout this analysis. For our purposes, wOBA will serve as a catch-all statistic to measure player performance. Even though wOBA is an offensive statistic, we can measure batters' wOBA *against* pitchers to evaluate pitchers and invert the grading scale.
 
-![*Source: FanGraphs*](Images/FanGraphs_wOBA_grades.png){fig-align="left" width="515"}
+![*Source: FanGraphs*](pic_FanGraphs_wOBA_Grades.png){fig-align="left"}
 
 ## Our Scale
 

@@ -13,7 +13,7 @@ library(dplyr)
 load("back_to_back_hr.RData")
 ```
 
-![](Images/Curt_Schilling_on_the_Mound.jpeg){fig-align="left"}
+![](pic_Curt_Schilling_on_the_Mound.jpeg){fig-align="left"}
 
 ## My First Game
 
@@ -35,7 +35,7 @@ The next batter, Jeff Cirillo, decides to join Helton in making my first game on
 
 Having trailed the entire game until the final inning, the Rockies win 10-9 in exhilarating style.
 
-![My Dad and I at the game...](Images/Dad_and_Adam.jpeg){fig-align="left"}
+![My Dad and I at the game...](pic_Dad_and_Adam.jpeg){fig-align="left"}
 
 ## Back-to-Back Home Run Endings
 
@@ -54,7 +54,7 @@ back_to_back_home_run_game_endings %>%
 
 ```{=html}
 
-<iframe width="750" height="422" src="https://www.youtube.com/embed/jNV8Dp37EUc?si=WE-_KzmmIwvyTr_W&amp;start=208" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="325" height="211" src="https://www.youtube.com/embed/jNV8Dp37EUc?si=WE-_KzmmIwvyTr_W&amp;start=208" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ```
 
 ## Hall of Famer
@@ -73,6 +73,6 @@ Last year's World Series proved that losing 100 games does not prevent teams fro
 
 The lone players on their major league roster that appear to have a shot at playing leading roles in any future competitive window are 25-year old Nolan Jones and 22-year old Ezequiel Tovar, both now in their sophomore seasons. Jones was worth almost four wins himself last season compared to a typical replacement-level player as measured by Wins Above Replacement (WAR). Tovar finished 2023 as a Gold Glove finalist for his defensive prowess, putting up 1.6 WAR despite having a relatively weak offensive season. The Rockies demonstrated their faith in his talent by signing him to a $63 millon dollar contract through 2030.
 
-![Ezequiel Tovar and Nolan Jones, Credit: AP Photo, Jeff Roberson](Images/tovar_jones_ap_photo_jeff_roberson.jpg)
+![Ezequiel Tovar and Nolan Jones, Credit: AP Photo, Jeff Roberson](pic_Tovar_Jones_AP_Photo_Jeff_Roberson.jpg)
 
 Given the woeful state of their roster, it is no surprise that I and fellow Rockies fans are intensely interested in the development of Jones and Tovar. If Jones regresses---some suspect his success last season was somewhat unsustainable due to an extremely high batting average on balls in play, and his 2024 is already off to a woeful start---and Tovar doesn't progress offensively, the Rockies will be in an even worse predicament than they already are. If they both build on their rookie performances and top prospects like Adael Amador emerge as contributors, the Rockies future will look less apocalyptic, perhaps even slightly hopeful---at least enough for the next generation of wide-eyed nine-year old fans.
