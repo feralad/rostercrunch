@@ -220,14 +220,14 @@ ul.task-list li input[type="checkbox"] {
 <p>FanGraphs includes some general guidelines to evaluating what a good or bad wOBA is for batters, included below. It’s essentially equivalent to a good or bad OBP since wOBA is always scaled to league average OBP. These rating groups and their corresponding values may fluctuate in small ways over long periods of time, but we will use these ratings—or grades as I refer to them—throughout this analysis. For our purposes, wOBA will serve as a catch-all statistic to measure player performance. Even though wOBA is an offensive statistic, we can measure batters’ wOBA <em>against</em> pitchers to evaluate pitchers and invert the grading scale.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="pic_FanGraphs_wOBA_Grades.png" class="img-fluid figure-img"></p>
+<p><img src="pic_FanGraphs_wOBA_Grades.png" class="img-fluid figure-img" width="480"></p>
 <figcaption class="figure-caption"><em>Source: FanGraphs</em></figcaption>
 </figure>
 </div>
 </section>
 <section id="our-scale" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="our-scale"><span class="header-section-number">3.2</span> Our Scale</h2>
-<p>I’ve converted these numbers to the following scale.</p>
+<p>I’ve converted these numbers to the following scale:</p>
 <ul>
 <li>Elite: .400 or above</li>
 <li>Great: .370 to .399</li>
@@ -240,9 +240,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="additional-woba-limitations" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="additional-woba-limitations"><span class="header-section-number">3.3</span> Additional wOBA Limitations</h2>
-<p>Because wOBA is an offensive statistic, there are limitations to using it to evaluate pitchers. This <a href="https://sam-walsh.github.io/posts/fixing-xwoba/" target="_blank">article</a> lends great insight into that (also relevant for batters). Especially because we are looking at historical data—well before Statcast existed and Stuff+ models were created—our options for picking a stat for pitchers are limited. An issue with wOBA Against is that it betrays a concept important to advanced statistics like FIP (Fielding Independent Pitching). FIP isolates a pitcher’s performance from their defense behind them, which is considered out of their control.</p>
+<p>Because wOBA is an offensive statistic, there are limitations to using it to evaluate pitchers. This <a href="https://sam-walsh.github.io/posts/fixing-xwoba/" target="_blank">article</a> lends great insight into that (also relevant for batters). Especially because we are looking at historical data—well before Statcast existed and Stuff+ models were created—our options for picking a stat for pitchers are limited. An issue with wOBA Against (wOBA Allowed) is that it betrays a concept important to advanced statistics like FIP (Fielding Independent Pitching). FIP isolates a pitcher’s performance from their defense behind them, which is considered out of their control.</p>
 <p>This all may seem like a massive rabbit hole, but we’ll find ourselves below ground again at the very end, so it’s important to acknowledge the tunnels beneath us.</p>
-<p>On a much simpler note, wOBA Against (or wOBA Allowed) has going for it that the top six pitchers from this dataset are Clayton Kershaw, Pedro Martinez, Chris Sale, Stephen Strasburg, Max Scherzer, and Justin Verlander. We shouldn’t overthink the fact that measuring how poorly batters perform against a pitcher over a long period of time is probably a relatively good indicator of how good the pitcher is. It’s not perfect, but it will suffice.</p>
+<p>On a much simpler note, wOBA Against has going for it that the top six pitchers from this dataset are Clayton Kershaw, Pedro Martinez, Chris Sale, Stephen Strasburg, Max Scherzer, and Justin Verlander. We shouldn’t overthink the fact that measuring how poorly batters perform against a pitcher over a long period of time is probably a relatively good indicator of how good the pitcher is. It’s not perfect, but it will suffice for our purposes.</p>
 <p>A second limitation is that wOBA is not directly equivalent with fantasy baseball value. While fantasy leagues almost always include batting stats like Runs, Home Runs, RBIs, Stolen Bases, and either Batting Average or On-Base Percentage, wOBA does not explicitly factor in three of these stats (Runs, RBI, and Stolen Bases). My understanding is that the principle of wOBA—and sabermetrics as a whole—is to more accurately isolate a player’s value from situations outside of their control. Additionally, over longer periods of time batters with good wOBAs should generally wind up in better spots in the batting order, and counting stats like Runs and RBIs should follow. On the contrary, a good or bad wOBA will likely have little bearing on whether a player steals bases or not. The value a player contributes in this fantasy category is not captured in this analysis.</p>
 </section>
 <section id="simple-woba-grades" class="level2" data-number="3.4">

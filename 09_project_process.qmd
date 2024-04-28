@@ -242,7 +242,7 @@ all_batter_career_data_by_ID %>%
                                 "#002d9c", 
                                 "#009d9a", 
                                 "#a56eff")) +
-  labs(title = "Linear Correlation in wOBA for First & Post 300 PAs", 
+  labs(title = "Linear Correlation in wOBA for First & Post 300 PA", 
        subtitle = "Includes All Batters...") + 
   xlab(label = "Post 300 PA wOBA") + 
   ylab(label = "First 300 PA wOBA") + 
@@ -359,7 +359,7 @@ For all the packages I used, the function reference/reference manual was enormou
 
 If you click on a specific function, it tells you what exactly must and can be included (referred to as arguments). They also provide examples, which I found even more helpful. 
 
-If I could go back, I would probably read beforehand through the different functions in dplyr and the other core packages I used, as I had times where I stumbled upon a function too late---add_count() is one example. It's hard to know all the functions you need beforehand, but especially for dplyr, this would have made my life easier.
+If I could go back, I would probably read beforehand through the different functions in dplyr and the other core packages I used, as I had times where I stumbled upon a function too late---`add_count()` is one example. It's hard to know all the functions you need beforehand, but especially for dplyr, this would have made my life easier.
 
 From the package website, there is typically a link to GitHub, which has an "Issues" tab that can be helpful if you feel like something isn't working exactly as expected---[gt package example](https://github.com/rstudio/gt/issues){target="_blank"}. 
 

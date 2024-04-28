@@ -18,15 +18,15 @@ load("summary_tables.RData")
 
 ## Revisiting Jones and Tovar
 
-Just recently, Nolan Jones reached 600 career plate appearances with a .358 wOBA at that point. His career wOBA had already declined from .377 to .358 since the beginning of the 2024 season.
+Just recently, Nolan Jones reached 600 career plate appearances with a .358 wOBA at that point. His career wOBA had already declined from .377 to .358 since the beginning of this season.
 
 Ezequiel Tovar reached 600 career plate appearances last September with a .302 wOBA.
 
 Jones was technically not a top 100 prospect, although he did rank as high as 45 on Baseball America's (BA) 2021 preseason top 100 list. It's probably fair to say he was a borderline top 100 prospect when he made his debut, but based on our criteria, he falls into the *Unranked* prospect group.
 
-Tovar ranked 17 on BA's 2023 preseason list. His defensive skills contributed in a big way to that ranking, but he would not have been that high had his bat been a serious liability.
+Tovar ranked 17 on BA's 2023 preseason list. His defensive skills contributed in a big way to that ranking, but he would not have been that high had his bat been a projected liability.
 
-You can see where Jones and Tovar rank based on our wOBA scale from Fangraphs.
+You can see where Jones and Tovar rank based on our wOBA scale from FanGraphs.
 
 * Elite: .400 or above
 * Great: .370 to .399
@@ -44,7 +44,7 @@ You can flip through the tables below to find out.
 
 As a guide for what you are looking at, take the first row (Elite) of the first table (1 - 25 ranked prospects) as an example. Only one batter as indicated in the *Total* column is represented here, so the 100% in the *Avg.* (Average) column means that this batter had an initial wOBA grade of *Elite* for their first 600 plate appearances and after that an *Average* wOBA grade for the remainder of their career.
 
-The batter? Austin Kearns! We were hoping for so much more, Austin.
+The batter? Austin Kearns! We were expecting so much more, Austin.
 
 ## wOBA Grades - 600 PA
 
@@ -358,7 +358,7 @@ As a whole, prospects ranked 1 - 50 just make the leap from an *Average* wOBA gr
 
 ## Change in wOBA
 
-If all of that is still too much information to take in, the density plots below should simplify what is happening. It shows the distribution of batters based on the numeric difference in their wOBA between first/post 150 plate appearances and first/post 600 plate appearances.
+If all of this is still too much information to take in, the density plots below should simplify what is happening. It shows the distribution of batters based on the numeric difference in their wOBA between first/post 150 plate appearances and first/post 600 plate appearances.
 
 Extreme differences like -0.1 and 1 (as an example, a batter going from a .350 to .250 wOBA or .250 to .350 wOBA) are marked on the plot. You can see that extreme differences become far less likely after a batter has already accumulated 600 plate appearances.
 
@@ -381,10 +381,10 @@ all_batter_career_data_by_ID %>%
   scale_y_continuous(limits = c(0, 17.5)) + 
   scale_x_continuous(limits = c(-.15, .15)) +
   labs(
-    title = "Batter wOBA Difference First & Post 150 PAs", 
+    title = "Batter wOBA Difference First & Post 150 PA", 
     x = "wOBA Difference", 
     y = "Density", 
-    caption = "Minimum Career Plate Appearances = 600") + 
+    caption = "Minimum Career Plate Appearances = 600 | Number of Batters = 970") + 
   guides(
     fill = 
       guide_legend(
@@ -414,10 +414,10 @@ all_batter_career_data_by_ID %>%
   scale_y_continuous(limits = c(0, 17.5)) + 
   scale_x_continuous(limits = c(-.15, .15)) +
   labs(
-    title = "Batter wOBA Difference First & Post 600 PAs", 
+    title = "Batter wOBA Difference First & Post 600 PA", 
     x = "wOBA Difference", 
     y = "Density", 
-    caption = "Minimum Career Plate Appearances = 1,800") + 
+    caption = "Minimum Career Plate Appearances = 1,800 | Number of Batters = 636") + 
   guides(
     fill = 
       guide_legend(

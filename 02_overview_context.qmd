@@ -27,7 +27,7 @@ Up until this point, I have always felt like my decisions about discarding or ho
 
 In light of this and my intrigue into Jones' and Tovar's futures (I also have Tovar on my fantasy team, no surprise!), I set out to analyze rookie and career performances for players who debuted over the span of 20+ years (1990 to 2010) to gain a better understanding of what this relationship has looked like historically.
 
-While this project is descriptive analysis and not predictive, I like what [Ariel Cohen](https://twitter.com/ATCNY){target="_blank"}, an expert fantasy baseball player/analyst and actuary by day, I believe, [writes](https://www.rotoballer.com/2023-fantasy-takeaways/1258560?utm_source=dlvr.it&utm_medium=twitter){target="_blank"}...
+While this project is descriptive analysis and not predictive, I like what Ariel Cohen, an expert fantasy baseball player/analyst and actuary by day, I believe, [writes](https://www.rotoballer.com/2023-fantasy-takeaways/1258560?utm_source=dlvr.it&utm_medium=twitter){target="_blank"}...
 
 > "From an actuary’s perspective, the key motto for statistical models is that the past is predictive of the future. In my field, we base quantitative predictions on the tenet that given the same long-term conditions, past numerical outcomes and distributions (if properly parameterized) will continue for the foreseeable future."
 
@@ -98,10 +98,12 @@ Lastly, I made use of Retrosheet's [biofile dataset](https://www.retrosheet.org/
 
 All research projects have limitations, so let's get my dirty laundry out in the open!
 
-The biggest limitation is that some active players who had yet to finish their career are included in the dataset of players. Note that the stats in the dataset only go through the 2020 season, and we are including all players who debuted from 1990-2010. I made the trade-off to include those players who debuted closer to the end of that period and were still active after 2020 because I reasoned that a bigger sample size of players would enhance the analysis more than abiding by a strict rule that all players must have finished their career by then. Assuming a player debuted as late as 2010, I felt that 2011 through 2020 was a large enough amount of time for them to compile meaningful career statistics.
+The biggest limitation is that some active players who had yet to finish their career are included in the dataset of players. Note that the stats in the dataset only go through the 2020 season, and we are including all players who debuted from 1990-2010. I made the trade-off to include those players who debuted closer to the end of that period and were still active after 2020 for two main reasons. 1) Not having to arbitrarily cut out players who were still active and 2) a bigger sample size of players would enhance the analysis more than abiding by a strict rule that all players must have finished their career by then. Assuming a player debuted as late as 2010, I felt that 2011 through 2020 was a large enough amount of time for them to compile meaningful career statistics.
 
 The number of batters included in this analysis is 1,891 with 52 of them still active after the 2020 season. The number of pitchers is 717 with 30 of them still active after 2020.
 
 The second limitation is that we are using a single statistic, wOBA (wOBA against or wOBA allowed for pitchers), for all our evaluation. We'll talk more about why this is a limitation, but I will note here that Baseball America's Top 100 Prospect rankings are intended to measure a player's complete value (not solely offensive, etc.). A much better assessment of their rankings would be performed with WAR, which many outlets have done. Nowadays, there are fantasy-specific prospect rankings, which I would have used had they existed for this time period.
+
+Lastly, "peak performance" is not included in the analysis, which could obscure the value of players who were very valuable for a shorter period of time. Only career performance as a whole is measured.
 
 I will address other limitations throughout the analysis.

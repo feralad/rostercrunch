@@ -25,7 +25,7 @@ Since as dynasty managers we are interested in getting the best young players on
 
 ## Number of Batters
 
-The demographers among us are to thank for population pyramids, which we can employ for our purposes to compare the number of ranked and unranked prospects with different wOBA grades.
+The demographers among us are to thank for population pyramids, which we can employ for our purposes to compare the number of ranked and unranked prospects with different career wOBA grades.
 
 ```{r}
 #| warning: false
@@ -84,7 +84,7 @@ To break this down: if you were playing in a dynasty league from 1990 to 2010, t
 
 Since we've all rightly fallen in love with top 100 prospect lists, I thought it would be valuable to compare the top 100 ranked prospects and the top 100 unranked prospects from this period based on career wOBA.
 
-If you were trying to hit the lottery as a dynasty managers with unranked prospects, who would you have wound up with? What would the best case scenario have been for you?
+If you were trying to hit the lottery as a dynasty manager with unranked prospects, who would you have wound up with? What would the best case scenario have been for you?
 
 Important notes for these lists:
 
@@ -122,11 +122,11 @@ all_batter_career_data_by_ID %>%
         align = "lccc")    
 ```
 
-What do you think?! I suspect there could be some healthy debate in comparing and contrasting these lists. After looking at these lists, the limitations I mentioned at the beginning become more apparent. Namely, wOBA does not fully capture a player's value, especially in the context of fantasy.
+What do you think?! I suspect there could be some healthy debate in comparing and contrasting these lists. After looking at them, the limitations I mentioned at the beginning become more apparent. Namely, wOBA does not fully capture a player's value, especially in the context of fantasy.
 
-Having said that, the contrast between top ranked prospects and top unranked prospects seems stark in my eyes. The best you could have hoped for from the unranked prospect pool was probably Robinson Cano, Jeff Kent, Jason Giambi, Matt Holliday, Jim Edmonds, Brian Giles...
+Having said that, the contrast between top ranked prospects and top unranked prospects seems stark in my eyes. 
 
-Notable fantasy impact players are far more plentiful among ranked prospects. This is no surprise, but the degree of contrast may be surprising.
+The best you could have hoped for from the unranked prospect pool was probably Robinson Cano, Jeff Kent, Jason Giambi, Matt Holliday, Jim Edmonds, Brian Giles. Ian Kinsler was a fantasy darling and likely some others. Notable fantasy impact players are far more plentiful among ranked prospects. This is no surprise, but the degree of contrast may be surprising.
 
 You may be interested in the median and mean prospect rank for the batting prospects on the ranked list (an even set of numbers): median of 21.5, mean of 31.
 
@@ -213,7 +213,7 @@ all_pitcher_career_data_by_ID %>%
 
 The distribution of pitchers is very similar to the distribution of batters. A notable difference is that no pitchers fell into the *Awful* wOBA Against grade and only one was *Poor*. Since position players can contribute in other ways beyond batting, they are able to perform poorly as a batter and remain in the league. Pitchers who are bad at pitching are bad at everything since pitching is all they do.
 
-Let's do a little more napkin math! 84 pitchers had a career wOBA Against grade of *Good* or better, which translates to about four entering the player pool each year over the time period of focus. Two thirds of those pitchers were ranked prospects, one third unranked. So every three years, about twelve good pitchers would emerge---eight were ranked prospects, four were unranked.
+Let's do a little more napkin math. 84 pitchers had a career wOBA Against grade of *Good* or better, which translates to about four entering the player pool each year over the time period of focus. Two thirds of those pitchers were ranked prospects, one third unranked. So every three years, about twelve good pitchers would emerge---eight were ranked prospects, four were unranked.
 
 ## Top 50 Pitchers
 
@@ -264,7 +264,7 @@ What becomes more apparent in comparing and contrasting these lists is that long
 
 If we do some very rough math, ranked pitching prospects faced 404,128 batters while unranked prospects faced 335,758 in total. Sticking with our estimated ratio of 50 innings pitched per every 215 batters faced, those numbers translate to roughly 94,000 innings for ranked pitching prospects and 78,100 innings for unranked pitching prospects---a 16,000 inning difference, 320 more innings for each ranked pitching prospect on average compared to unranked.
 
-While the ratio of unranked pitching prospects compared to ranked pitching prospects with *Good* career wOBA Against grades or better is higher than the corresponding ratio for batters, the top 50 unranked pitchers are not making me believe that unranked pitching prospects are a better investment than unranked batting prospects. Like I said before, this is certainly a bit subjective and could be a good debate, but that's my assessment.
+While the ratio of unranked pitching prospects to ranked pitching prospects with *Good* career wOBA Against grades or better is higher than the corresponding ratio for batters, the top 50 unranked pitchers are not convincing me that unranked pitching prospects are a better investment than unranked batting prospects. Like I said before, this is certainly a bit subjective and could be a good debate, but that's my assessment.
 
 The median and mean prospect rank for pitching prospects on the ranked list: median of 21.5, mean of 34.4.
 

@@ -267,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solving-problems-answering-crucial-questions" class="level3">
 <h3 class="anchored" data-anchor-id="solving-problems-answering-crucial-questions">Solving Problems, Answering Crucial Questions</h3>
 <p>Well, at least that’s the idea—to tangibly help others. Unfortunately, it can be easy to slip into data analysis done solely for the act of analyzing data or to ascertain something more trivial. For non-baseball fans, this whole project could be categorized as such, but I hope that those of you who are diehard baseball and fantasy baseball fans derived some value from it.</p>
-<p>Toeing the fine line between valuable and trivial analysis has reinforced for me that the purpose of data analytics is to help solve real problems and answer crucial questions, not to analyze data—as counter-intuitive as that sounds. Analyzing data is a means to a greater end. With that in mind, the most vital element of data analytics is arguably uncovering the most important questions.</p>
+<p>Toeing the fine line between valuable and trivial analysis has reinforced for me that the purpose of data analytics is to help solve real problems and answer crucial questions, not to analyze data—as counter-intuitive as that sounds. Analyzing data is a means to a greater end. With that in mind, one of the most crucial elements of data analytics is arguably uncovering the most important questions.</p>
 </section>
 <section id="domain-knowledge" class="level3">
 <h3 class="anchored" data-anchor-id="domain-knowledge">Domain Knowledge</h3>
@@ -303,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="rundownspickles">Rundowns/Pickles</h3>
 <p>Yes, I know we’ve wandered too far from baseball! Let’s enjoy this jewel of a GIF to help illustrate a more technical observation about my project.</p>
 <p>At many points, I felt like I was attempting to do with my data what the St.&nbsp;Louis Cardinals were attempting to do with the baserunner, Jacoby Ellsbury, in this “rundown” / “pickle” in baseball terms. I was trying to write code to get the data into the format I needed but doing so in an inefficient way. In baseball, rundowns should generally take the fielding team two or three throws maximum to tag the runner out. Cleaning and wrangling data is similar.</p>
-<p>The biggest example of this was when I was working with the prospect rank dataset that I mentioned previously. I’ll spare you the gory details, but reflecting back on it, I should have begun by writing down each issue with the data, identifying specific intermediate states for the data in addition to the end state, and doing further research on other possible ways to address the issues. By rushing into it, it actually took me far longer than it would have with more planning.</p>
+<p>The biggest example of this was when I was working with the prospect rank dataset that I mentioned previously. I’ll spare you the gory details, but reflecting back on it, I should have begun by writing down each issue with the data, identifying specific intermediate states for the data in addition to the end state, and doing further research on other possible ways to address the issues. By rushing into it, it actually took me longer than it would have with more planning.</p>
 <p>If anything, I’ll take this GIF with me as a helpful analogy for what to avoid in the future!</p>
 </section>
 <section id="code-smells" class="level3">
@@ -330,8 +330,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="code-conciseness" class="level3">
 <h3 class="anchored" data-anchor-id="code-conciseness">Code Conciseness</h3>
-<p>Related to this is the idea of code conciseness. From what I gather, code should be as readable and concise as possible.</p>
-<p>I felt like my code was fairly readable—perhaps only because I added an excessive amount of comments every step of the way.</p>
+<p>Related to this is the idea of code conciseness. From what I’ve been taught, code should be as readable and concise as possible.</p>
+<p>I felt like my code was fairly readable—perhaps only because I added comments every step of the way.</p>
 <p>As for conciseness? Nope!</p>
 <p>For example, look at this disaster if you are sick enough (viewer discretion advised). The first part of the code is just one of the many dataframes I created that you see in the second part of the code, and that wasn’t all of them.</p>
 <div class="cell">
@@ -367,25 +367,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="1" data-code-lines="3">The <code>[ ]</code> subsets the dataframe to only focus on rows where that condition is met.</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-3">The <code>[ ]</code> subsets the dataframe to only focus on rows where that condition is met.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="2" data-code-lines="10">The <code>.</code> indicates the summary table generated by the <code>group_by</code> and <code>summarise</code> functions.</span>
+<span data-code-lines="10" data-code-annotation="2" data-code-cell="annotated-cell-3">The <code>.</code> indicates the summary table generated by the <code>group_by</code> and <code>summarise</code> functions.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="3" data-code-lines="11">Join the summary table to the all_batter_career_data_by_ID dataframe based on batter IDs.</span>
+<span data-code-lines="11" data-code-annotation="3" data-code-cell="annotated-cell-3">Join the summary table to the all_batter_career_data_by_ID dataframe based on batter IDs.</span>
 </dd>
 </dl>
 </div>
 </div>
-<p>This method calculates all the needed wOBA numbers in one shot and avoids creating intermediate objects that would have to be deleted later.</p>
+<p>This method calculates all the needed wOBA numbers, avoids creating intermediate objects that would have to be deleted later, and brings the data into the summary table in one shot.</p>
 </section>
 <section id="functions-iteration" class="level3">
 <h3 class="anchored" data-anchor-id="functions-iteration">Functions &amp; Iteration</h3>
 <p>The above code is a huge improvement, but I suspect it may be possible to do even better if we wrote a function or iterated in some way.</p>
-<p><a href="https://hadley.nz" target="_blank">Hadley Wickham</a>, the man who created the tidyverse packages that I used so much for this project, says that if you copy/paste code twice to write a function.</p>
+<p><a href="https://hadley.nz" target="_blank">Hadley Wickham</a>, the person who created the tidyverse packages that I used so much for this project, says that if you copy/paste code twice to write a function.</p>
 <p>That sounds easy enough, right?</p>
 <p>Well, my initial foray into writing functions was a bit mystifying. I was able to successfully write a function to create a gt table theme, as I mentioned previously.</p>
 <p>I also wrote a function that I wound up not using—drawing insight from this <a href="https://willhipson.netlify.app/post/dplyr_across/dplyr_across/" target="_blank">post</a> and <a href="https://www.bryanshalloway.com/2020/06/25/using-across-to-build-functions-with-dplyr-with-notes-on-legacy-approaches/" target="_blank">another</a>.</p>
@@ -419,11 +419,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pessimistic-analytics" class="level3">
 <h3 class="anchored" data-anchor-id="pessimistic-analytics">Pessimistic Analytics</h3>
 <p>I recently listened to an <a href="https://analyticshour.io/2024/01/23/237-crossing-the-chasm-from-the-data-to-meaningful-outcomes-with-kathleen-maley/" target="_blank">episode</a> of the Analytics Power Hour where Kathleen Maley stated that 80% of analytics projects fail. Failure wasn’t defined as not completing a project but rather that it did not provide the business or organization value.</p>
-<p>While it was likely an illogical leap to apply this concept directly to my project, it’s a leap that my mind must have made somewhere along the way. I started to think that I had a 1 in 5 chance of succeeding. This was layered on top of learning a programming language, my project taking an extremely long time, and working alone. There were times when I thought what I was working on would never see the light of day. I felt a bit like Detective Somerset (Morgan Freeman) who epitomizes a philosophy of pessimism in the novel-based film Se7en (minute 2:37 to 3:35 in the clip below).</p>
+<p>While it was likely an illogical leap to apply this concept directly to my project, it’s a leap that my mind must have made somewhere along the way. I started to think that I had a one in five chance of succeeding. This was layered on top of learning a programming language, my project taking an extremely long time, and working alone. There were times when I thought what I was working on would never see the light of day. I felt a bit like Detective Somerset (Morgan Freeman) who epitomizes a philosophy of pessimism in the novel-based film Se7en (minute 2:37 to 3:35 in the clip below).</p>
 <iframe width="325" height="211" src="https://www.youtube.com/embed/7YzmAKnbQMM?si=eS9lufNZK-S-cPdK&amp;start=157" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
 <p>Even having finished my project and reaching insights that seem at least close to actionable, I have yet to fully expel this sentiment. This line in particular lingers: “Even the most promising clues only lead to others.”</p>
 <p>Something about the pursuit of knowledge—in analytics, the pursuit of actionable knowledge through data—has a way of leaving me pessimistic. The effect of our knowledge—even a great deal of knowledge—particularly on the most important areas in personal and communal life, feels so limited.</p>
-<p>As much as I would like to be free of such thoughts, I think a small dose of pessimism may actually be helpful for me as an analyst. It serves to an extent as an internal filter, pushing me towards what matters and away from what is irrelevant.</p>
+<p>As much as I would like to be free of such thoughts, I think a small dose of pessimism may actually be helpful for me as an analyst. It serves to an extent as an internal filter, pushing me towards what matters or could make a difference and away from what is irrelevant.</p>
 </section>
 </section>
 <section id="in-closing" class="level2" data-number="10.4">

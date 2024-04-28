@@ -30,7 +30,7 @@ Top 25 pitching prospects are the best investment with a similar drop-off after.
 
 About 41% of top 25 prospects put up a good to elite wOBA Against for their career. This percentage drops to 20% for prospects ranked 26 to 50, 18% for prospects ranked 51 to 75, and 24% for prospects ranked 76 to 100.
 
-Additionally, the higher ranked a prospect, the more likely they will make it to the major leagues and remain in the league for a longer period of time.
+Additionally, the higher ranked a prospect, the more likely they will 1) make it to the major leagues and 2) remain in the league for a longer period of time.
 
 ## Limit Exposure to Unranked Prospects
 
@@ -38,15 +38,19 @@ This piece of advice is likely to be controversial and requires some qualifiers.
 
 The first is that this is highly dependent on league settings. Ralph tells us that he is playing in a shallow 12 team league, so this is much more applicable. In deeper leagues, unranked prospects should be valued more given that many more players are rostered.
 
-The second is that there is a distinction between prospects who are just outside the top 100 rankings and prospects who miraculously make it to the major leagues. To lop them all together is not wise. Related, good batting prospects may be ranked lower based on defensive limitations.
+The second is that there is a distinction between prospects who are just outside the top 100 rankings and prospects who miraculously make it to the major leagues. To lop them all together is not wise. Related, good batting prospects may be ranked lower based on defensive limitations, especially if using real-life prospect rankings instead of fantasy-specific.
 
-The data for our years of focus show that the odds are not in unranked prospects favor. The percentage of unranked prospects who become above average major league players in wOBA/wOBA Against is about 5%. 59% of unranked batting prospects who debuted do not even reach 600 career plate appearances. 67% of unranked pitching prospects who debuted do not reach 860 career batters faced, equivalent to roughly 200 innings pitched.
+The data for our years of focus show that the odds are not in unranked prospects favor. 
+
+* The percentage of unranked prospects who become above average major league players in wOBA/wOBA Against is about 5%.
+* 59% of unranked batting prospects who debuted do not even reach 600 career plate appearances.
+* 67% of unranked pitching prospects who debuted do not reach 860 career batters faced, equivalent to roughly 200 innings pitched.
 
 Furthermore, the number of unranked prospects that become major league players who get picked in the first few rounds of fantasy drafts on a regular basis is almost zero.
 
 In light of this, routinely using up minor league spots for players who will rarely be above average contributors at best is probably not a great strategy. Typically, managers are more prone to do this with unranked prospects who are close to debuting or recently debuted.
 
-An alternative strategy is to pursue younger prospects with the potential to become top 100 prospects, although this comes with its own diminished success rates. I do not have any analysis to prove that this is a better strategy.
+An alternative strategy is to pursue younger prospects with the potential to become top 100 prospects before they reach that point, although this comes with its own diminished success rates.
 
 All in all, it's best to limit exposure to unranked prospects when possible. They are the worst investment.
 
@@ -82,9 +86,9 @@ These marks are not perfect in capturing "great" players in real life and even l
 
 In dynasty leagues, managers are apt to rebuild and retool for the future when they feel that their team in its current state is not good enough to compete for a championship. Trading away talented major league players to contending teams for top prospects or very young major league players is often the strategy that goes along with this.
 
-To trade a great player away in an effort to rebuild, especially when that great player is still in their prime, is an action that should be rarely and gravely taken.
+To trade a great player away in an effort to rebuild, especially when that great player is still in their prime, is an action that should be gravely taken.
 
-Of prospects who debut, the percentage that put up a "great" career wOBA or wOBA Against are:
+Of prospects who debuted over this time period, the percentage that put up a "great" career wOBA or wOBA Against were:
 
 * A little less than 15% of top 50 batting prospects
 * About 1 to 2% of batting prospects ranked 51 to 100
@@ -95,7 +99,7 @@ If you are simply trying to net a future "great" player in return, your chances 
 
 Clearly, this is an oversimplification. The calculus for determining trade value is complex and player/league-dependent. However, this general concept emphasizes how serious a matter it is to trade away a great player.
 
-On the other hand, trying to obtain a great player through a trade for top prospects may be worth pursuing. You're likely to get burned some, for even great players are subject to aging curves and becoming shells of their former glory. Yet the adage resounds: "Prospects get churned, heroes get remembered, but legends never die."
+On the other hand, trying to obtain a great player through a trade for top prospects may be worth pursuing. You're likely to get burned some, for great players are subject to aging curves and becoming shells of their former glory. Yet the old adage resounds: "Prospects get churned, heroes get remembered, but legends never die."
 
 ## In Summary
 

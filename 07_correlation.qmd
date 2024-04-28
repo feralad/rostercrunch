@@ -44,7 +44,8 @@ all_batter_career_data_by_ID %>%
                                                   trim_leading_zeros = TRUE)) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Correlation & Regression First & Post 150 PA", 
-       subtitle = "Includes All Batters with At Least 1800 Career Plate Appearances") + 
+       subtitle = "Includes All Batters with At Least 1,800 Career Plate Appearances", 
+       caption = "Number of Batters = 636") + 
   ylab(label = "Post 150 PA wOBA") + 
   xlab(label = "First 150 PA wOBA") + 
   guides(
@@ -72,7 +73,8 @@ all_batter_career_data_by_ID %>%
                                                   trim_leading_zeros = TRUE)) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Correlation & Regression First & Post 300 PA", 
-       subtitle = "Includes All Batters with At Least 1800 Career Plate Appearances") + 
+       subtitle = "Includes All Batters with At Least 1,800 Career Plate Appearances", 
+       caption = "Number of Batters = 636") + 
   ylab(label = "Post 300 PA wOBA") + 
   xlab(label = "First 300 PA wOBA") + 
   guides(
@@ -100,7 +102,8 @@ all_batter_career_data_by_ID %>%
                                                   trim_leading_zeros = TRUE)) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Correlation & Regression First & Post 450 PA", 
-       subtitle = "Includes All Batters with At Least 1800 Career Plate Appearances") + 
+       subtitle = "Includes All Batters with At Least 1,800 Career Plate Appearances", 
+       caption = "Number of Batters = 636") + 
   ylab(label = "Post 450 PA wOBA") + 
   xlab(label = "First 450 PA wOBA") + 
   guides(
@@ -128,7 +131,8 @@ all_batter_career_data_by_ID %>%
                                                   trim_leading_zeros = TRUE)) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Correlation & Regression First & Post 600 PA", 
-       subtitle = "Includes All Batters with At Least 1800 Career Plate Appearances") + 
+       subtitle = "Includes All Batters with At Least 1,800 Career Plate Appearances", 
+       caption = "Number of Batters = 636") + 
   ylab(label = "Post 600 PA wOBA") + 
   xlab(label = "First 600 PA wOBA") + 
   guides(
@@ -156,7 +160,8 @@ all_batter_career_data_by_ID %>%
                                                   trim_leading_zeros = TRUE)) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Correlation & Regression First & Post 900 PA", 
-       subtitle = "Includes All Batters with At Least 1800 Career Plate Appearances") + 
+       subtitle = "Includes All Batters with At Least 1,800 Career Plate Appearances", 
+       caption = "Number of Batters = 636") + 
   ylab(label = "Post 900 PA wOBA") + 
   xlab(label = "First 900 PA wOBA") + 
   guides(
@@ -175,7 +180,7 @@ It's evident that the more plate appearances, the stronger the relationship beco
 
 Related to this, initial wOBA becomes better at predicting a batter's post wOBA as the number of plate appearances increases. R^2^ measures this precisely. As an example, when R^2^ = .07 for the 150 PA plot, this means that initial wOBA is only able to explain 7% of the variation in post wOBA. Other factors are explaining the remaining 93%. 
 
-That means that if we were going to add a new batter (point) to the plot but only knew their first 150 PA wOBA, the line would be almost useless in helping us determine where to draw the point (predicting the batter's post 150 PA wOBA).
+If we tried to add a new batter (point) to the plot but only knew their first 150 PA wOBA, the line would be almost useless in helping us determine where to draw the point (predicting the batter's post 150 PA wOBA).
 
 The fact that this R^2^ number is so low hammers home the idea of sample size. We simply do not know much about a batter after 150 plate appearances even if we think we do. R^2^ steadily rises from .07 to .14 to .19 to .25 to .35 at 900 plate appearances, but even at 900 PA, only 35% of the variation in post wOBA is explained by initial wOBA.
 
@@ -220,7 +225,8 @@ all_pitcher_career_data_by_ID %>%
   stat_correlation(use_label(c("R", "R2", "P"))) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Against Correlation & Regression First & Post 215 BF", 
-       subtitle = "Includes All Starting Pitchers with At Least 2580 Career Batters Faced") + 
+       subtitle = "Includes All Starting Pitchers with At Least 2,580 Career Batters Faced", 
+       caption = "Number of Pitchers = 321") + 
   ylab(label = "Post 215 BF wOBA Against") + 
   xlab(label = "First 215 BF wOBA Against") + 
   guides(
@@ -250,7 +256,8 @@ all_pitcher_career_data_by_ID %>%
   stat_correlation(use_label(c("R", "R2", "P"))) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Against Correlation & Regression First & Post 430 BF", 
-       subtitle = "Includes All Starting Pitchers with At Least 2580 Career Batters Faced") + 
+       subtitle = "Includes All Starting Pitchers with At Least 2,580 Career Batters Faced", 
+       caption = "Number of Pitchers = 321") + 
   ylab(label = "Post 430 BF wOBA Against") + 
   xlab(label = "First 430 BF wOBA Against") + 
   guides(
@@ -280,7 +287,8 @@ all_pitcher_career_data_by_ID %>%
   stat_correlation(use_label(c("R", "R2", "P"))) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Against Correlation & Regression First & Post 645 BF", 
-       subtitle = "Includes All Starting Pitchers with At Least 2580 Career Batters Faced") + 
+       subtitle = "Includes All Starting Pitchers with At Least 2,580 Career Batters Faced", 
+       caption = "Number of Pitchers = 321") + 
   ylab(label = "Post 645 BF wOBA Against") + 
   xlab(label = "First 645 BF wOBA Against") + 
   guides(
@@ -310,7 +318,8 @@ all_pitcher_career_data_by_ID %>%
   stat_correlation(use_label(c("R", "R2", "P"))) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Against Correlation & Regression First & Post 860 BF", 
-       subtitle = "Includes All Starting Pitchers with At Least 2580 Career Batters Faced") + 
+       subtitle = "Includes All Starting Pitchers with At Least 2,580 Career Batters Faced", 
+       caption = "Number of Pitchers = 321") + 
   ylab(label = "Post 860 BF wOBA Against") + 
   xlab(label = "First 860 BF wOBA Against") + 
   guides(
@@ -340,7 +349,8 @@ all_pitcher_career_data_by_ID %>%
   stat_correlation(use_label(c("R", "R2", "P"))) + 
   scale_color_manual(values = c("#1192e8", "#fa4d56", "#002d9c", "#009d9a", "#a56eff")) + 
   labs(title = "wOBA Against Correlation & Regression First & Post 1,290 BF", 
-       subtitle = "Includes All Starting Pitchers with At Least 2580 Career Batters Faced") + 
+       subtitle = "Includes All Starting Pitchers with At Least 2,580 Career Batters Faced", 
+       caption = "Number of Pitchers = 321") + 
   ylab(label = "Post 1290 BF wOBA Against") + 
   xlab(label = "First 1290 BF wOBA Against") + 
   guides(
@@ -352,7 +362,7 @@ all_pitcher_career_data_by_ID %>%
 ```
 :::
 
-The short story is that even for the largest sample size---the first 1,290 batters faced or roughly 300 innings innings pitched in a pitcher's career---initial wOBA Against is only explaining 11% of the variance in remaining career wOBA Against.
+The short story is that even for the largest sample size here---the first 1,290 batters faced or roughly 300 innings innings pitched in a pitcher's career---initial wOBA Against is only explaining 11% of the variance in remaining career wOBA Against.
 
 What can we infer from these results?
 
@@ -370,6 +380,6 @@ Particularly as dynasty fantasy managers, we're best served using the best stats
 
 Based on initial wOBA and wOBA Against, we can be more certain about batters' future careers compared to pitchers. However, even after a batter has accumulated their first 600 plate appearances---a full season---the strength of the relationship between their initial wOBA and remaining career wOBA is moderate at best.
 
-While probably none of us are disciplined enough to hold a struggling batter for 900 plate appearances, we should be as patient as possible---especially with higher ranked prospects---and acknowledge that making decisions solely on the basis of initial performance, especially very small samples, is not supported by data.
+While probably none of us are disciplined enough to hold a struggling batter for 900 plate appearances, we should be as patient as possible---especially with higher ranked prospects---and acknowledge that making decisions solely on the basis of initial performance, especially very small samples, is not supported by data in any large way.
 
 For pitchers, even more patience is needed or a much better statistic/model.
