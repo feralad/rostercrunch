@@ -2,7 +2,7 @@
 
 Welcome, and thanks so much for reading! I'm Adam!
 
-![](Adam_Headshot.jpg){fig-align="left" width="377"}
+![](pic_Adam_Headshot.jpg){fig-align="left" width="377"}
 
 I made this website for a few reasons:
 
