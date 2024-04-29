@@ -17,6 +17,7 @@ For each of the project stages, I think it would be most helpful to speak about 
 All of the datasets I used were csv files. Within RStudio, there is an "Import Dataset" button that makes importing files easy. One of the default options for importing text files is to use the [readr package](https://readr.tidyverse.org/){target="_blank"}. The code below is the simplest version of doing this, but you can also manipulate the dataset in tons of different ways while importing depending on what is needed.
 
 ```{r}
+#| label: data-importing-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -33,6 +34,7 @@ If I get around to another baseball project, I want to utilize the [baseballr pa
 Because the primary dataset I used was so large (1.2 GB, over 6 million rows, and over 50 columns), I needed a way to get an overview of it. The [skimr package](https://docs.ropensci.org/skimr/){target="_blank"} is designed exactly for this. With a simple function like the one in my code below, I got back a summary of the dataset that told me things like what classes the different variables were (character, numeric, date, etc.), how many and what percentage of NA values there were in each column, the min and max values of each column, etc. This was particularly helpful as a starting point for data cleaning.
 
 ```{r}
+#| label: skimr-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -53,6 +55,7 @@ At the time I was working on this, I had yet to discover the [fuzzyjoin package]
 At least on the bright side, I got the opportunity to work with the [stringr package](https://stringr.tidyverse.org/){target="_blank"} doing character string manipulation like fixing spelling, punctuation, and capitalization differences in player names. I also used some functions from the [lubridate package](https://lubridate.tidyverse.org/){target="_blank"} to make sure dates were formatted uniformly. One example of many passes of manipulations is shown below.
 
 ```{r}
+#| label: data-cleaning-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -82,6 +85,7 @@ In a large sense, I took data out of the play-by-play dataset and moved it into 
 One of my most crucial steps was to convert the wOBA value for every plate appearance for every batter and pitcher into a "rolling wOBA" or "rolling wOBA Against" data column. This took the cumulative wOBA or wOBA Against for a player up to that specific plate appearance (or batter faced) in their career. It enabled me to determine what a batter's wOBA was at 150 plate appearances or a pitcher's wOBA Against at 860 batters faced as an example. The code below uses dplyr functions that I used over and over---group_by, filter, mutate, relocate, ungroup---and also some base R functions---cumsum and seq_along. ungroup is still a bit confusing to me!
 
 ```{r}
+#| label: rolling-woba-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -98,6 +102,7 @@ bat_wOBA_log_debut_1990_on <- career_wOBA_log_w_biodates %>%
 My understanding is that dplyr is very similar to SQL (structured query language). It enables you to do SQL-like queries like this one which combed through the 71,080 baseball games in the dataset to find which ones ended in back-to-back home runs. This was probably the most fun code I wrote!
 
 ```{r}
+#| label: back-to-back-hr-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -133,6 +138,7 @@ As amazing as dplyr is, it's not the best tool for every single task. This is so
 The package also has the ability to enhance crosstabs by calculating totals and percentages within rows or columns. If you look back at my tables, this code becomes very evident. The two commas in the adorn_percentages function below might make no sense to you. They still don't make much sense to me and trigger a warning ⚠️ triangle in RStudio. It is telling janitor to skip unused arguments in the function. The Elite:DNQ is indicating to only calculate percentages for the Elite column through the DNQ column, not a "Total" column at the end, which I wanted to preserve with the numeric count.
 
 ```{r}
+#| label: tabyl-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -154,6 +160,7 @@ I utilized the [knitr package](https://yihui.org/knitr/){target="_blank"} to cre
 This code also includes the first function I wrote, essentially creating a theme I could use for other similar gt tables. R for the Rest of Us, which I talk about more below, has a [short video](https://www.youtube.com/watch?v=YzmLB2z9whw){target="_blank"} on how to do this. 
 
 ```{r}
+#| label: gt-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -222,6 +229,7 @@ As an extension of ggplot2, the [ggpmisc package](https://cran.rstudio.com/web/p
 Additionally, I used the ipsum theme from the hrbrthemes package for all plots, which in my opinion is a major upgrade to the standard themes ggplot2 provides. The ipsum theme is as simple as loading the package and adding one line of code! Some of the additional themes through the [package](https://github.com/hrbrmstr/hrbrthemes){target="_blank"} may require downloading specific fonts.
 
 ```{r}
+#| label: ggplot-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -272,6 +280,7 @@ While my project is not really a book, technically you are reading a Quarto Book
 I assumed since I had already loaded the packages and data I was using in RStudio that I did not need to load them in my different Quarto files (.qmd files), which together comprise the Quarto Book. After some head-scratching and Googling, I learned that I **did** need to load them again. Each page of this website (Quarto book) is its own qmd file, so I repeated similar code below in each. I didn't find a way to specify this globally so that it wouldn't have to be repeated in each file, but I'm sure there is a way.
 
 ```{r}
+#| label: loading-packages-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -284,6 +293,7 @@ library(hrbrthemes)
 ```
 
 ```{r}
+#| label: loading-data-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -298,6 +308,7 @@ load("summary_tables.RData")
 Since this project was more data journalism than scientific publishing, it wasn't necessary for me to bog it down with chunk after chunk of code. This execution option specified in the .yml (master) file of the Quarto project essentially tells Quarto to run the code but not to include the code itself in the output. This can be overridden manually for specific code chunks with `echo: true`, which is how you are seeing code on this page.
 
 ```{r}
+#| label: execution-options-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -311,6 +322,7 @@ execute:
 If my project wasn't already unreadable on its own merits, it would have been far more so without the functionality of panel tabsets. I used these to give you as the reader the ability to toggle between visualizations, for example between charts focused on 150 plate appearances versus 600 plate appearances. These are extremely easy to add with the following code. The `::: panel-tabset` and `:::` enclose the panel, and the `##` serve as the different headers for each tab.
 
 ```{r}
+#| label: panel-tabsets-code-example
 #| echo: true
 #| eval: false
 #| warning: false

@@ -1,6 +1,7 @@
 # Career wOBA
 
 ```{r}
+#| label: career-woba-packages
 #| output: false
 
 library(tidyverse)
@@ -10,6 +11,7 @@ library(knitr)
 ```
 
 ```{r}
+#| label: career-woba-data
 #| output: false
 
 load("summary_tables.RData")
@@ -28,6 +30,7 @@ Since as dynasty managers we are interested in getting the best young players on
 The demographers among us are to thank for population pyramids, which we can employ for our purposes to compare the number of ranked and unranked prospects with different career wOBA grades.
 
 ```{r}
+#| label: career-woba-population-pyramid-chart
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
@@ -93,6 +96,7 @@ Important notes for these lists:
 * Some unranked prospects were ranked at one point (Josh Hamilton is probably the most famous example), but they fell off the top 100 list prior to when they debuted.
 
 ```{r}
+#| label: career-woba-ranked-unranked-prospect-top-100-lists
 #| warning: false
 #| tbl-cap: ["**Top 100 Batters by Career wOBA**"]
 #| tbl-subcap: ["**Ranked Prospects**", "**Unranked Prospects**"]
@@ -135,6 +139,7 @@ You may be interested in the median and mean prospect rank for the batting prosp
 At this point, I think I've sufficiently conveyed the difference in career outcomes between ranked and unranked batting prospects. One more density plot is worth adding though.
 
 ```{r}
+#| label: career-woba-density-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
@@ -160,6 +165,7 @@ all_batter_career_data_by_ID %>%
 ## Number of Pitchers
 
 ```{r}
+#| label: career-woba-against-population-pyramid-chart
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 
@@ -224,6 +230,7 @@ Since there are less pitchers than batters, we'll look at the top 50 starting pi
 Again, these ranks are from Baseball America. Please reference the notes above for batters.
 
 ```{r}
+#| label: career-woba-against-ranked-unranked-prospect-top-50-lists
 #| warning: false
 #| tbl-cap: ["**Top 50 Starting Pitchers by Career wOBA Against**"]
 #| tbl-subcap: ["**Ranked Prospects**", "**Unranked Prospects**"]
@@ -271,6 +278,7 @@ The median and mean prospect rank for pitching prospects on the ranked list: med
 ## Career wOBA Against by Prospect Rank
 
 ```{r}
+#| label: career-woba-against-density-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 

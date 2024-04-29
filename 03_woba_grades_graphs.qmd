@@ -1,6 +1,7 @@
 # Simple wOBA Grades
 
 ```{r}
+#| label: simple-woba-grades-packages
 #| output: false
 
 library(tidyverse)
@@ -9,6 +10,7 @@ library(hrbrthemes)
 ```
 
 ```{r}
+#| label: simple-woba-grades-data
 #| output: false
 
 load("summary_tables.RData")
@@ -56,6 +58,7 @@ Here are two bar charts of batters to show the relationship between a batter's i
 ## 150 PA
 
 ```{r}
+#| label: simple-woba-grades-batter-150-pa-bar-chart
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
@@ -94,6 +97,7 @@ all_batter_career_data_by_ID %>%
 ## 600 PA
 
 ```{r}
+#| label: simple-woba-grades-batter-600-pa-bar-chart
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
@@ -180,6 +184,7 @@ While this is interesting at a macro-level, watch what happens when we look at g
 ## 150 PA
 
 ```{r}
+#| label: simple-woba-grades-batter-150-pa-bar-chart-prospects
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
@@ -217,6 +222,7 @@ all_batter_career_data_by_ID %>%
 ## 600 PA
 
 ```{r}
+#| label: simple-woba-grades-batter-600-pa-bar-chart-prospects
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
@@ -272,6 +278,7 @@ An additional limitation specific to the prospect ranks data is that we have no 
 ## 215 BF
 
 ```{r}
+#| label: simple-woba-grades-pitcher-215-bf-bar-chart
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 
@@ -310,6 +317,7 @@ all_pitcher_career_data_by_ID %>%
 ## 860 BF
 
 ```{r}
+#| label: simple-woba-grades-pitcher-860-bf-bar-chart
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 
@@ -352,6 +360,7 @@ all_pitcher_career_data_by_ID %>%
 ## 215 BF
 
 ```{r}
+#| label: simple-woba-grades-pitcher-215-bf-bar-chart-prospects
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 
@@ -389,6 +398,7 @@ all_pitcher_career_data_by_ID %>%
 ## 860 BF
 
 ```{r}
+#| label: simple-woba-grades-pitcher-860-bf-bar-chart-prospects
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 

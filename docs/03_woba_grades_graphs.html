@@ -255,14 +255,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-batter-150-pa-bar-chart-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-batter-600-pa-bar-chart-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -270,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Each bar represents the percentage of batters who started their career with a specific wOBA grade (Good, Average, Bad, or Did Not Qualify (DNQ)) as indicated on the Y axis. Each color within each bar represents the wOBA grade for that percentage of batters <em>after</em> their initial performance (150 or 600 plate appearances).</p>
 <p>The wOBA grades you see are just a simplified version of the FanGraphs table above: Good includes Elite, Great, Above Average; Average (Average); and Bad (Below Average, Poor, Awful). Did Not Qualify (DNQ) captures “cup of coffee” players, meaning that they only were in the major leagues for a very short time—enough for a cup of coffee but nothing more. I’ve noted in the Data Details section below the thresholds a player failed to reach to be classified as Did Not Qualify in addition to other important details and reminders.</p>
-<p>As an example of using the charts, start at the Y axis with <em>Good</em>, and then look to your right. As you can see for the 150 PA chart, about 17% (8% + 5% + 4%)—note that percentages are rounded—of all batters hit for a <em>Good</em> wOBA for their first 150 plate appearances. Looking at the colors however, we can see that of those 17% of batters, 8% of them had a <em>Bad</em> wOBA after that point for the rest of their career (or failed to reach minimum plate appearance thresholds), 5% had an <em>Average</em> wOBA, and just 4% of them continued to have a <em>Good</em> wOBA.</p>
+<p>As an example of using the charts, start at the Y axis with <em>Good</em>, and then look to your right. As you can see for the 150 PA chart, about 17% (8% + 5% + 4%) of all batters hit for a <em>Good</em> wOBA for their first 150 plate appearances. Looking at the colors however, we can see that of those 17% of batters, 8% of them had a <em>Bad</em> wOBA after that point for the rest of their career (or failed to reach minimum plate appearance thresholds), 5% had an <em>Average</em> wOBA, and just 4% of them continued to have a <em>Good</em> wOBA.</p>
 <p>If you toggle from 150 PA to 600 PA, you can see what these percentages are at 600 plate appearances and after. Colors without a labeled percentage are less than 3.5%—too small to label properly.</p>
 </section>
 <section id="data-details" class="level2" data-number="3.5">
@@ -288,26 +288,26 @@ ul.task-list li input[type="checkbox"] {
 <li>The number of batters in the analysis = 1,891 and number of pitchers = 717</li>
 <li>Pitchers batting (it used to be a thing!) have been removed from the batting statistics</li>
 <li>Batters pitching (it still is a thing!) have been removed from the pitching statistics</li>
-<li>Intentional walks and sacrifice bunts are by default excluded from wOBA, so Plate Appearances (PAs) and Batters Faced (BF) are only those that ended in a wOBA-producing event</li>
-<li>An Initial wOBA Grade of <em>DNQ</em> stands for Did Not Qualify, meaning a player did not reach the stated Plate Appearances or Batters Faced thresholds
+<li>Intentional walks and sacrifice bunts are by default excluded from wOBA, so Plate Appearances (PA) and Batters Faced (BF) are technically only those that ended in a wOBA-producing event, differing slightly from official PA and BF</li>
+<li>An initial wOBA grade of <em>DNQ</em> stands for Did Not Qualify, meaning a player did not reach the stated PA or BF thresholds
 <ul>
 <li>For example, a batter who only had 120 career plate appearances did not qualify for either the 150 or 600 PA thresholds</li>
 </ul></li>
-<li>There is also a DNQ threshold set for the Post wOBA Grade to avoid comparing a player who for example made 150 plate appearances and then only one more after
+<li>There is also a DNQ threshold set for the post wOBA grade to avoid comparing a player who for example made 150 plate appearances and then only one more after
 <ul>
 <li>For 150 Plate Appearances, batters who did not reach 600 PA received a <em>DNQ</em> post wOBA grade
 <ul>
-<li>In the above charts, <em>DNQ</em> post wOBA grades are classified as <em>Bad</em></li>
+<li>In these simple charts, <em>DNQ</em> post wOBA grades are classified as <em>Bad</em></li>
 </ul></li>
-<li>For 600 PA, 1800 PA</li>
-<li>For 215 Batters Faced (BF), 860 BF</li>
-<li>For 860 BF, 2580 BF</li>
+<li>For 600 PA, 1,800 PA</li>
+<li>For 215 Batters Faced, 860 BF</li>
+<li>For 860 BF, 2,580 BF</li>
 </ul></li>
 <li>The Batters Faced threshold was chosen to equal roughly 50 innings pitched (215 BF) and 200 innings pitched (860 BF) as calculated by comparing the total number of innings pitched and batters faced for all pitchers from 1990 through 2020</li>
 <li>Prospect ranks are from Baseball America’s preseason Top 100 Prospects lists
 <ul>
 <li>If a prospect was on a previous season’s top 100 list, did not debut in the major leagues that season, and then fell off the preseason list for the season in which they debuted, they are not included as a top 100 prospect</li>
-<li>If a prospect was not on the top 100 list when they debuted but were added to the following season’s preseason top 100 list before the player lost prospect eligibility, they are included as a top 100 prospect</li>
+<li>If a prospect was not on the top 100 list when they debuted but were added to the following season’s preseason top 100 list before the player lost prospect eligibility, they are included as a top 100 prospect, including the aforementioned prospects who may have fallen off the list but were re-added</li>
 </ul></li>
 </ul>
 </section>
@@ -331,14 +331,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-batter-150-pa-bar-chart-prospects-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-batter-600-pa-bar-chart-prospects-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -349,12 +349,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="3.8" class="anchored" data-anchor-id="importance-of-prospect-pedigree"><span class="header-section-number">3.8</span> Importance of Prospect Pedigree</h2>
 <p>As you can see, there is a lot more blue when looking at ranked prospects compared to unranked prospects. Ranked prospects outperform unranked prospects. That should come as no surprise to anyone.</p>
 <p>Percentages were left off these charts for sake of space and because we’ll look at these percentages in greater detail later.</p>
-<p>It’s hugely important for us to acknowledge that the observations we made earlier when looking at all batters remain true only when looking at unranked prospects. You probably already sensed this, but a majority of batters are unranked prospects. They weight heavily in the chart that shows all batters together, making it hard to see the effect of top ranked prospects.</p>
+<p>It’s hugely important for us to acknowledge that the observations we made earlier when looking at all batters remain true only when looking at unranked prospects. You probably already sensed this, but a majority of batters are unranked prospects. They weight heavily in the charts that show all batters together, making it hard to see the effect of top ranked prospects.</p>
 <p>This underscores the importance of prospect pedigree in our analysis and the general principle of comparing subgroups of a dataset.</p>
 </section>
 <section id="prospect-ranks-limitations" class="level2" data-number="3.9">
 <h2 data-number="3.9" class="anchored" data-anchor-id="prospect-ranks-limitations"><span class="header-section-number">3.9</span> Prospect Ranks Limitations</h2>
-<p>An additional limitation specific to the prospect ranks data is that we have no subgroups for unranked prospects. Just as it would be unwise to look at all players together with no reference to their prospect rank, it is unfortunate that we have to do this for unranked prospects. Some of those unranked prospects would have been considered borderline top 100 prospects, whereas others miraculously made it to the major leagues and didn’t expect to stay for long. Keep that in mind as we discuss unranked prospects throughout the analysis. There is greater nuance that we can only infer.</p>
+<p>An additional limitation specific to the prospect ranks data is that we have no subgroups for unranked prospects. Just as it would be unwise to look at all players together with no reference to their prospect rank, it is unfortunate that we have to do this for unranked prospects. Some of those unranked prospects would have been considered borderline top 100 prospects, whereas others miraculously made it to the major leagues and didn’t expect to stay for long. Keep that in mind as we discuss unranked prospects throughout the analysis. There is greater nuance that we can only guess at.</p>
 </section>
 <section id="pitchers" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="pitchers"><span class="header-section-number">3.10</span> Pitchers</h2>
@@ -364,14 +364,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-pitcher-215-bf-bar-chart-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-pitcher-860-bf-bar-chart-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -386,14 +386,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-pitcher-215-bf-bar-chart-prospects-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="03_woba_grades_graphs_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_woba_grades_graphs_files/figure-html/simple-woba-grades-pitcher-860-bf-bar-chart-prospects-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -402,7 +402,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="additional-observations" class="level2" data-number="3.12">
 <h2 data-number="3.12" class="anchored" data-anchor-id="additional-observations"><span class="header-section-number">3.12</span> Additional Observations</h2>
-<p>My goal with these initial charts was more to orient you to wOBA, wOBA grades, and comparing initial and remaining career performance. This will be helpful as we look at more detailed wOBA grades and the corresponding percentages of players.</p>
+<p>My goal with these initial charts was more to orient you to wOBA/wOBA Against, grades, and comparing initial and remaining career performance. This will be helpful as we look at more detailed grades and the corresponding percentages of players.</p>
 <p>Some last things to mention for these charts:</p>
 <ul>
 <li>The pitcher charts look visually similar to the batter charts (further analysis will help us more easily compare them).</li>

@@ -1,6 +1,7 @@
 # Overview and Context
 
 ```{r}
+#| label: overview-context-packages
 #| output: false
 
 library(knitr)
@@ -8,6 +9,7 @@ library(dplyr)
 ```
 
 ```{r}
+#| label: overview-context-data
 #| output: false
 
 load("prospect_debut_rates.RData")
@@ -73,6 +75,7 @@ I made use of [Baseball America's](https://www.baseballamerica.com){target="_bla
 We will examine player outcomes by prospect rank for prospects who made it to the major leagues. As we know, some prospects never make it to the major leagues. For reference, here are the rates of top prospects from Baseball America's Top 100 lists (1990 - 2010) who made it to the majors.
 
 ```{r}
+#| label: prospect-debut-rate
 #| tbl-cap: ["**Percentage and Number of Top 100 Prospects Who Reached Major Leagues**"]
 #| tbl-subcap: ["**Batting Prospects**", "**Pitching Prospects**"]
 #| layout-ncol: 2

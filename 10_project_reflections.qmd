@@ -65,6 +65,7 @@ I can't remember how I stumbled across [this article](https://davidhughjones.med
 As an example, you can see my `case_when` sins.
 
 ```{r}
+#| label: code-smells-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -98,6 +99,7 @@ As for conciseness? Nope!
 For example, look at this disaster if you are sick enough (viewer discretion advised). The first part of the code is just one of the many dataframes I created that you see in the second part of the code, and that wasn't all of them.
 
 ```{r}
+#| label: code-conciseness-poor-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -121,6 +123,7 @@ all_batter_career_data_by_ID <- all_batter_career_data_by_ID %>%
 A more efficient way to do this would have been:
 
 ```{r}
+#| label: code-conciseness-better-code-example
 #| echo: true
 #| eval: false
 #| warning: false
@@ -158,6 +161,7 @@ Well, my initial foray into writing functions was a bit mystifying. I was able t
 I also wrote a function that I wound up not using---drawing insight from this [post](https://willhipson.netlify.app/post/dplyr_across/dplyr_across/){target="_blank"} and [another](https://www.bryanshalloway.com/2020/06/25/using-across-to-build-functions-with-dplyr-with-notes-on-legacy-approaches/){target="_blank"}.
 
 ```{r}
+#| label: function-code-example
 #| echo: true
 #| eval: false
 #| warning: false

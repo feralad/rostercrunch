@@ -1,6 +1,7 @@
 # Story Time
 
 ```{r}
+#| label: story-time-packages
 #| output: false
 
 library(knitr)
@@ -8,6 +9,7 @@ library(dplyr)
 ```
 
 ```{r}
+#| label: story-time-data
 #| output: false
 
 load("back_to_back_hr.RData")
@@ -44,6 +46,8 @@ My Dad told me that I'd probably never see another game in-person that ends in b
 Were any of you at one of these games? Technically, there were 28 games, but one set of those home runs happened in the 7th inning with the game being called immediately after due to a rain delay.
 
 ```{r}
+#| label: back-to-back-home-runs
+
 back_to_back_home_run_game_endings %>% 
   select(-c("PARK", "HIT_VAL", "EVENT_RUNS")) %>% 
   kable(col.names = c("Row ID", "Game ID", "Date", "Home Team", "Away Team", 

@@ -1,6 +1,7 @@
 # wOBA Against Grades
 
 ```{r}
+#| label: woba-against-grades-packages
 #| output: false
 
 library(tidyverse)
@@ -10,6 +11,7 @@ library(hrbrthemes)
 ```
 
 ```{r}
+#| label: woba-against-grades-data
 #| output: false
 
 load("crosstabs.RData")
@@ -37,6 +39,7 @@ Since pitchers are kind of weird in real life (in a good way) and because we had
 ## 215 BF
 
 ```{r}
+#| label: woba-against-grades-215-bf-summary-table
 #| warning: false
 
 woba_summary_table_pit_215_final %>% 
@@ -79,6 +82,7 @@ gt(rowname_col = "PROSPECT_RANK_GROUP") %>%
 ## 860 BF
 
 ```{r}
+#| label: woba-against-grades-860-bf-summary-table
 #| warning: false
 
 woba_summary_table_pit_860_final %>% 
@@ -121,6 +125,7 @@ gt(rowname_col = "PROSPECT_RANK_GROUP") %>%
 ## Count
 
 ```{r}
+#| label: woba-against-grades-215-and-860-bf-summary-table-counts
 #| warning: false
 
 woba_summary_table_pit_count_final %>% 
@@ -181,6 +186,7 @@ Note that the x-axis is reversed to demonstrate that pitchers decreasing their w
 ## 215 BF
 
 ```{r}
+#| label: woba-against-grades-215-bf-change-in-woba-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 
@@ -215,6 +221,7 @@ all_pitcher_career_data_by_ID %>%
 ## 860 BF
 
 ```{r}
+#| label: woba-against-grades-860-bf-change-in-woba-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>% 
@@ -258,6 +265,7 @@ The smaller "population" size also makes these tables less helpful. Many rows on
 ## 1 - 25
 
 ```{r}
+#| label: woba-against-grades-860-bf-crosstab-1-25-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_860_list$`1 - 25` %>% 
@@ -276,6 +284,7 @@ pitcher_woba_grade_crosstabs_860_list$`1 - 25` %>%
 ## 26 - 50
 
 ```{r}
+#| label: woba-against-grades-860-bf-crosstab-26-50-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_860_list$`26 - 50` %>% 
@@ -294,6 +303,7 @@ pitcher_woba_grade_crosstabs_860_list$`26 - 50` %>%
 ## 51 - 75
 
 ```{r}
+#| label: woba-against-grades-860-bf-crosstab-51-75-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_860_list$`51 - 75` %>% 
@@ -312,6 +322,7 @@ pitcher_woba_grade_crosstabs_860_list$`51 - 75` %>%
 ## 76 - 100
 
 ```{r}
+#| label: woba-against-grades-860-bf-crosstab-76-100-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_860_list$`76 - 100` %>% 
@@ -330,6 +341,7 @@ pitcher_woba_grade_crosstabs_860_list$`76 - 100` %>%
 ## Unranked
 
 ```{r}
+#| label: woba-against-grades-860-bf-crosstab-unranked-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_860_list$`Unranked` %>% 
@@ -361,6 +373,7 @@ When looking at the tables, there are a large number of pitchers comparatively w
 ## 1 - 25
 
 ```{r}
+#| label: woba-against-grades-215-bf-crosstab-1-25-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_215_list$`1 - 25` %>% 
@@ -379,6 +392,7 @@ pitcher_woba_grade_crosstabs_215_list$`1 - 25` %>%
 ## 26 - 50
 
 ```{r}
+#| label: woba-against-grades-215-bf-crosstab-26-50-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_215_list$`26 - 50` %>% 
@@ -391,6 +405,7 @@ gt_crosstab_theme_fn_data_color()
 ## 51 - 75
 
 ```{r}
+#| label: woba-against-grades-215-bf-crosstab-51-75-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_215_list$`51 - 75` %>% 
@@ -403,6 +418,7 @@ gt_crosstab_theme_fn_data_color()
 ## 76 - 100
 
 ```{r}
+#| label: woba-against-grades-215-bf-crosstab-76-100-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_215_list$`76 - 100` %>% 
@@ -415,6 +431,7 @@ gt_crosstab_theme_fn_data_color()
 ## Unranked
 
 ```{r}
+#| label: woba-against-grades-215-bf-crosstab-unranked-prospects
 #| warning: false
 
 pitcher_woba_grade_crosstabs_215_list$`Unranked` %>% 

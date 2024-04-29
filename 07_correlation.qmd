@@ -1,6 +1,7 @@
 # Correlation and Regression
 
 ```{r}
+#| label: correlation-regression-packages
 #| output: false
 
 library(tidyverse)
@@ -10,6 +11,7 @@ library(hrbrthemes)
 ```
 
 ```{r}
+#| label: correlation-regression-data
 #| output: false
 
 load("summary_tables.RData")
@@ -30,6 +32,7 @@ If all those terms make your eyes glaze over or your head spin, quickly then to 
 ## 150 PA
 
 ```{r}
+#| label: correlation-regression-woba-150-pa-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>%
@@ -59,6 +62,7 @@ all_batter_career_data_by_ID %>%
 ## 300 PA
 
 ```{r}
+#| label: correlation-regression-woba-300-pa-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>%
@@ -88,6 +92,7 @@ all_batter_career_data_by_ID %>%
 ## 450 PA
 
 ```{r}
+#| label: correlation-regression-woba-450-pa-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>%
@@ -117,6 +122,7 @@ all_batter_career_data_by_ID %>%
 ## 600 PA
 
 ```{r}
+#| label: correlation-regression-woba-600-pa-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>%
@@ -146,6 +152,7 @@ all_batter_career_data_by_ID %>%
 ## 900 PA
 
 ```{r}
+#| label: correlation-regression-woba-900-pa-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>%
@@ -209,6 +216,7 @@ How about pitchers?
 ## 215 BF
 
 ```{r}
+#| label: correlation-regression-woba-against-215-bf-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>%
@@ -240,6 +248,7 @@ all_pitcher_career_data_by_ID %>%
 ## 430 BF
 
 ```{r}
+#| label: correlation-regression-woba-against-430-bf-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>%
@@ -271,6 +280,7 @@ all_pitcher_career_data_by_ID %>%
 ## 645 BF
 
 ```{r}
+#| label: correlation-regression-woba-against-645-bf-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>%
@@ -302,6 +312,7 @@ all_pitcher_career_data_by_ID %>%
 ## 860 BF
 
 ```{r}
+#| label: correlation-regression-woba-against-860-bf-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>%
@@ -333,6 +344,7 @@ all_pitcher_career_data_by_ID %>%
 ## 1290 BF
 
 ```{r}
+#| label: correlation-regression-woba-against-1290-bf-plot
 #| warning: false
 
 all_pitcher_career_data_by_ID %>%

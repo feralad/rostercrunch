@@ -215,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Particularly because I play in a shallow dynasty league (only 12 teams) but roster a lot of prospects (20) with players losing prospect eligibility at 200 at-bats and 66 innings pitched, I am constantly faced with the predicament of whether to cut/trade or hold a prospect during their rookie season. I simply don’t have room to keep them all on my major league roster. Some players make this decision easy (Corbin Carroll last year) and others make it hard (Brandon Pfaadt last year).</p>
 <p>Up until this point, I have always felt like my decisions about discarding or holding a prospect, especially less renowned prospects, were based more on feelings rather than data, too influenced by highlights and small sample sizes, and generally lacking. Perhaps you feel the same?</p>
 <p>In light of this and my intrigue into Jones’ and Tovar’s futures (I also have Tovar on my fantasy team, no surprise!), I set out to analyze rookie and career performances for players who debuted over the span of 20+ years (1990 to 2010) to gain a better understanding of what this relationship has looked like historically.</p>
-<p>While this project is descriptive analysis and not predictive, I like what <a href="https://twitter.com/ATCNY" target="_blank">Ariel Cohen</a>, an expert fantasy baseball player/analyst and actuary by day, I believe, <a href="https://www.rotoballer.com/2023-fantasy-takeaways/1258560?utm_source=dlvr.it&amp;utm_medium=twitter" target="_blank">writes</a>…</p>
+<p>While this project is descriptive analysis and not predictive, I like what Ariel Cohen, an expert fantasy baseball player/analyst and actuary by day, I believe, <a href="https://www.rotoballer.com/2023-fantasy-takeaways/1258560?utm_source=dlvr.it&amp;utm_medium=twitter" target="_blank">writes</a>…</p>
 <blockquote class="blockquote">
 <p>“From an actuary’s perspective, the key motto for statistical models is that the past is predictive of the future. In my field, we base quantitative predictions on the tenet that given the same long-term conditions, past numerical outcomes and distributions (if properly parameterized) will continue for the foreseeable future.”</p>
 </blockquote>
@@ -257,12 +257,12 @@ ul.task-list li input[type="checkbox"] {
 <p>Because dynasty managers are so often making decisions based on a player’s prospect pedigree—perhaps to an even greater degree than based on a player’s initial statistics over a small sample size—I thought it necessary to also include these rankings.</p>
 <p>I made use of <a href="https://www.baseballamerica.com" target="_blank">Baseball America’s</a> Top 100 Prospects preseason lists for the years of focus. Rankings like these are invaluable, reflecting a tremendous amount of work and skill that goes into scouting players and evaluating talent. I would be remiss if I did not plug subscribing to Baseball America and supporting their work if you have the means to do so.</p>
 <p>We will examine player outcomes by prospect rank for prospects who made it to the major leagues. As we know, some prospects never make it to the major leagues. For reference, here are the rates of top prospects from Baseball America’s Top 100 lists (1990 - 2010) who made it to the majors.</p>
-<div id="tbl-anonymous-803554" class="cell tbl-parent quarto-layout-panel anchored">
+<div id="tbl-anonymous-7552902" class="cell tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
 <p><strong>Percentage and Number of Top 100 Prospects Who Reached Major Leagues</strong></p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-anonymous-803554-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-803554" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-anonymous-7552902-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-7552902" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
 <caption><strong>Batting Prospects</strong></caption>
 <thead>
@@ -307,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<div id="tbl-anonymous-803554-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-803554" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-anonymous-7552902-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-7552902" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
 <caption><strong>Pitching Prospects</strong></caption>
 <thead>
@@ -362,9 +362,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="limitations" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="limitations"><span class="header-section-number">2.6</span> Limitations</h2>
 <p>All research projects have limitations, so let’s get my dirty laundry out in the open!</p>
-<p>The biggest limitation is that some active players who had yet to finish their career are included in the dataset of players. Note that the stats in the dataset only go through the 2020 season, and we are including all players who debuted from 1990-2010. I made the trade-off to include those players who debuted closer to the end of that period and were still active after 2020 because I reasoned that a bigger sample size of players would enhance the analysis more than abiding by a strict rule that all players must have finished their career by then. Assuming a player debuted as late as 2010, I felt that 2011 through 2020 was a large enough amount of time for them to compile meaningful career statistics.</p>
+<p>The biggest limitation is that some active players who had yet to finish their career are included in the dataset of players. Note that the stats in the dataset only go through the 2020 season, and we are including all players who debuted from 1990-2010. I made the trade-off to include those players who debuted closer to the end of that period and were still active after 2020 for two main reasons. 1) Not having to arbitrarily cut out players who were still active and 2) a bigger sample size of players would enhance the analysis more than abiding by a strict rule that all players must have finished their career by then. Assuming a player debuted as late as 2010, I felt that 2011 through 2020 was a large enough amount of time for them to compile meaningful career statistics.</p>
 <p>The number of batters included in this analysis is 1,891 with 52 of them still active after the 2020 season. The number of pitchers is 717 with 30 of them still active after 2020.</p>
 <p>The second limitation is that we are using a single statistic, wOBA (wOBA against or wOBA allowed for pitchers), for all our evaluation. We’ll talk more about why this is a limitation, but I will note here that Baseball America’s Top 100 Prospect rankings are intended to measure a player’s complete value (not solely offensive, etc.). A much better assessment of their rankings would be performed with WAR, which many outlets have done. Nowadays, there are fantasy-specific prospect rankings, which I would have used had they existed for this time period.</p>
+<p>Lastly, “peak performance” is not included in the analysis, which could obscure the value of players who were very valuable for a shorter period of time. Only career performance as a whole is measured.</p>
 <p>I will address other limitations throughout the analysis.</p>
 
 

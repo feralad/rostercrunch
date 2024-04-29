@@ -1,6 +1,7 @@
 # wOBA Grades
 
 ```{r}
+#| label: woba-grades-packages
 #| output: false
 
 library(tidyverse)
@@ -10,6 +11,7 @@ library(hrbrthemes)
 ```
 
 ```{r}
+#| label: woba-grades-data
 #| output: false
 
 load("crosstabs.RData")
@@ -53,6 +55,7 @@ The batter? Austin Kearns! We were expecting so much more, Austin.
 ## 1 - 25
 
 ```{r}
+#| label: woba-grades-600-pa-crosstab-1-25-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_600_list$`1 - 25` %>% 
@@ -65,6 +68,7 @@ batter_woba_grade_crosstabs_600_list$`1 - 25` %>%
 ## 26 - 50
 
 ```{r}
+#| label: woba-grades-600-pa-crosstab-26-50-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_600_list$`26 - 50` %>% 
@@ -77,6 +81,7 @@ batter_woba_grade_crosstabs_600_list$`26 - 50` %>%
 ## 51 - 75
 
 ```{r}
+#| label: woba-grades-600-pa-crosstab-51-75-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_600_list$`51 - 75` %>% 
@@ -95,6 +100,7 @@ batter_woba_grade_crosstabs_600_list$`51 - 75` %>%
 ## 76 - 100
 
 ```{r}
+#| label: woba-grades-600-pa-crosstab-76-100-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_600_list$`76 - 100` %>% 
@@ -113,6 +119,7 @@ batter_woba_grade_crosstabs_600_list$`76 - 100` %>%
 ## Unranked
 
 ```{r}
+#| label: woba-grades-600-pa-crosstab-unranked-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_600_list$`Unranked` %>% 
@@ -146,6 +153,7 @@ For instance, a top 25 prospect with an *Awful* wOBA grade over their first 150 
 ## 1 - 25
 
 ```{r}
+#| label: woba-grades-150-pa-crosstab-1-25-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_150_list$`1 - 25` %>% 
@@ -158,6 +166,7 @@ batter_woba_grade_crosstabs_150_list$`1 - 25` %>%
 ## 26 - 50
 
 ```{r}
+#| label: woba-grades-150-pa-crosstab-26-50-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_150_list$`26 - 50` %>% 
@@ -170,6 +179,7 @@ batter_woba_grade_crosstabs_150_list$`26 - 50` %>%
 ## 51 - 75
 
 ```{r}
+#| label: woba-grades-150-pa-crosstab-51-75-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_150_list$`51 - 75` %>% 
@@ -182,6 +192,7 @@ batter_woba_grade_crosstabs_150_list$`51 - 75` %>%
 ## 76 - 100
 
 ```{r}
+#| label: woba-grades-150-pa-crosstab-76-100-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_150_list$`76 - 100` %>% 
@@ -194,6 +205,7 @@ batter_woba_grade_crosstabs_150_list$`76 - 100` %>%
 ## Unranked
 
 ```{r}
+#| label: woba-grades-150-pa-crosstab-unranked-prospects
 #| warning: false
 
 batter_woba_grade_crosstabs_150_list$`Unranked` %>% 
@@ -217,6 +229,7 @@ To help with this, we'll make our way over to the smaller kids' table (which is 
 ## 150 PA
 
 ```{r}
+#| label: woba-grades-150-pa-summary-table
 #| warning: false
 
 woba_summary_table_bat_150_final %>% 
@@ -259,6 +272,7 @@ gt(rowname_col = "PROSPECT_RANK_GROUP") %>%
 ## 600 PA
 
 ```{r}
+#| label: woba-grades-600-pa-summary-table
 #| warning: false
 
 woba_summary_table_bat_600_final %>% 
@@ -301,6 +315,7 @@ gt(rowname_col = "PROSPECT_RANK_GROUP") %>%
 ## Count
 
 ```{r}
+#| label: woba-grades-150-and-600-pa-summary-table-count
 #| warning: false
 
 woba_summary_table_bat_count_final %>% 
@@ -367,6 +382,7 @@ Extreme differences like -0.1 and 1 (as an example, a batter going from a .350 t
 ## 150 PA
 
 ```{r}
+#| label: woba-grades-150-pa-change-in-woba-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
@@ -400,6 +416,7 @@ all_batter_career_data_by_ID %>%
 ## 600 PA
 
 ```{r}
+#| label: woba-grades-600-pa-change-in-woba-plot
 #| warning: false
 
 all_batter_career_data_by_ID %>% 
