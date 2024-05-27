@@ -60,9 +60,9 @@ At least on the bright side, I got the opportunity to work with the [stringr pac
 #| eval: false
 #| warning: false
 
-# changing two misspellings (fun players!): Carlos Gonzales(z), Miguel Teje(a)da
-# changing all caps TEAM to Team
-# changing YEAR (numeric class) to year with date (date class)
+# change two misspellings (fun players!): Carlos Gonzales(z), Miguel Teje(a)da
+# change all caps TEAM to Team
+# change YEAR (numeric class) to year with date (date class)
 top_prospect_rankings <- top_prospect_rankings %>%
   mutate("PLAYER_NAME" = str_replace(PLAYER_NAME, "Carlos Gonzales", 
                                     "Carlos Gonzalez"),
@@ -133,7 +133,7 @@ back_to_back_home_run_game_endings <- game_data %>%
 
 ### janitor package
 
-As amazing as dplyr is, it's not the best tool for every single task. This is something I learned the hard way when trying to create cross-tabulations to find the value for the combination of two variables (think pivot tables if you're more familiar with Excel) using a combination of dplyr functions. I stumbled across the [janitor package](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html){target="_blank"}, which has a function that in one line of code will create a crosstab for you---taybl. janitor also has a number of data cleaning functions, hence the name.
+As amazing as dplyr is, it's not the best tool for every single task. This is something I learned the hard way when trying to create cross-tabulations to find the value for the combination of two variables (think pivot tables if you're more familiar with Excel) using multiple dplyr functions. I stumbled across the [janitor package](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html){target="_blank"}, which has a function that in one line of code will create a crosstab for you---taybl. janitor also has a number of data cleaning functions, hence the name.
 
 The package also has the ability to enhance crosstabs by calculating totals and percentages within rows or columns. If you look back at my tables, this code becomes very evident. The two commas in the adorn_percentages function below might make no sense to you. They still don't make much sense to me and trigger a warning ⚠️ triangle in RStudio. It is telling janitor to skip unused arguments in the function. The Elite:DNQ is indicating to only calculate percentages for the Elite column through the DNQ column, not a "Total" column at the end, which I wanted to preserve with the numeric count.
 
@@ -178,7 +178,7 @@ batter_woba_grade_crosstabs_150_list$`1 - 25` %>%
 gt_crosstab_theme_fn_data_color <- function(gt_tbl) {
   gt_tbl %>% 
     tab_footnote(
-      footnote = "*Percentages are rounded...") %>% 
+      footnote = "*Percentages are rounded and may not equal to exactly 100% across rows.") %>% 
     tab_stubhead(
       label = "Initial wOBA") %>% 
     tab_spanner(
@@ -188,8 +188,7 @@ gt_crosstab_theme_fn_data_color <- function(gt_tbl) {
       locations = cells_stub(rows = 9)) %>% 
     tab_style(
       style = cell_text(style = "italic"), 
-      locations = list(cells_body(columns = Total), 
-                       cells_column_labels(columns = Total))) %>% 
+      locations = list(cells_body(columns = Total), cells_column_labels(columns = Total))) %>% 
     cols_label(
       `Below Average` = "Below", 
       Average = "Avg.") %>%
@@ -216,7 +215,10 @@ gt_crosstab_theme_fn_data_color <- function(gt_tbl) {
       drop_trailing_zeros = TRUE) %>% 
     fmt_percent(
       columns = c(!starts_with("Total") & where(~ is.numeric(.))),
-      decimals = 0)
+      decimals = 0) %>% 
+    tab_options(
+      table.align = "left", 
+      table.margin.left = px(50))
 }
 ```
 
@@ -237,9 +239,9 @@ Additionally, I used the ipsum theme from the hrbrthemes package for all plots, 
 # plot first 300 & post 300 PA for batters, add correlation, linear model
 all_batter_career_data_by_ID %>%
   filter(BAT_DEBUT <  "2011-01-01" & CAREER_TOTAL_PA >= 1800) %>%
-  ggplot(aes(x = POST_300_WOBA, y = FIRST_300_WOBA)) + # <1>
-  geom_point(aes(color = PROSPECT_RANK_GROUP)) + # <2> 
-  geom_smooth(method = "lm") + # <3>
+  ggplot(aes(y = POST_300_WOBA, x = FIRST_300_WOBA)) + # <1>
+  geom_point(aes(color = PROSPECT_RANK_GROUP)) + # <2>
+  geom_smooth(method = "lm", color = "black") + # <3>
   stat_correlation(use_label(c("R", "R2", "P"))) + # <4>
   scale_x_continuous(labels = signs::signs_format(accuracy = .001, 
                                                   trim_leading_zeros = TRUE)) + 
@@ -249,16 +251,17 @@ all_batter_career_data_by_ID %>%
                                 "#fa4d56", 
                                 "#002d9c", 
                                 "#009d9a", 
-                                "#a56eff")) +
-  labs(title = "Linear Correlation in wOBA for First & Post 300 PA", 
-       subtitle = "Includes All Batters...") + 
-  xlab(label = "Post 300 PA wOBA") + 
-  ylab(label = "First 300 PA wOBA") + 
+                                "#a56eff")) + 
+  labs(title = "wOBA Correlation & Regression First & Post 300 PA", 
+       subtitle = "Includes All Batters...", 
+       caption = "Number of Batters = 636") + 
+  ylab(label = "Post 300 PA wOBA") + 
+  xlab(label = "First 300 PA wOBA") + 
   guides(
     color = 
       guide_legend(
         title = "Prospect Rank Group")) + 
-  theme_ipsum() +
+  theme_ipsum() + 
   theme(legend.position = "bottom")
 ```
 
@@ -361,7 +364,7 @@ I found the program to be a solid overview of data analytics and key tools. From
 
 ### Stack Overflow
 
-When I first started my project, the only code examples I had were from the certificate program. As I plodded along, there were hundreds of times where I knew what end result I wanted (for example, a new column of data) but didn't know what code to write to get there. Stack Overflow was enormously helpful in getting closer to the specific code I needed as long as I could formulate a question that was in the ballpark of what I was looking for. Of the hundreds of questions I had, I only wound up having to ask a [minor one](https://stackoverflow.com/questions/77520767/factor-levels-out-of-order-in-tibble){target="_blank"} where I couldn't find an existing answer. That's quite a testament to the amount of information available and incredible credit to the individuals who provide answers. Where do you they find the time?!
+When I first started my project, the only code examples I had were from the certificate program. As I plodded along, there were hundreds of times when I knew what end result I wanted (for example, a new column of data) but didn't know what code to write to get there. Stack Overflow was enormously helpful in getting closer to the specific code I needed as long as I could formulate a question that was in the ballpark of what I was looking for. Of the hundreds of questions I had, I only wound up having to ask a [minor one](https://stackoverflow.com/questions/77520767/factor-levels-out-of-order-in-tibble){target="_blank"} where I couldn't find an existing answer. That's quite a testament to the amount of information available and incredible credit to the individuals who provide answers. Where do you they find the time?!
 
 I recognize that AI tools may have reached the point of being a more efficient tool than combing through sites like Stack Overflow. When I first started my project, I don't think Chat-GPT or other similar tools had quite caught on like they have today. It may have been a poor decision, but I decided that I wasn't going to use AI tools for this project. This was primarily because I felt like having to struggle a bit, figure things out more manually, etc., would help me acquire a deeper understanding of the concepts than having code more auto-generated. I also felt like I wouldn't be able to properly validate if the AI-generated solutions had errors or not.
 
@@ -381,7 +384,7 @@ I believe the ggplot2 package is one of the most downloaded packages from R's pa
 
 ### R for the Rest of Us
 
-I'm not sure where I first heard about [R for the Rest of Us](https://rfortherestofus.com/){target="_blank"}, but I highly recommend them if you are new to coding and interested in R. I've yet to take any of their full courses and didn't do their R in 3 Months despite strongly considering it, but even signing up for their emails, listening to their podcast, and watching their shorter YouTube videos has been a huge help. From learning of new packages to making visualizations look prettier to improving workflows, they have a lot to offer. The best part about it is that they gear themselves towards folks with a non-coding background.
+I don't remember how I first heard about [R for the Rest of Us](https://rfortherestofus.com/){target="_blank"}, but I highly recommend them if you are new to coding and interested in R. I've yet to take any of their full courses and didn't do their R in 3 Months despite strongly considering it, but even signing up for their emails, listening to their podcast, and watching their shorter YouTube videos has been a huge help. From learning of new packages to making visualizations look prettier to improving workflows, they have a lot to offer. The best part about it is that they gear themselves towards folks with a non-coding background.
 
 ### YouTube
 

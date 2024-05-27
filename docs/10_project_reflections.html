@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,7 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,12 +111,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_project_reflections.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Project Reflections</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_project_reflections.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Project Reflections</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -119,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./pic_RosterCrunch_Logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -179,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_correlation.html" class="sidebar-item-text sidebar-link">
+  <a href="./07_correlation_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
   </div>
 </li>
@@ -204,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -253,7 +260,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>If you’re still with me or even if you just skipped ahead, thank you again for reading!</p>
 <p>I’m big into reflections, so I put together ten reflections to close us out. I recognize these may feel a bit trite or colloquially—tired—but it’s helpful for my individual learning and processing to get them down on paper.</p>
@@ -271,13 +280,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="domain-knowledge" class="level3">
 <h3 class="anchored" data-anchor-id="domain-knowledge">Domain Knowledge</h3>
-<p>What helped me arrive at a good question (at least in my opinion) is that I myself was the audience, the end-user, the decision-maker. I root for Nolan Jones and Ezequiel Tovar as a Rockies fan and make regular, difficult (relatively speaking) decisions as a dynasty fantasy baseball manager to keep or cut/trade players.</p>
+<p>What helped me arrive at a good question (at least in my opinion) is that I myself was the audience, the end-user, the decision-maker. I root for Nolan Jones and Ezequiel Tovar as a Rockies fan and make regular, difficult (relatively speaking) decisions as a dynasty fantasy baseball manager to keep or cut/trade young players.</p>
 <p>This idea speaks to another constant refrain I hear in the data space: that at least some understanding of the domain/subject/business will make you a better data analyst. In my day jobs, I’ve experienced this to an even greater extent. Knowing the goals of different nonprofit and government programs that I’ve worked with has helped me quickly zero in on important questions, relevant data, and appropriate methods for analysis and reporting.</p>
 <p>Given how overwhelming it feels to learn and keep up with the number of technical skills and tools needed in the data space, it’s encouraging to remember that domain knowledge, not to mention other related skills like communication, project management, working with people, is a significant facet of what makes an effective analyst.</p>
 </section>
 <section id="scope-scope-creep" class="level3">
 <h3 class="anchored" data-anchor-id="scope-scope-creep">Scope &amp; Scope Creep</h3>
-<p>If I could give any advice to the me who was just about to embark on this project a year ago, it would be to simplify my research question and narrow the scope of my project. Multiple datasets (play-by-play and prospect ranks), multiple player types (batters and pitchers), multiple periods (150 and 600 plate appearances, 215 and 860 batters faced), multiple analyses (wOBA grades, percentage outcomes, numeric outcomes, linear correlation)… it simply became too much. This was primarily because I was also learning R while trying to achieve all of this. Had I already possessed the skills, I think it would have been a reasonable scope, but learning and doing it all at the same time was a lot.</p>
+<p>If I could give any advice to the me who was just about to embark on this project a year ago, it would be to simplify my research question and narrow the scope of my project. Multiple datasets (play-by-play and prospect ranks), multiple player types (batters and pitchers), multiple periods (150 and 600 plate appearances, 215 and 860 batters faced), multiple analyses (wOBA grades, percentage outcomes, numeric outcomes, correlation and regression)… it simply became too much. This was primarily because I was also learning R while trying to achieve all of this. Had I already possessed the skills, I think it would have been a reasonable scope, but learning and doing it all at the same time was a lot.</p>
 <p>Additionally, there were many lines of code that I wrote that went unused, analyses and visualizations that ultimately were superseded by what I felt were better analyses and visualizations. I think some of this is natural and also demonstrates that I was trying to convey the analysis in the clearest and most valuable way for you as the audience. However, in the future I need to be more vigilant to guard against scope creep. Better defining my research questions and project scope from the get-go should help with this.</p>
 </section>
 <section id="dont-be-afraid-of-programming" class="level3">
@@ -296,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="pic_Baseball_Rundown_Yahoo_Sports.gif" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Source: Yahoo Sports</figcaption>
+<figcaption>Source: Yahoo Sports</figcaption>
 </figure>
 </div>
 <section id="rundownspickles" class="level3">
@@ -367,20 +376,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="1" data-code-lines="3">The <code>[ ]</code> subsets the dataframe to only focus on rows where that condition is met.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="1">The <code>[ ]</code> subsets the dataframe to only focus on rows where that condition is met.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="2" data-code-lines="10">The <code>.</code> indicates the summary table generated by the <code>group_by</code> and <code>summarise</code> functions.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="10" data-code-annotation="2">The <code>.</code> indicates the summary table generated by the <code>group_by</code> and <code>summarise</code> functions.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-annotation="3" data-code-lines="11">Join the summary table to the all_batter_career_data_by_ID dataframe based on batter IDs.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="11" data-code-annotation="3">Join the summary table to the all_batter_career_data_by_ID dataframe based on batter IDs.</span>
 </dd>
 </dl>
 </div>
 </div>
-<p>This method calculates all the needed wOBA numbers, avoids creating intermediate objects that would have to be deleted later, and brings the data into the summary table in one shot.</p>
+<p>This method calculates all the needed wOBA numbers, avoids creating intermediate objects, and brings the data into the summary table all in one shot.</p>
 </section>
 <section id="functions-iteration" class="level3">
 <h3 class="anchored" data-anchor-id="functions-iteration">Functions &amp; Iteration</h3>
@@ -428,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="in-closing" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="in-closing"><span class="header-section-number">10.4</span> In Closing</h2>
-<p>I want to say a final thank you for reading! If you have any feedback, advice, comments, questions, corrections, etc., please feel free to reach out to me at roster crunch @ gmail . com. <a href="https://www.linkedin.com/in/adamferalio/" target="_blank">LinkedIn</a>, <a href="https://github.com/feralad" target="_blank">GitHub</a>, and/or <a href="https://twitter.com/RosterCrunch" target="_blank">Twitter/X</a> work too.</p>
+<p>I want to say a final thank you for reading! If you have any feedback, advice, comments, questions, corrections, etc., please feel free to reach out to me at <a href="mailto:rostercrunch@gmail.com">rostercrunch@gmail.com</a>. <a href="https://www.linkedin.com/in/adamferalio/" target="_blank">LinkedIn</a>, <a href="https://github.com/feralad" target="_blank">GitHub</a>, and/or <a href="https://twitter.com/RosterCrunch" target="_blank">Twitter/X</a> work too.</p>
 <p>Take care!</p>
 
 
@@ -514,10 +523,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -527,8 +553,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -540,7 +575,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -584,6 +742,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -609,6 +768,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -670,7 +855,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./09_project_process.html" class="pagination-link">
+      <a href="./09_project_process.html" class="pagination-link" aria-label="Project Process">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Project Process</span></span>
       </a>          
   </div>
@@ -678,6 +863,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

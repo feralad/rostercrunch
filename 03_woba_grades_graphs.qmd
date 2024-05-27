@@ -152,8 +152,8 @@ If you toggle from 150 PA to 600 PA, you can see what these percentages are at 6
     -   If a pitcher never started a game, RELIEVER
     -   If a pitcher's average inning pitched in games was the fifth inning and 2 outs or higher, RELIEVER
 -   The number of batters in the analysis = 1,891 and number of pitchers = 717
--   Pitchers batting (it used to be a thing!) have been removed from the batting statistics
--   Batters pitching (it still is a thing!) have been removed from the pitching statistics
+-   Pitchers batting (it used to be a thing!) were removed
+-   Batters pitching (it still is a thing!) were removed
 -   Intentional walks and sacrifice bunts are by default excluded from wOBA, so Plate Appearances (PA) and Batters Faced (BF) are technically only those that ended in a wOBA-producing event, differing slightly from official PA and BF
 -   An initial wOBA grade of *DNQ* stands for Did Not Qualify, meaning a player did not reach the stated PA or BF thresholds
     -   For example, a batter who only had 120 career plate appearances did not qualify for either the 150 or 600 PA thresholds

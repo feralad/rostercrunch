@@ -136,7 +136,7 @@ You may be interested in the median and mean prospect rank for the batting prosp
 
 ## Career wOBA by Prospect Rank
 
-At this point, I think I've sufficiently conveyed the difference in career outcomes between ranked and unranked batting prospects. One more density plot is worth adding though.
+At this point, I think I've sufficiently conveyed the difference in career outcomes between ranked and unranked batting prospects. One more density plot is worth adding though. It shows the distribution of batters based on their career wOBA. Batters are grouped by their prospect rank.
 
 ```{r}
 #| label: career-woba-density-plot
@@ -269,7 +269,7 @@ Beyond Santana, Webb, Hudson, Wainwright, and Buehrle stick out to me. Rich Hill
 
 What becomes more apparent in comparing and contrasting these lists is that longevity is not explicitly included here. For instance, I'd never heard of Francisco Cordova. He only pitched five seasons---four full ones---for the Pirates in the late 90s/2000.
 
-If we do some very rough math, ranked pitching prospects faced 404,128 batters while unranked prospects faced 335,758 in total. Sticking with our estimated ratio of 50 innings pitched per every 215 batters faced, those numbers translate to roughly 94,000 innings for ranked pitching prospects and 78,100 innings for unranked pitching prospects---a 16,000 inning difference, 320 more innings for each ranked pitching prospect on average compared to unranked.
+If we do some very rough math, these ranked pitching prospects faced 404,128 batters while unranked prospects faced 335,758 in total. Sticking with our estimated ratio of 50 innings pitched per every 215 batters faced, those numbers translate to roughly 94,000 innings for ranked pitching prospects and 78,100 innings for unranked pitching prospects---a 16,000 inning difference, 320 more innings for each ranked pitching prospect on average compared to unranked.
 
 While the ratio of unranked pitching prospects to ranked pitching prospects with *Good* career wOBA Against grades or better is higher than the corresponding ratio for batters, the top 50 unranked pitchers are not convincing me that unranked pitching prospects are a better investment than unranked batting prospects. Like I said before, this is certainly a bit subjective and could be a good debate, but that's my assessment.
 

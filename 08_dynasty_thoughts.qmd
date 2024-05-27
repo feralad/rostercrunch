@@ -20,7 +20,7 @@ From a probability standpoint, the higher ranked a prospect, the higher their ch
 
 Top 50 batting prospects are the best investment with a noticeable drop-off after that point.
 
-Of batting prospects who make it to the major leagues, about 46% of top 25 batting prospects hit for a good to elite wOBA during their career. This percentage drops to 33% of prospects ranked 26 to 50, 22% for prospects ranked 51 to 75, and 16% for prospects ranked 76 to 100.
+Of ranked batting prospects who make it to the major leagues, about 46% of top 25 batting prospects hit for a good to elite wOBA during their career. This percentage drops to 33% of prospects ranked 26 to 50, 22% for prospects ranked 51 to 75, and 16% for prospects ranked 76 to 100.
 
 ### Pitchers
 
@@ -42,7 +42,7 @@ The second is that there is a distinction between prospects who are just outside
 
 The data for our years of focus show that the odds are not in unranked prospects favor. 
 
-* The percentage of unranked prospects who become above average major league players in wOBA/wOBA Against is about 5%.
+* Only about 5% of unranked prospects who debuted become above average major league players as measured by wOBA/wOBA Against.
 * 59% of unranked batting prospects who debuted do not even reach 600 career plate appearances.
 * 67% of unranked pitching prospects who debuted do not reach 860 career batters faced, equivalent to roughly 200 innings pitched.
 
@@ -56,7 +56,7 @@ All in all, it's best to limit exposure to unranked prospects when possible. The
 
 ## Pay Little Attention to First Impressions
 
-If we look at players who played for at least roughly three full seasons, their initial rookie performance **as measured by wOBA or wOBA Against** tells us very little about the types of players they will become.
+If we look at players who played for at least roughly three full seasons, their initial rookie performance as measured by wOBA or wOBA Against tells us very little about the types of players they will become.
 
 When players lose rookie eligibility---130 at-bats for batters and 50 innings pitched for pitchers---a weak positive correlation exists between their current and remaining career wOBA/wOBA Against. As they accumulate more plate appearances and innings pitched over their first full season in the major leagues, this relationship strengthens but does not become strong, especially not for pitchers.
 
@@ -76,7 +76,7 @@ Unranked pitching pitching prospects as a whole gain 6 poins in wOBA Against aft
 
 In addition to not improving as a group, unranked prospects fall out of the league at a much higher rate than ranked prospects, as noted earlier.
 
-![Frank Thomas, Credit: Getty Images](pic_Frank_Thomas_Getty_Images.jpg)
+![Frank Thomas, Credit: Simon Bruty, Allsport/Getty Images, Hulton Archive, 1007190840](pic_Frank_Thomas_Getty_Images.jpg)
 
 ## Respect Greatness
 

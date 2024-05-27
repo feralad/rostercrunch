@@ -23,7 +23,7 @@ This is a question I have been asking even more so as an avid dynasty fantasy ba
 
 For the uninitiated, dynasty fantasy baseball is just like regular fantasy baseball, only you also have players who have yet to reach the major leagues on your team---referred to as prospects---and you typically keep all your players as long as you like year after year. The goal is to build a "dynasty" that will win your league at least one year and ideally multiple times over.
 
-Particularly because I play in a shallow dynasty league (only 12 teams) but roster a lot of prospects (20) with players losing prospect eligibility at 200 at-bats and 66 innings pitched, I am constantly faced with the predicament of whether to cut/trade or hold a prospect during their rookie season. I simply don't have room to keep them all on my major league roster. Some players make this decision easy (Corbin Carroll last year) and others make it hard (Brandon Pfaadt last year).
+Particularly because I play in a shallow dynasty league (only 12 teams) but roster a lot of prospects (20) with players losing prospect eligibility at 200 at-bats and 66 innings pitched, I am constantly faced with the predicament of whether to cut/trade or hold a prospect during their rookie season. I simply don't have room to keep them all on my major league roster. Some players make this decision easy, and others make it hard.
 
 Up until this point, I have always felt like my decisions about discarding or holding a prospect, especially less renowned prospects, were based more on feelings rather than data, too influenced by highlights and small sample sizes, and generally lacking. Perhaps you feel the same?
 
@@ -39,7 +39,7 @@ Ideally, what we learn will help us as fantasy baseball managers make more infor
 
 ## Big Picture
 
-As dynasty managers, I submit that there are generally two inflection points at which we are forced to make a decision about one of our prospects. The first is when they reach the maximum at-bats or innings pitched at which they are no longer considered prospects, and thus must be moved to your major league roster, traded, or cut. I recognize this point varies depending on different league settings. The second is more arbitrary, but I think it is common for managers to hold their prospects for at least a full season. As fans too, we generally say things like, "He's still only a rookie."
+As dynasty managers, I submit that there are generally two inflection points at which we are forced to make a decision about one of our prospects. The first is when they reach the maximum at-bats or innings pitched at which they are no longer considered prospects and thus must be moved to your major league roster, traded, or cut. I recognize this point varies depending on different league settings. The second is more arbitrary, but I think it is common for managers to hold their prospects for at least a full season. As fans too, we generally say things like, "He's still only a rookie."
 
 With that said, I've focused on comparing both:
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07_correlation.html" rel="next">
+<link href="./07_correlation_regression.html" rel="next">
 <link href="./05_woba_grades_pitchers.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -71,12 +78,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_career_woba.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Career wOBA</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_career_woba.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Career wOBA</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -86,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./pic_RosterCrunch_Logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -146,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_correlation.html" class="sidebar-item-text sidebar-link">
+  <a href="./07_correlation_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
   </div>
 </li>
@@ -171,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -206,7 +213,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="percentages-vs.-numbers" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="percentages-vs.-numbers"><span class="header-section-number">6.1</span> Percentages vs.&nbsp;Numbers</h2>
@@ -219,7 +228,11 @@ ul.task-list li input[type="checkbox"] {
 <p>The demographers among us are to thank for population pyramids, which we can employ for our purposes to compare the number of ranked and unranked prospects with different career wOBA grades.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="06_career_woba_files/figure-html/career-woba-population-pyramid-chart-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="06_career_woba_files/figure-html/career-woba-population-pyramid-chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>To break this down: if you were playing in a dynasty league from 1990 to 2010, there were a little less than 200 batters who debuted over that time period with a <em>Good</em> career wOBA or better. This is about ten batters each year on average. Seven of those ten were batters who were top 100 prospects. Three of them were unranked prospects.</p>
@@ -234,14 +247,14 @@ ul.task-list li input[type="checkbox"] {
 <li>Career wOBA is as of the end of the 2020 season. Some players were still active.</li>
 <li>Some unranked prospects were ranked at one point (Josh Hamilton is probably the most famous example), but they fell off the top 100 list prior to when they debuted.</li>
 </ul>
-<div id="tbl-anonymous-1583283" class="cell tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p><strong>Top 100 Batters by Career wOBA</strong></p>
+<div>
+
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-anonymous-1583283-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-1583283" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-anonymous-6466168" class="cell quarto-layout-panel anchored" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption><strong>Ranked Prospects</strong></caption>
+<caption><strong>Ranked Prospects</strong> {#tbl-anonymous-6466168-1}</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Name</th>
@@ -753,9 +766,9 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<div id="tbl-anonymous-1583283-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-1583283" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption><strong>Unranked Prospects</strong></caption>
+<caption><strong>Unranked Prospects</strong> {#tbl-anonymous-6466168-2}</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Name</th>
@@ -1268,6 +1281,11 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 </div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong>Top 100 Batters by Career wOBA</strong></p>
+</div>
+</div>
 </div>
 <p>What do you think?! I suspect there could be some healthy debate in comparing and contrasting these lists. After looking at them, the limitations I mentioned at the beginning become more apparent. Namely, wOBA does not fully capture a player’s value, especially in the context of fantasy.</p>
 <p>Having said that, the contrast between top ranked prospects and top unranked prospects seems stark in my eyes.</p>
@@ -1276,10 +1294,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="career-woba-by-prospect-rank" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="career-woba-by-prospect-rank"><span class="header-section-number">6.4</span> Career wOBA by Prospect Rank</h2>
-<p>At this point, I think I’ve sufficiently conveyed the difference in career outcomes between ranked and unranked batting prospects. One more density plot is worth adding though.</p>
+<p>At this point, I think I’ve sufficiently conveyed the difference in career outcomes between ranked and unranked batting prospects. One more density plot is worth adding though. It shows the distribution of batters based on their career wOBA. Batters are grouped by their prospect rank.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="06_career_woba_files/figure-html/career-woba-density-plot-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="06_career_woba_files/figure-html/career-woba-density-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1287,7 +1309,11 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="6.5" class="anchored" data-anchor-id="number-of-pitchers"><span class="header-section-number">6.5</span> Number of Pitchers</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="06_career_woba_files/figure-html/career-woba-against-population-pyramid-chart-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="06_career_woba_files/figure-html/career-woba-against-population-pyramid-chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The distribution of pitchers is very similar to the distribution of batters. A notable difference is that no pitchers fell into the <em>Awful</em> wOBA Against grade and only one was <em>Poor</em>. Since position players can contribute in other ways beyond batting, they are able to perform poorly as a batter and remain in the league. Pitchers who are bad at pitching are bad at everything since pitching is all they do.</p>
@@ -1298,14 +1324,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Who were the best pitchers? And how much success would you have had trying to hit the lottery with unranked pitching prospects?</p>
 <p>Since there are less pitchers than batters, we’ll look at the top 50 starting pitchers.</p>
 <p>Again, these ranks are from Baseball America. Please reference the notes above for batters.</p>
-<div id="tbl-anonymous-6203198" class="cell tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p><strong>Top 50 Starting Pitchers by Career wOBA Against</strong></p>
+<div>
+
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-anonymous-6203198-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-6203198" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-anonymous-1150728" class="cell quarto-layout-panel anchored" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption><strong>Ranked Prospects</strong></caption>
+<caption><strong>Ranked Prospects</strong> {#tbl-anonymous-1150728-1}</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Name</th>
@@ -1567,9 +1593,9 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<div id="tbl-anonymous-6203198-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-6203198" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption><strong>Unranked Prospects</strong></caption>
+<caption><strong>Unranked Prospects</strong> {#tbl-anonymous-1150728-2}</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Name</th>
@@ -1832,11 +1858,16 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 </div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong>Top 50 Starting Pitchers by Career wOBA Against</strong></p>
+</div>
+</div>
 </div>
 <p>There are some gems on the unranked list, Johan Santana most of all. Santana was the pitcher with the most improvement from his first roughly 50 innings pitched to the remainder of his career. His wOBA Against was .417 after 215 batters faced and decreased all the way to .287.</p>
 <p>Beyond Santana, Webb, Hudson, Wainwright, and Buehrle stick out to me. Rich Hill being so high is a surprise and also touches on another previously mentioned limitation that some active players are still included. His wOBA Against has certainly jumped since 2020.</p>
 <p>What becomes more apparent in comparing and contrasting these lists is that longevity is not explicitly included here. For instance, I’d never heard of Francisco Cordova. He only pitched five seasons—four full ones—for the Pirates in the late 90s/2000.</p>
-<p>If we do some very rough math, ranked pitching prospects faced 404,128 batters while unranked prospects faced 335,758 in total. Sticking with our estimated ratio of 50 innings pitched per every 215 batters faced, those numbers translate to roughly 94,000 innings for ranked pitching prospects and 78,100 innings for unranked pitching prospects—a 16,000 inning difference, 320 more innings for each ranked pitching prospect on average compared to unranked.</p>
+<p>If we do some very rough math, these ranked pitching prospects faced 404,128 batters while unranked prospects faced 335,758 in total. Sticking with our estimated ratio of 50 innings pitched per every 215 batters faced, those numbers translate to roughly 94,000 innings for ranked pitching prospects and 78,100 innings for unranked pitching prospects—a 16,000 inning difference, 320 more innings for each ranked pitching prospect on average compared to unranked.</p>
 <p>While the ratio of unranked pitching prospects to ranked pitching prospects with <em>Good</em> career wOBA Against grades or better is higher than the corresponding ratio for batters, the top 50 unranked pitchers are not convincing me that unranked pitching prospects are a better investment than unranked batting prospects. Like I said before, this is certainly a bit subjective and could be a good debate, but that’s my assessment.</p>
 <p>The median and mean prospect rank for pitching prospects on the ranked list: median of 21.5, mean of 34.4.</p>
 </section>
@@ -1844,7 +1875,11 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="6.7" class="anchored" data-anchor-id="career-woba-against-by-prospect-rank"><span class="header-section-number">6.7</span> Career wOBA Against by Prospect Rank</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="06_career_woba_files/figure-html/career-woba-against-density-plot-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="06_career_woba_files/figure-html/career-woba-against-density-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This density plot helps capture what we mentioned earlier. Top 25 pitching prospects are in a league of their own. Pitching prospects ranked 26 - 100 are more in a glob together, but pitching prospects ranked 26 - 50 are more likely to be average or below average than poor or awful compared to pitching prospects ranked 51 - 100. Unranked prospects are clearly the last horse in this race.</p>
@@ -1932,10 +1967,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1945,8 +1997,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1958,7 +2019,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2002,6 +2186,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2027,6 +2212,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2088,17 +2299,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05_woba_grades_pitchers.html" class="pagination-link">
+      <a href="./05_woba_grades_pitchers.html" class="pagination-link" aria-label="wOBA Against Grades">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">wOBA Against Grades</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_correlation.html" class="pagination-link">
+      <a href="./07_correlation_regression.html" class="pagination-link" aria-label="Correlation and Regression">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

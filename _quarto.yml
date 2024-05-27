@@ -17,7 +17,7 @@ book:
     - 04_woba_grades_batters.qmd
     - 05_woba_grades_pitchers.qmd
     - 06_career_woba.qmd
-    - 07_correlation.qmd
+    - 07_correlation_regression.qmd
     - 08_dynasty_thoughts.qmd
     - 09_project_process.qmd
     - 10_project_reflections.qmd

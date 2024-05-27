@@ -15,7 +15,7 @@ library(dplyr)
 load("back_to_back_hr.RData")
 ```
 
-![](pic_Curt_Schilling_on_the_Mound.jpeg){fig-align="left"}
+![Coors Field, 9/18/2001](pic_Curt_Schilling_on_the_Mound.jpeg){fig-align="left"}
 
 ## My First Game
 
@@ -65,7 +65,7 @@ back_to_back_home_run_game_endings %>%
 
 Much to my delight, Todd Helton was elected to the baseball Hall of Fame this January, forever to be enshrined as one of the greatest players to ever play the game.
 
-In an [interview](https://www.youtube.com/watch?v=w0n4aOlVOHM){target="_blank"} capturing his post-election emotions, he said, "'playing' 162 games, there's sometimes where you're just not feeling it...and you go out and you play at Coors Field...and the fans get you energized...and they get you ready to play. And you never know when the one kid is there that that's his first time watching you play. So that's what I thought about when I when out there to play..."
+In an [interview](https://www.youtube.com/watch?v=w0n4aOlVOHM){target="_blank"} capturing his post-election emotions, he said, "'playing' 162 games, there's sometimes where you're just not feeling it...and you go out and you play at Coors Field...and the fans get you energized...and they get you ready to play. And you never know when the one kid is there that that's his first time watching you play. So that's what I thought about when I when out there..."
 
 Being now in my thirties, I've grown a bit too old to look up to athletes or imagine that a comment like this can fully explain human motivations. Yet I cannot deny that I was that kid that night---September 18, 2001---and express my gratitude to the Toddfather for memories that will last a lifetime.
 
@@ -79,4 +79,4 @@ The lone players on their major league roster that appear to have a legitimate s
 
 ![Ezequiel Tovar and Nolan Jones, Credit: AP Photo, Jeff Roberson](pic_Tovar_Jones_AP_Photo_Jeff_Roberson.jpg)
 
-Given the woeful state of their roster, it is no surprise that I and fellow Rockies fans are intensely interested in the development of Jones and Tovar. If Jones regresses---some suspect his success last season was unsustainable due to an extremely high batting average on balls in play, and his 2024 is already off to a horrific start---and Tovar doesn't progress offensively, the Rockies will be in an even worse predicament than they already are. If they both build on their rookie performances and top prospects like Adael Amador emerge as contributors, the Rockies future will look less apocalyptic---at least normal enough for the eyes of the next generation of nine-year-old fans to widen.
+Given the woeful state of their roster, it is no surprise that I and fellow Rockies fans are intensely interested in the development of Jones and Tovar. If Jones regresses---some suspect his success last season was unsustainable due to an extremely high batting average on balls in play, and his 2024 is already off to a horrific start---and Tovar doesn't progress offensively, the Rockies will be in an even worse predicament than they already are. If they both build on their rookie performances and top prospects like Adael Amador emerge as contributors, the Rockies future will look less apocalyptic---perhaps normal enough for the eyes of the next generation of nine-year-old fans to widen.

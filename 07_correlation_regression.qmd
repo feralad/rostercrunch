@@ -374,7 +374,7 @@ all_pitcher_career_data_by_ID %>%
 ```
 :::
 
-The short story is that even for the largest sample size here---the first 1,290 batters faced or roughly 300 innings innings pitched in a pitcher's career---initial wOBA Against is only explaining 11% of the variance in remaining career wOBA Against.
+The short story is that even for the largest sample size here---the first 1,290 batters faced or roughly 300 innings innings pitched in a pitcher's career---initial wOBA Against is only explaining 11% of the variation in remaining career wOBA Against.
 
 What can we infer from these results?
 
@@ -388,10 +388,10 @@ The vast amount of research on pitching and its rapid growth makes me feel unqua
 
 ## Takeaways
 
-Particularly as dynasty fantasy managers, we're best served using the best stats available to us. Even a slightly better predictor of future career success becomes an edge that compounds more and more over time. We should be mindful, though, that even the best stats to measure a player's initial performance in the major leagues can only tell us so much about that player's remaining career.
+Particularly as dynasty fantasy managers, we're best served using the best stats available to us. Even a slightly better predictor of future career success becomes an edge that compounds more and more over time. Statcast data in particular should definitely not be ignored. We should be mindful, though, that even the best stats to measure a player's initial performance in the major leagues can only tell us so much about that player's remaining career.
 
 Based on initial wOBA and wOBA Against, we can be more certain about batters' future careers compared to pitchers. However, even after a batter has accumulated their first 600 plate appearances---a full season---the strength of the relationship between their initial wOBA and remaining career wOBA is moderate at best.
 
 While probably none of us are disciplined enough to hold a struggling batter for 900 plate appearances, we should be as patient as possible---especially with higher ranked prospects---and acknowledge that making decisions solely on the basis of initial performance, especially very small samples, is not supported by data in any large way.
 
-For pitchers, even more patience is needed or a much better statistic/model.
+For pitchers, even more patience is needed and likely a much better statistic/model.

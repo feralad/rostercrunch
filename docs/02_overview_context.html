@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -71,12 +78,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_overview_context.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview and Context</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_overview_context.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview and Context</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -86,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./pic_RosterCrunch_Logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -146,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_correlation.html" class="sidebar-item-text sidebar-link">
+  <a href="./07_correlation_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
   </div>
 </li>
@@ -171,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -205,14 +212,16 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="project-focus" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="project-focus"><span class="header-section-number">2.1</span> Project Focus</h2>
 <p>As I pondered the possible futures for the Rockies, I couldn’t help but wonder what a player’s rookie season tells us about that player—kind of like what an initial interaction might tell us about the possibilities of friendship or a relationship with someone we meet. In more technical terms, does a player’s rookie season performance correlate with/predict their career performance, and if so, to what extent?</p>
 <p>This is a question I have been asking even more so as an avid dynasty fantasy baseball player. Before we go any further, I want to acknowledge that yes, fantasy baseball is built upon a ridiculous premise and by all accounts is a goofy hobby. But you can imagine that as a Rockies fan, the solace “fantasy” baseball provides has been prescribed by my doctor :)</p>
 <p>For the uninitiated, dynasty fantasy baseball is just like regular fantasy baseball, only you also have players who have yet to reach the major leagues on your team—referred to as prospects—and you typically keep all your players as long as you like year after year. The goal is to build a “dynasty” that will win your league at least one year and ideally multiple times over.</p>
-<p>Particularly because I play in a shallow dynasty league (only 12 teams) but roster a lot of prospects (20) with players losing prospect eligibility at 200 at-bats and 66 innings pitched, I am constantly faced with the predicament of whether to cut/trade or hold a prospect during their rookie season. I simply don’t have room to keep them all on my major league roster. Some players make this decision easy (Corbin Carroll last year) and others make it hard (Brandon Pfaadt last year).</p>
+<p>Particularly because I play in a shallow dynasty league (only 12 teams) but roster a lot of prospects (20) with players losing prospect eligibility at 200 at-bats and 66 innings pitched, I am constantly faced with the predicament of whether to cut/trade or hold a prospect during their rookie season. I simply don’t have room to keep them all on my major league roster. Some players make this decision easy, and others make it hard.</p>
 <p>Up until this point, I have always felt like my decisions about discarding or holding a prospect, especially less renowned prospects, were based more on feelings rather than data, too influenced by highlights and small sample sizes, and generally lacking. Perhaps you feel the same?</p>
 <p>In light of this and my intrigue into Jones’ and Tovar’s futures (I also have Tovar on my fantasy team, no surprise!), I set out to analyze rookie and career performances for players who debuted over the span of 20+ years (1990 to 2010) to gain a better understanding of what this relationship has looked like historically.</p>
 <p>While this project is descriptive analysis and not predictive, I like what Ariel Cohen, an expert fantasy baseball player/analyst and actuary by day, I believe, <a href="https://www.rotoballer.com/2023-fantasy-takeaways/1258560?utm_source=dlvr.it&amp;utm_medium=twitter" target="_blank">writes</a>…</p>
@@ -224,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="big-picture" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="big-picture"><span class="header-section-number">2.2</span> Big Picture</h2>
-<p>As dynasty managers, I submit that there are generally two inflection points at which we are forced to make a decision about one of our prospects. The first is when they reach the maximum at-bats or innings pitched at which they are no longer considered prospects, and thus must be moved to your major league roster, traded, or cut. I recognize this point varies depending on different league settings. The second is more arbitrary, but I think it is common for managers to hold their prospects for at least a full season. As fans too, we generally say things like, “He’s still only a rookie.”</p>
+<p>As dynasty managers, I submit that there are generally two inflection points at which we are forced to make a decision about one of our prospects. The first is when they reach the maximum at-bats or innings pitched at which they are no longer considered prospects and thus must be moved to your major league roster, traded, or cut. I recognize this point varies depending on different league settings. The second is more arbitrary, but I think it is common for managers to hold their prospects for at least a full season. As fans too, we generally say things like, “He’s still only a rookie.”</p>
 <p>With that said, I’ve focused on comparing both:</p>
 <ul>
 <li>A batter’s first 150 Plate Appearances (PA) (roughly equal to 130 At-Bats) and pitcher’s first 215 Batters Faced (BF) (roughly equal to 50 Innings Pitched) with their remaining career statistics, as this is when players <a href="https://www.mlb.com/glossary/rules/rookie-eligibility" target="_blank">officially</a> lose rookie eligibility</li>
@@ -257,14 +266,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Because dynasty managers are so often making decisions based on a player’s prospect pedigree—perhaps to an even greater degree than based on a player’s initial statistics over a small sample size—I thought it necessary to also include these rankings.</p>
 <p>I made use of <a href="https://www.baseballamerica.com" target="_blank">Baseball America’s</a> Top 100 Prospects preseason lists for the years of focus. Rankings like these are invaluable, reflecting a tremendous amount of work and skill that goes into scouting players and evaluating talent. I would be remiss if I did not plug subscribing to Baseball America and supporting their work if you have the means to do so.</p>
 <p>We will examine player outcomes by prospect rank for prospects who made it to the major leagues. As we know, some prospects never make it to the major leagues. For reference, here are the rates of top prospects from Baseball America’s Top 100 lists (1990 - 2010) who made it to the majors.</p>
-<div id="tbl-anonymous-8590432" class="cell tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p><strong>Percentage and Number of Top 100 Prospects Who Reached Major Leagues</strong></p>
+<div>
+
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-anonymous-8590432-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-8590432" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-anonymous-8326349" class="cell quarto-layout-panel anchored" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption><strong>Batting Prospects</strong></caption>
+<caption><strong>Batting Prospects</strong> {#tbl-anonymous-8326349-1}</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Prospect Rank</th>
@@ -307,9 +316,9 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<div id="tbl-anonymous-8590432-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-8590432" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption><strong>Pitching Prospects</strong></caption>
+<caption><strong>Pitching Prospects</strong> {#tbl-anonymous-8326349-2}</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Prospect Rank</th>
@@ -351,6 +360,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong>Percentage and Number of Top 100 Prospects Who Reached Major Leagues</strong></p>
 </div>
 </div>
 </div>
@@ -451,10 +465,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -464,8 +495,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -477,7 +517,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -521,6 +684,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -546,6 +710,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -607,17 +797,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01_storytime.html" class="pagination-link">
+      <a href="./01_storytime.html" class="pagination-link" aria-label="Story Time">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Story Time</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_woba_grades_graphs.html" class="pagination-link">
+      <a href="./03_woba_grades_graphs.html" class="pagination-link" aria-label="Simple wOBA Grades">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Simple wOBA Grades</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

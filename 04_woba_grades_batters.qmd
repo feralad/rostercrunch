@@ -24,23 +24,23 @@ Just recently, Nolan Jones reached 600 career plate appearances with a .358 wOBA
 
 Ezequiel Tovar reached 600 career plate appearances last September with a .302 wOBA.
 
-Jones was technically not a top 100 prospect, although he did rank as high as 45 on Baseball America's (BA) 2021 preseason top 100 list. It's probably fair to say he was a borderline top 100 prospect when he made his debut, but based on our criteria, he falls into the *Unranked* prospect group.
+Jones was technically not a top 100 prospect when he debuted, although he did rank as high as 45 on Baseball America's (BA) 2021 preseason top 100 list. It's probably fair to say he was a borderline top 100 prospect when he made his debut, but based on our criteria, he falls into the *Unranked* prospect group.
 
 Tovar ranked 17 on BA's 2023 preseason list. His defensive skills contributed in a big way to that ranking, but he would not have been that high had his bat been a projected liability.
 
-You can see where Jones and Tovar rank based on our wOBA scale from FanGraphs.
+You can see where Jones and Tovar ranked based on our wOBA scale from FanGraphs:
 
 * Elite: .400 or above
 * Great: .370 to .399
-* Good: .340 to .369
+* Good: .340 to .369 (Jones)
 * Average: .320 to .339
 * Below Average: .310 to .319
-* Poor: .291 to .309
+* Poor: .291 to .309 (Tovar)
 * Awful: .290 or below
 
 ## A Rockie Riddle and a Kernel
 
-So how did batters who were similar to Jones and Tovar based on prospect rankings and initial performances over their first 600 career plate appearances do for the rest of their career? 
+So how did former batters who were similar to Jones and Tovar based on prospect ranking and initial performance over their first 600 career plate appearances do for the rest of their career?
 
 You can flip through the tables below to find out.
 
@@ -365,7 +365,7 @@ Red represents better totals, blue worse, a la [Baseball Savant](https://basebal
 
 We can gather that ranked prospects as a group not only have better starts to their careers (technically only top 50 prospects), they also improve more after their first 150 or 600 plate appearances (all ranked prospects). Unranked prospects as a group essentially show no improvement.
 
-Additionally, a much higher percentage of ranked prospects stay in the majors for at least 1,800 plate appearances compared to unranked prospects (94% at the high end to 55% for unranked prospects).
+Additionally, a much higher percentage of ranked prospects who make it to the major leagues stay in the majors for at least 1,800 plate appearances compared to unranked prospects (94% at the high end to 55% for unranked prospects).
 
 As for comparisons between ranked prospects, prospects ranked 1 - 25 and 26 - 50 are quite similar while there is a noticeable difference between them and prospects ranked 51 - 100.
 
@@ -373,7 +373,7 @@ As a whole, prospects ranked 1 - 50 just make the leap from an *Average* wOBA gr
 
 ## Change in wOBA
 
-If all of this is still too much information to take in, the density plots below should simplify what is happening. It shows the distribution of batters based on the numeric difference in their wOBA between first/post 150 plate appearances and first/post 600 plate appearances.
+If all of this is still too much information to take in, the density plots below should simplify what is happening. It shows the distribution of batters based on the numeric difference in their wOBA between their first/post 150 plate appearances and first/post 600 plate appearances.
 
 Extreme differences like -0.1 and 1 (as an example, a batter going from a .350 to .250 wOBA or .250 to .350 wOBA) are marked on the plot. You can see that extreme differences become far less likely after a batter has already accumulated 600 plate appearances.
 
@@ -458,4 +458,4 @@ It's unsurprising that higher ranked prospects perform better than lower ranked 
 
 Ranked prospects in the aggregate improve on their rookie performance while unranked prospects do not.
 
-However, even ranked prospects are susceptible to regression. The density plots show a fair number of top 100 prospects below 0.0, and if you cut the percentage tables in half diagonally from top left to bottom right, you'll see the percentage of batters above the line whose wOBA grade decreased.
+However, even ranked prospects are susceptible to regression. The density plots show a fair number of top 100 prospects below 0.0, and if you cut the percentage tables in half diagonally from top left to bottom right, you'll see the percentage of batters above the line whose remaining career wOBA grade decreased from their initial performance in the major leagues.
