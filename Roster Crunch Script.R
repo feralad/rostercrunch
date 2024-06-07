@@ -1495,7 +1495,8 @@ batter_woba_grade_crosstabs_150_list$`1 - 25` %>%
     decimals = 0) %>% 
   tab_options(
     table.align = "left", 
-    table.margin.left = px(50))
+    table.margin.left = px(50),
+    quarto.disable_processing = TRUE)
 
 # create gt theme with color function
 gt_crosstab_theme_fn_data_color <- function(gt_tbl) {
@@ -1541,7 +1542,8 @@ gt_crosstab_theme_fn_data_color <- function(gt_tbl) {
       decimals = 0) %>% 
     tab_options(
       table.align = "left", 
-      table.margin.left = px(50))
+      table.margin.left = px(50),
+      quarto.disable_processing = TRUE)
 }
 
 # create gt theme no color function
@@ -1582,7 +1584,8 @@ gt_crosstab_theme_fn_no_color <- function(gt_tbl) {
       decimals = 0) %>% 
     tab_options(
       table.align = "left", 
-      table.margin.left = px(50))
+      table.margin.left = px(50),
+      quarto.disable_processing = TRUE)
 }
   
 # code chunk to update manually for tabyls with NAs
@@ -1753,7 +1756,9 @@ woba_summary_table_bat_150_final %>%
       "#FF8989FF", 
       "#FF7080FF", 
       "#FF5A5AFF", 
-      "#EF4040FF"))
+      "#EF4040FF")) %>% 
+  tab_options(
+    quarto.disable_processing = TRUE)
 
 # batters count
 woba_summary_table_bat_count_final %>% 
@@ -1795,7 +1800,9 @@ woba_summary_table_bat_count_final %>%
     columns = 4,
     rows = everything(),
     scale_values = FALSE, 
-    decimals = 0)
+    decimals = 0)  %>% 
+  tab_options(
+    quarto.disable_processing = TRUE)
 
 # Analysis & Visualization: wOBA Movement Plots ----------------------------
 

@@ -266,7 +266,9 @@ gt(rowname_col = "PROSPECT_RANK_GROUP") %>%
       "#FF8989FF", 
       "#FF7080FF", 
       "#FF5A5AFF", 
-      "#EF4040FF"))
+      "#EF4040FF")) %>% 
+  tab_options(
+    quarto.disable_processing = TRUE)
 ```
 
 ## 600 PA
@@ -309,7 +311,9 @@ gt(rowname_col = "PROSPECT_RANK_GROUP") %>%
       "#FF8989FF", 
       "#FF7080FF", 
       "#FF5A5AFF", 
-      "#EF4040FF"))
+      "#EF4040FF")) %>% 
+  tab_options(
+    quarto.disable_processing = TRUE)
 ```
 
 ## Count
@@ -357,7 +361,9 @@ gt(rowname_col = "PROSPECT_RANK_GROUP") %>%
       columns = 4,
       rows = everything(),
       scale_values = FALSE, 
-      decimals = 0)
+      decimals = 0) %>% 
+  tab_options(
+    quarto.disable_processing = TRUE)
 ```
 :::
 
