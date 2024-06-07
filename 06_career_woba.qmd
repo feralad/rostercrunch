@@ -96,13 +96,13 @@ Important notes for these lists:
 * Some unranked prospects were ranked at one point (Josh Hamilton is probably the most famous example), but they fell off the top 100 list prior to when they debuted.
 
 ```{r}
-#| label: career-woba-ranked-unranked-prospect-top-100-lists
+#| label: tbl-career-woba-ranked-unranked-prospect-top-100-lists
 #| warning: false
-#| tbl-cap: ["**Top 100 Batters by Career wOBA**"]
-#| tbl-subcap: ["**Ranked Prospects**", "**Unranked Prospects**"]
-#| layout-ncol: 2
+#| tbl-cap: "**Top 100 Batters by Career wOBA**"
+#| tbl-subcap:
+#|   - "Ranked Prospects"
+#|   - "Unranked Prospects"
 
-# ranked prospects
 all_batter_career_data_by_ID %>% 
   filter(BAT_DEBUT < "2011-01-01" & 
            CAREER_TOTAL_PA >= 1800 & 
@@ -113,7 +113,6 @@ all_batter_career_data_by_ID %>%
   kable(col.names = c("Name", "Career wOBA", "Prospect Rank"), 
         align = "lccc")
 
-# unranked prospects
 all_batter_career_data_by_ID %>% 
   filter(BAT_DEBUT < "2011-01-01" & 
            CAREER_TOTAL_PA >= 1800 & 
@@ -230,13 +229,13 @@ Since there are less pitchers than batters, we'll look at the top 50 starting pi
 Again, these ranks are from Baseball America. Please reference the notes above for batters.
 
 ```{r}
-#| label: career-woba-against-ranked-unranked-prospect-top-50-lists
+#| label: tbl-career-woba-against-ranked-unranked-prospect-top-50-lists
 #| warning: false
-#| tbl-cap: ["**Top 50 Starting Pitchers by Career wOBA Against**"]
-#| tbl-subcap: ["**Ranked Prospects**", "**Unranked Prospects**"]
-#| layout-ncol: 2
+#| tbl-cap: "**Top 50 Starting Pitchers by Career wOBA Against**"
+#| tbl-subcap:
+#|   - "Ranked Prospects"
+#|   - "Unranked Prospects"
 
-# ranked prospects
 all_pitcher_career_data_by_ID %>% 
   filter(PIT_DEBUT < "2011-01-01" & 
            CAREER_TOTAL_BF >= 2580 & 
@@ -249,7 +248,6 @@ all_pitcher_career_data_by_ID %>%
   kable(col.names = c("Name", "Career wOBA Against", "Prospect Rank"), 
         align = "lccc")
 
-# unranked prospects
 all_pitcher_career_data_by_ID %>% 
   filter(PIT_DEBUT < "2011-01-01" & 
            CAREER_TOTAL_BF >= 2580 & 

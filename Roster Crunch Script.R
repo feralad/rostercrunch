@@ -1993,8 +1993,7 @@ back_to_back_home_run_game_endings %>%
   select(-c("PARK", "HIT_VAL", "EVENT_RUNS")) %>% 
   kable(col.names = c("Row ID", "Game ID", "Date", "Home Team", "Away Team", 
                       "Inning", "Batter", "Pitcher", "Event"), 
-        align = "lllccclll", 
-        caption = "**Games Ending in Back to Back Home Runs - 1990 to 2020**")
+        align = "lllccclll")
 
 # number of all games from 1990 through 2020 (71,080)
 game_data %>% 

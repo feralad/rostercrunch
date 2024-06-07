@@ -43,10 +43,10 @@ As dynasty managers, I submit that there are generally two inflection points at 
 
 With that said, I've focused on comparing both:
 
-* A batter's first 150 Plate Appearances (PA) (roughly equal to 130 At-Bats) and pitcher's first 215 Batters Faced (BF) (roughly equal to 50 Innings Pitched) with their remaining career statistics, as this is when players [officially](https://www.mlb.com/glossary/rules/rookie-eligibility){target="_blank"} lose rookie eligibility
-* A batter's first 600 Plate Appearances and pitcher's first 860 Batters Faced (roughly equal to 200 Innings Pitched) with their remaining career statistics, as this is fairly equivalent to a full season
-  + I realize 200 innings pitched is a bit high, but I wanted to keep the proportionality consistent between batters and pitchers (150 PA * 4 = 600 PA and 215 BF * 4 = 860 BF). Also, pitchers threw more innings in the past than they do now.
-  
+-   A batter's first 150 Plate Appearances (PA) (roughly equal to 130 At-Bats) and pitcher's first 215 Batters Faced (BF) (roughly equal to 50 Innings Pitched) with their remaining career statistics, as this is when players [officially](https://www.mlb.com/glossary/rules/rookie-eligibility){target="_blank"} lose rookie eligibility
+-   A batter's first 600 Plate Appearances and pitcher's first 860 Batters Faced (roughly equal to 200 Innings Pitched) with their remaining career statistics, as this is fairly equivalent to a full season
+    -   I realize 200 innings pitched is a bit high, but I wanted to keep the proportionality consistent between batters and pitchers (150 PA \* 4 = 600 PA and 215 BF \* 4 = 860 BF). Also, pitchers threw more innings in the past than they do now.
+
 Bottom line: we need to isolate a player's statistics up to these specific points and then compare it with their statistics after that point to determine the relationship between them.
 
 ## Play-by-Play Data
@@ -57,12 +57,12 @@ I mentioned earlier that we will focus on players who debuted from 1990 through 
 
 The primary reason I selected this sample was due to an available [dataset](https://upenn.app.box.com/v/retrosheet-pa-1990-2000){target="_blank"} that mostly met all the criteria I had:
 
-* Play-by-play data
-* Large enough sample size
-* In the modern era
-* Pre-constructed, easily accessible, mostly ready to go for analysis
-  + If you skip ahead to my Project Process and Project Reflections, you'll see that much of what I'm doing here is a first for me.
-* High quality from a trusted researcher and institution
+-   Play-by-play data
+-   Large enough sample size
+-   In the modern era
+-   Pre-constructed, easily accessible, mostly ready to go for analysis
+    -   If you skip ahead to my Project Process and Project Reflections, you'll see that much of what I'm doing here is a first for me.
+-   High quality from a trusted researcher and institution
 
 The underlying data comes from [Retrosheet](https://www.retrosheet.org){target="_blank"}. The dataset owner, [Ryan Brill](https://twitter.com/RyanBrill_){target="_blank"}, enhanced the Retrosheet data to be more useful for his research purposes like adding wOBA values for each play/event, which proved to be the linchpin for my analysis. I commend both of them to you for the fantastic work they do and acknowledge that my project exists in large part because of their labor.
 
@@ -75,22 +75,19 @@ I made use of [Baseball America's](https://www.baseballamerica.com){target="_bla
 We will examine player outcomes by prospect rank for prospects who made it to the major leagues. As we know, some prospects never make it to the major leagues. For reference, here are the rates of top prospects from Baseball America's Top 100 lists (1990 - 2010) who made it to the majors.
 
 ```{r}
-#| label: prospect-debut-rate
-#| tbl-cap: ["**Percentage and Number of Top 100 Prospects Who Reached Major Leagues**"]
-#| tbl-subcap: ["**Batting Prospects**", "**Pitching Prospects**"]
-#| layout-ncol: 2
+#| label: tbl-prospect-debut-rate
+#| tbl-cap: "**Percentage and Number of Top 100 Prospects Who Reached Major Leagues**"
+#| tbl-subcap: 
+#|   - "Batting Prospects"
+#|   - "Pitching Prospects"
 
-## Batting Prospects
 batting_prospect_mlb_debut_rate %>% 
   kable(col.names = c("Prospect Rank", "Yes", "No", "Total"), 
-        align = "llll", 
-        caption = "**Batting Prospects Who Made MLB Debut**")
+        align = "llll")
 
-## Pitching Prospects
 pitching_prospect_mlb_debut_rate %>% 
   kable(col.names = c("Prospect Rank", "Yes", "No", "Total"), 
-        align = "llll", 
-        caption = "**Pitching Prospects Who Made MLB Debut**")
+        align = "llll")
 ```
 
 ## Final Datasets
