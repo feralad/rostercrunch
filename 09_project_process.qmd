@@ -218,7 +218,8 @@ gt_crosstab_theme_fn_data_color <- function(gt_tbl) {
       decimals = 0) %>% 
     tab_options(
       table.align = "left", 
-      table.margin.left = px(50))
+      table.margin.left = px(50),
+      quarto.disable_processing = TRUE)
 }
 ```
 
